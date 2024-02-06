@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: inherit;
+    list-style: none;
+}
+
+.mainContainer {
+    /* justify-content: space-between; */
+    flex-direction: row-reverse;
+    display: flex;
+}
+
+article {
+    width: 100%;
+}
+
+.section01 {
+    margin: 100px 0px 200px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.titleText p {
+    font-size: 30px;
+    font-weight: bolder;
+    color:#456E2A;
+}
+
+.titleMenu span {
+    font-size: 15px;
+    cursor: pointer;
+    color: #b9b9b9;
+    margin-right: 25px;
+}
+
+.titleMenu span:hover {
+    color:#456E2A;
+    font-weight: bolder;
+}
+
+.titleMenu span.active {
+    color:#456E2A;
+    font-weight: bolder;
+}
+
+.titleMenu hr {
+    border: 0.1px solid #d9d9d9;
+    width: 800px;
+}
+
+.profileButton button {
+    width: 80px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color:#456E2A;
+    color:#fff;
+    font-size: 12px;
+    font-weight: medium;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.profileButton button:hover {
+    background-color:#DAE2D4;
+    color: #000;
+}
+
+.profileButton img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    object-fit: cover;
+    margin-right: 45px;
+}
+
+.listContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 650px;
+}
+
+.nameList {
+    text-align: left;
+}
+
+.nameList li {
+    width: 100px;
+    font-size: 14px;
+    color: #6c6c6c;
+    margin-top: 35px;
+    margin-bottom: 44px;
+}
+
+.inputList {
+    text-align: left;
+}
+
+.inputList input {
+    width: 200px;
+    height: 30px;
+    margin-top: 30px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 0.5px solid #b9b9b9;
+    outline: none;
+}
+
+.inputList button {
+    width: 80px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color:#456E2A;
+    color:#fff;
+    font-size: 12px;
+    font-weight: medium;
+    cursor: pointer;
+}
+
+.inputList button:hover {
+    background-color:#DAE2D4;
+    color: #000;
+}
+
+.saveButton {
+    width: 80px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color:#456E2A;
+    color:#fff;
+    font-size: 12px;
+    font-weight: medium;
+    margin-left: 50%;
+    cursor: pointer;
+}
+
+.saveButton:hover {
+    background-color:#DAE2D4;
+    color: #000;
+}
+
+.categoryToggle {
+    position: relative;
+    display: inline-block;
+}
+
+.categoryToggle ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    position: absolute;
+}
+
+.categoryToggle ul li {
+    display: block;
+}
+
+.timeTable img{
+    width: 700px;
+    height: auto;
+}

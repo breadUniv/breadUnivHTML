@@ -1,0 +1,86 @@
+.imgUploadButtonBox > button {
+    width: 80px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color:#456E2A;
+    color:#fff;
+    font-size: 12px;
+    font-weight: medium;
+}
+
+.imgUploadButtonBox > button:hover {
+    background-color:#DAE2D4;
+    color: #000;
+}
+
+.buttonNone {
+    width: 170px;
+}
+
+.editButton {
+    width: 200px;
+}
+
+.boardButton {
+    display: flex;
+    justify-content: center;
+    width: 130px;
+}
+
+.boardButton > button{
+    width: 80px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color:#456E2A;
+    color:#fff;
+    font-size: 12px;
+    font-weight: medium;
+    cursor: pointer;
+}
+
+.boardButton button:hover {
+    background-color:#DAE2D4;
+    color: #000;
+}
+
+.attendanceButton {
+    display: flex;
+    justify-content: center;
+}
+
+.attendanceButton > button{
+    width: 80px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color:#456E2A;
+    color:#fff;
+    font-size: 12px;
+    font-weight: medium;
+    cursor: pointer;
+}
+
+.attendanceButton button:hover {
+    background-color:#DAE2D4;
+    color: #000;
+}
+
+.gradeButtonBox {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.gradeButton > button {
+    width: 80px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color:#456E2A;
+    color:#fff;
+    font-size: 12px;
+    font-weight: medium;
+    cursor: pointer;
+}

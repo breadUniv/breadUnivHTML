@@ -1,0 +1,82 @@
+.sideBarBackground {
+    width: 230px;
+    height: 100wh;
+    background-color: #fff;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.03);
+}
+
+.sideBarTopBackground {
+    width: 230px;
+    height: 200px;
+    background-color: #DAE2D4;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.sideBarTopContainer img {
+    width: 70%;
+    height: auto;
+    margin-top: -20px;
+}
+
+.sideBarTopContainer p {
+    font-size: 20px;
+    color: #456E2A;
+    margin-top: -15px;
+}
+
+.sideBarDropdown {
+    margin: 50px 0px 0px 30px;
+    position: relative;
+}
+
+.sideBarDropdown li {
+    font-size: medium;
+    margin: 10px;
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.sideBarDropdownToggle li a {
+    font-size: 15px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+/* 토글메뉴 */
+.subToggle {
+    font-size: 15px;
+    margin-left: 30px;
+    cursor: pointer;
+    display: none;
+    color: #b9b9b9;
+}
+
+.subToggle li > a:active,
+.subToggle li > a:hover {
+    color: #456E2A;
+    font-weight: bolder;
+}
+
+.subToggle li.active > a,
+.sideBarDropdownClick.active > a {
+    color: #456E2A;
+    font-weight: bolder;
+}
+
+.sideBarDropdownClick > a {
+    color: #b9b9b9;
+}
+
+.sideBarDropdownClick > a:active, 
+.sideBarDropdownClick > a:hover {
+    color: #456E2A;
+    font-weight: bolder;
+}
+
+.sideBarDropdownClick > a.active {
+    color: #456E2A;
+    font-weight: bolder;
+}

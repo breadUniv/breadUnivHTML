@@ -1,0 +1,84 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.headerBackground {
+    width: 98%;
+    height: 50px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    display: grid;
+    align-items: center;
+}
+
+.headerMenu {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    color: #6c6c6c;
+    align-items: center;
+}
+
+.headerMenuClick > span,
+.logOut > span {
+    width: 120px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.headerMenuClick {
+    display: flex;
+    gap: 60px;
+    margin-right: 500px;
+    cursor: pointer;
+}
+
+.headerMenuClick span:hover {
+    font-weight: bolder;
+    color: #456E2A;
+}
+
+.logOut span {
+    cursor: pointer;
+}
+
+.logOut span:hover {
+    font-weight: bolder;
+    color:#456E2A;
+}
+
+.searchBox {
+    display: flex;
+    margin-right: 50px;
+    align-items: center;
+}
+
+.searchBox > input {
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border-style: none;
+    outline: none;
+    margin-right: 20px;
+}
+
+.searchBox > button {
+    width: 80px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color:#456E2A;
+    color:#fff;
+    font-size: 12px;
+    font-weight: medium;
+    cursor: pointer;
+}
+
+.searchBox > button:hover {
+    background-color:#DAE2D4;
+    color: #000;
+}

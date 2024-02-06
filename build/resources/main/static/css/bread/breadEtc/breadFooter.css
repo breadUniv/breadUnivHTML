@@ -1,0 +1,23 @@
+.footerBackground {
+    width: 100wh;
+    height: 300px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.footerText {
+    flex-direction: column;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    color: #b9b9b9;
+}
+
+.footerTextFirst {
+    font-size: 20px;
+}
+
+.footerTextSecond {
+    font-size: 13px;
+}
