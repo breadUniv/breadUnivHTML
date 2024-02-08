@@ -41,6 +41,11 @@ article {
     margin-right: 25px;
 }
 
+.titleMenu > #choice {
+    color:#456E2A;
+    font-weight: bolder;
+}
+
 .titleMenu span:hover {
     color:#456E2A;
     font-weight: bolder;
