@@ -16,9 +16,9 @@ public class BreadNoticeController {
         return "/bread/breadNotice/breadNoticeAdmin";
     }
 
-    @RequestMapping("/breadNoticeModify")
-    public String breadNoticeModify() {
-        return "/bread/breadNotice/breadNoticeModify";
+    @RequestMapping("/breadNoticeModifyAdmin")
+    public String breadNoticeModifyAdmin() {
+        return "/bread/breadNotice/breadNoticeModifyAdmin";
     }
 
     @RequestMapping("/breadNoticePage")
