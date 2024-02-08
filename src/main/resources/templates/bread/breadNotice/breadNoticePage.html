@@ -1,0 +1,90 @@
+<body><!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- jquery -->
+        <script th:src="@{https://code.jquery.com/jquery-3.6.4.min.js}"></script>
+        <!-- 변경해야할 CSS 링크 -->
+        <link rel="stylesheet" th:href="@{/css/background/background.css}">
+        <link rel="stylesheet" th:href="@{/css/bread/breadNotice/breadNoticePage.css}">
+        <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadHeader.css}">
+        <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadFooter.css}">
+        <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSideBar.css}">
+        <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadTitleContainer.css}">
+        <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSaveButton.css}">
+        <link rel="stylesheet" th:href="@{/css/bread/breadEtc/comment.css}">
+        <!-- 변경해야할 JS 링크 -->
+        <script th:src="@{/scripts/sideBar.js}"></script>
+        <script th:src="@{/scripts/comment.js}"></script>
+        
+        <title>breadNoticePage</title>
+    </head>
+    <body>
+        <div class="mainContainer">
+    
+            <article>
+
+                <div th:replace="common/breadHeader.html"></div>
+    
+                <div class="section01">
+    
+                    <div class="section01Container">
+                        <div class="titleText">
+                            <p>공지사항</p>
+                        </div>
+
+                        <br><br><br><br><br>
+    
+                        <div class="boardContainer">
+                            <div class="boarderTitle">
+                                <span>제목</span>
+                                <span class="title">[공지사항] 크림홀에서 빵쪼아먹기 전공책 판매합니다.</span>
+                                <span>하경진</span>
+                                <span>2024-01-30</span>
+                            </div>
+                            <br><br>
+                            <hr>
+                            <br><br><br>
+                            <div class="board">
+                                <div class="boardTitle">
+                                    <span>내용</span>
+                                </div>
+                                <div class="boardText">
+                                    <img src="/RESOURCES/IMAGE/login/학교 메인 배경.jpg" alt="">
+                                    <p>
+                                        야무지게 쪼아먹을 학우분들<br>
+                                        꼭 구매하시길 바랍니다.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                        </div> <!-- boardContainer -->
+                        
+                        <br><br><br>
+    
+                        <hr>
+    
+                        <br><br><br>
+
+                        <br><br><br>
+    
+                        <div class="saveButton">
+                            <button>이전으로</button>
+                        </div>
+        
+                    </div> <!-- section01Container -->
+    
+                </div> <!-- section01 -->
+    
+        </article>
+
+            <div th:replace="common/breadSideBar.html"></div>
+    
+    </div> <!-- mainContainer -->
+    
+    </body>
+
+    <div th:replace="common/breadFooter.html"></div>
+    
+    </html>
