@@ -1,44 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script th:src="@{https://code.jquery.com/jquery-3.6.4.min.js}"></script>
     <!-- 변경해야할 CSS 링크 -->
-    <link rel="stylesheet" href="/RESOURCES/CSS/background/background.css">
-    <link rel="stylesheet" href="/RESOURCES/CSS/bread/breadMypage/breadTimeTable.css">
-    <link rel="stylesheet" href="/RESOURCES/CSS/bread/breadEtc/breadHeader.css">
-    <link rel="stylesheet" href="/RESOURCES/CSS/bread/breadEtc/breadFooter.css">
-    <link rel="stylesheet" href="/RESOURCES/CSS/bread/breadEtc/breadSideBar.css">
-    <link rel="stylesheet" href="/RESOURCES/CSS/bread/breadEtc/breadTitleContainer.css">
+    <link rel="stylesheet" th:href="@{/CSS/background/background.css}">
+    <link rel="stylesheet"  th:href="@{/CSS/bread/breadMypage/breadTimeTable.css}">
+    <link rel="stylesheet"  th:href="@{/CSS/bread/breadEtc/breadHeader.css}">
+    <link rel="stylesheet"  th:href="@{/CSS/bread/breadEtc/breadFooter.css}">
+    <link rel="stylesheet"  th:href="@{/CSS/bread/breadEtc/breadSideBar.css}">
+    <link rel="stylesheet"  th:href="@{/CSS/bread/breadEtc/breadTitleContainer.css}">
     <!-- 변경해야할 JS 링크 -->
-    <script src="/RESOURCES/JS/menuChoice.js"></script>
-    <script src="/RESOURCES/JS/sideBar.js"></script>
-
+    <script th:src="@{/scripts/menuChoice.js}"></script>
+    <script th:src="@{/scripts/sideBar.js}"></script>
     <title>breadTimeTable</title>
 </head>
 <body>
     <div class="mainContainer">
 
         <article>
-            <div class="header">
-                <div class="headerBackground">
-                    <div class="headerMenu">
-                        <div class="headerMenuClick">
-                            <span>포탈정보시스템</span>
-                            <span>버터커넥트</span>
-                        </div>
-                        <div class="searchBox">
-                            <input type="text">
-                            <button>검색</button>
-                        </div>
-                        <div class="logOut">
-                            <span>로그아웃</span>
-                        </div>
-                    </div> <!-- headerMenu -->
-                </div> <!-- headerBackground -->
-            </div> <!-- header -->
+
+            <div th:replace="common/breadHeader.html"></div>
 
             <div class="section01">
 
@@ -49,8 +33,8 @@
 
                     <br><br><br>
                     <div class="titleMenu">
-                        <span>개인정보수정</span>
-                        <span>시간표조회</span>
+                        <span><a th:href="@{/breadEdit}" th:style="'color: ' + ${textColor} + '; font-weight: bolder;'">개인정보수정</a></span>
+                        <span><a href="breadEdit.html">시간표조회</a></span>
                         <span>수강신청조회</span>
                         <br><br>
                         <hr>
@@ -60,74 +44,21 @@
                 <br><br> 
 
                 <div class="timeTable">
-                    <img src="/RESOURCES/IMAGE/etc/timeTable.png" alt="timeTable">
+                    <img th:src="@{/images/etc/timeTable.png}" alt="timeTable">
                 </div>
 
+                </div> <!-- section01Container -->
+
             </div> <!-- section01 -->
+
         </article>
-  
-    <div class="sideBarBackground">
 
-        <div class="sideBarTopBackground">
-            <div class="sideBarTopContainer">
-                <img src="/RESOURCES/IMAGE/logo/005.png" alt="sideBarTopImage">
-                <p>통합정보시스템</p>
-            </div>
-        </div>
+        <div th:replace="common/breadSideBar.html"></div>
 
-        <div class="sideBarDropdown">
-
-            <ul class="sideBarDropdownToggle">
-                <li class="sideBarDropdownClick"><a href="#">마이페이지</a>
-                    <ul class="subToggle"> 
-                        <li><a href="#">개인정보수정</a></li>
-                        <li><a href="#">시간표조회</a></li>
-                        <li><a href="#">수강신청조회</a></li>
-                    </ul>
-                </li>
-        
-                <li class="sideBarDropdownClick"><a href="#">학사행정</a>
-                    <ul class="subToggle">
-                        <li><a href="#">휴학/자퇴신청</a></li> 
-                    </ul>
-                </li>
-                
-                <li class="sideBarDropdownClick"><a href="#">강의조회</a></li>
-                <li class="sideBarDropdownClick"><a href="#">수강신청</a></li>
-                <li class="sideBarDropdownClick"><a href="#">성적관리</a></li>
-
-                <li class="sideBarDropdownClick"><a href="#">브레드에바란다</a>
-                    <ul class="subToggle">
-                        <li><a href="#">Q&A</a></li>
-                        <li><a href="#">불편/건의사항</a></li> 
-                    </ul>
-                </li>
-
-                <li class="sideBarDropdownClick"><a href="#">공지사항</a></li>
-
-                <li class="sideBarDropdownClick"><a href="#">분실물</a></li>
-
-            </ul>
-
-        </div> <!-- sideBarDropdownToggle -->
-
-    </div> <!-- sideBarBackground -->
-
-</div> <!-- mainContainer -->
+    </div> <!-- mainContainer -->
 
 </body>
 
-    <footer>
-        <div class="footerBackground">
-            <div class="footerText">
-                <li class="footerTextFirst">브레드 대학교 BREAD UNIVERSITY</li><br>
-                <li class="footerTextSecond">서울특별시 종로구 인사동길 12 대일빌딩 7층, 15층, T. 02-3277-2114 / 52, 7th and 15th floors of Daeil Building, 12 Insadong-gil, Jongno-gu, Seoul<br>
-                    COPYRIGHT 2024 BY BREAD UNIVERSITY. ALL RIGHTS RESERVED.
-                </li>
-            </div>
-        </div> 
-    </footer>
-
-
+    <div th:replace="common/breadFooter.html"></div>
 
 </html>
