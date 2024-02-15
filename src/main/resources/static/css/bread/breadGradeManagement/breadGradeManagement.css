@@ -1,0 +1,142 @@
+.tbl_frm01 {
+    margin-top: -60px;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.tbl_frm01 th, .tbl_frm01 td {
+    padding: 8px 10px;
+    height: 48px;
+    border-bottom: 1px solid #e4e5e7;
+}
+
+table{
+    border-top: 1px solid #e4e5e7;
+}
+
+.frm_input { 
+    padding: 0 4px 1px 4px;
+    font-size: 14px;
+    font-weight: normal;
+    /* border: 1px solid #ddd; */
+    background-color: #fff;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    height: 30px;
+}
+
+.tbl_frm01 td{
+    width: 245px;
+}
+
+input{
+    /* width: 230px;
+    height: 15px;
+    margin-left: 5px; */
+}
+
+label{ 
+    font-size: 14px;
+}
+
+select {
+    font-size: 14px;
+    text-align:center;
+    align-items:center;
+    width: 250px;
+    height: 28px;
+    border-radius: 1px;
+    border: 0.5px solid #b9b9b9;
+}
+
+table, th, td{
+    /* font-weight: normal; 텍스트 두깨 */
+    color: #454545;
+    font-size: 14px;
+}
+
+.tbl_frm01 th {
+    width: 150px;
+    background-color: #f8f8f8;
+    white-space: nowrap; /*줄바꿈방지*/
+    text-overflow: ellipsis; /* 긴 글 (..)부호로 생략*/
+    line-height: 1.3em;
+}
+
+.tbl_frm01 th, .tbl_frm01 td {
+    padding: 8px 10px;
+    height: 38px;
+    border-bottom: 1px solid #e4e5e7;
+}
+
+.sectionHead{
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.section01 {
+    margin: 100px 0px 0px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.titleText p{
+    font-size: 30px;
+    font-weight: bolder;
+    color:#456E2A;
+}
+
+.section02 {
+    margin: 0px 0px 200px 0px;
+    /* display: flex; */
+}
+
+.section02Container {
+    width: 1200px;
+}
+
+.titleText2 {
+    margin-bottom: 10px
+    /* font-size: 20px;
+    font-weight: bolder;
+    color:#456E2A; */
+}
+
+.tbl_head01 th{
+    vertical-align:middle;
+}
+
+.tbl_head01 {
+    /* border-top:1px solid #aeaeae; */
+    border-bottom:1px solid #e4e5e7;
+}
+
+.tbl_head01 table {
+    width:100%;
+}
+
+
+.tbl_head01 th {
+    padding:8px 10px;
+    line-height:1em;
+    font-weight:600;
+    background:#f1f1f1;
+}
+
+.tbl_head01 th, .tbl_head01 td {
+    /* border-left: 1px solid #e4e5e7; */
+    text-align: center;
+    vertical-align: middle;
+}
+
+.empty_table { /* 자료가 없습니다 글씨 */
+    color: #999;
+    padding: 50px 0 !important;
+    text-align: center;
+}
+
+.tbl_head01 td{
+    border-top: 1px solid #e4e5e7;
+    height: 28px;
+}
