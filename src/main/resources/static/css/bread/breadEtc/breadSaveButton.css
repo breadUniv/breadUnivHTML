@@ -13,10 +13,11 @@
     color:#fff;
     font-size: 12px;
     font-weight: medium;
+    cursor: pointer;
 }
 
 .saveButton > button:hover {
-    background-color:#DAE2D4;
+    background-color: #DAE2D4;
     color: #000;
 }
 

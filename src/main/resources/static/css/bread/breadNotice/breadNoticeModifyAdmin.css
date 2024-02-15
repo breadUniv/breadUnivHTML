@@ -131,27 +131,6 @@ article {
     color: #000;
 }
 
-.saveButton {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.saveButton > button {
-    width: 80px;
-    height: 25px;
-    border: none;
-    border-radius: 5px;
-    background-color:#456E2A;
-    color:#fff;
-    font-size: 12px;
-    font-weight: medium;
-}
-
-.saveButton:hover {
-    background-color:#DAE2D4;
-    color: #000;
-}
-
 .boardContainer > * {
     font-size: 14px;
     color: #6c6c6c;

@@ -13,6 +13,7 @@ xmlns:th="http://www.thymeleaf.org">
     <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadfooter.css}">
     <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSideBar.css}">
     <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadTitleContainer.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSaveButton.css}">
     <!-- 변경해야할 JS 링크 -->
     <script th:src="@{/scripts/menuChoice.js}"></script>
     <script th:src="@{/scripts/sideBar.js}"></script>
@@ -59,6 +60,7 @@ xmlns:th="http://www.thymeleaf.org">
 
                         <div class="manageButton">
                             <div class="adminButton">
+                                <button onclick="location.href='/breadGradeListPro'">이전으로</button>
                                 <button>등록</button>
                             </div>
                         </div>
@@ -219,6 +221,8 @@ xmlns:th="http://www.thymeleaf.org">
                     <button class="buttonPage">3</button>&nbsp;
                     <button class="buttonArrow">>></button>
                 </div>
+
+                    <br><br><br>
 
             </div> <!-- section01Container -->
             

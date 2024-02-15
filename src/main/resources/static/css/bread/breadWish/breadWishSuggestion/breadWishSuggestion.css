@@ -132,25 +132,7 @@ article {
 }
 
 .inputList button:hover {
-    background-color:#DAE2D4;
-    color: #000;
-}
-
-.saveButton {
-    width: 80px;
-    height: 25px;
-    border: none;
-    border-radius: 5px;
-    background-color:#456E2A;
-    color:#fff;
-    font-size: 12px;
-    font-weight: medium;
-    margin-left: 50%;
-    cursor: pointer;
-}
-
-.saveButton:hover {
-    background-color:#DAE2D4;
+    background-color: #DAE2D4;
     color: #000;
 }
 

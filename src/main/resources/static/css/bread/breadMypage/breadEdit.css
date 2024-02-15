@@ -30,19 +30,19 @@ article {
     color:#456E2A;
 }
 
-.titleMenu span {
+.titleMenu a {
     font-size: 15px;
     cursor: pointer;
     color: #b9b9b9;
     margin-right: 25px;
 }
 
-.titleMenu span:hover {
+.titleMenu a:hover {
     color:#456E2A;
     font-weight: bolder;
 }
 
-.titleMenu span.active {
+.titleMenu a.active {
     color:#456E2A;
     font-weight: bolder;
 }

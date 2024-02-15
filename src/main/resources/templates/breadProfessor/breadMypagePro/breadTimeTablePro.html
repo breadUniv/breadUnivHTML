@@ -35,8 +35,8 @@ xmlns:th="http://www.thymeleaf.org">
 
                     <br><br><br>
                     <div class="titleMenu">
-                        <span>개인정보수정</span>
-                        <span>시간표조회</span>
+                        <a th:href="@{/breadEditPro}" th:style="'color: ' + ${textColor} + '; font-weight: bolder;'">개인정보수정</a>
+                        <a th:href="@{/breadTimeTablePro}">시간표조회</a>
                         <br><br>
                         <hr>
                         <br>
@@ -45,7 +45,7 @@ xmlns:th="http://www.thymeleaf.org">
                 <br><br> 
 
                 <div class="timeTable">
-                    <img src="/RESOURCES/IMAGE/etc/timeTable.png" alt="timeTable">
+                    <img th:src="@{/images/etc/timeTable.png}" alt="timeTable">
                 </div>
 
                 </div> <!-- section01Container -->

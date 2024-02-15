@@ -19,7 +19,7 @@ public class BreadWishQNAController {
         return "/bread/breadWish/breadWishQNA/breadWishQNAAdmin";
     }
 
-    @RequestMapping("/breadWsihQNAModify")
+    @RequestMapping("/breadWishQNAModify")
     public String breadWishQNAModify() {
         return "/bread/breadWish/breadWishQNA/breadWishQNAModify";
     }

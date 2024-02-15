@@ -13,7 +13,9 @@ xmlns:th="http://www.thymeleaf.org">
 
     <div class="sideBarTopBackground">
         <div class="sideBarTopContainer">
-            <img th:src="@{/images/logo/005.png}" alt="sideBarTopImage">
+            <a th:href="@{/}">
+                <img th:src="@{/images/logo/005.png}" alt="sideBarTopImage">
+            </a>
             <p>통합정보시스템</p>
         </div>
     </div>
@@ -23,32 +25,32 @@ xmlns:th="http://www.thymeleaf.org">
         <ul class="sideBarDropdownToggle">
             <li class="sideBarDropdownClick"><a href="#">마이페이지</a>
                 <ul class="subToggle">
-                    <li><a href="#">개인정보수정</a></li>
-                    <li><a href="#">시간표조회</a></li>
-                    <li><a href="#">수강신청조회</a></li>
+                    <li><a href="/breadEdit">개인정보수정</a></li>
+                    <li><a href="/breadTimeTable">시간표조회</a></li>
+                    <li><a href="/breadEnrollment">수강신청조회</a></li>
                 </ul>
             </li>
 
             <li class="sideBarDropdownClick"><a href="#">학사행정</a>
                 <ul class="subToggle">
-                    <li><a href="#">휴학/자퇴신청</a></li>
+                    <li><a href="/breadAcademicAdministration">휴학/자퇴신청</a></li>
                 </ul>
             </li>
 
-            <li class="sideBarDropdownClick"><a href="#">강의조회</a></li>
-            <li class="sideBarDropdownClick"><a href="#">수강신청</a></li>
-            <li class="sideBarDropdownClick"><a href="#">성적관리</a></li>
+            <li class="sideBarDropdownClick"><a href="/breadLectureInquiry">강의조회</a></li>
+            <li class="sideBarDropdownClick"><a href="/breadCourseRegistration">수강신청</a></li>
+            <li class="sideBarDropdownClick"><a href="/breadGradeManagement">성적관리</a></li>
 
             <li class="sideBarDropdownClick"><a href="#">브레드에바란다</a>
                 <ul class="subToggle">
-                    <li><a href="#">Q&A</a></li>
-                    <li><a href="#">불편/건의사항</a></li>
+                    <li><a href="/breadWishQNA">Q&A</a></li>
+                    <li><a href="/breadWishSuggestion">불편/건의사항</a></li>
                 </ul>
             </li>
 
-            <li class="sideBarDropdownClick"><a href="#">공지사항</a></li>
+            <li class="sideBarDropdownClick"><a href="/breadNotice">공지사항</a></li>
 
-            <li class="sideBarDropdownClick"><a href="#">분실물</a></li>
+            <li class="sideBarDropdownClick"><a href="/breadLost">분실물</a></li>
         </ul>
 
     </div> <!-- sideBarDropdownToggle -->

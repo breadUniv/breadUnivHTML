@@ -49,9 +49,9 @@
 
                     <br><br><br>
                     <div class="titleMenu">
-                        <span>개인정보수정</span>
-                        <span>시간표조회</span>
-                        <span>수강신청조회</span>
+                        <a th:href="@{/breadEdit}">개인정보수정</a>
+                        <a th:href="@{/breadTimeTable}" th:style="'color: ' + ${textColor} + '; font-weight: bolder;'">시간표조회</a>
+                        <a th:href="@{/breadEnrollment}">수강신청조회</a>
                         <br><br>
                         <hr>
                         <br>
