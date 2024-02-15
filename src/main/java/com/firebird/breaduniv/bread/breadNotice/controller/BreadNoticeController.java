@@ -1,4 +1,4 @@
-package com.firebird.breaduniv.bread.breadNotice;
+package com.firebird.breaduniv.bread.breadNotice.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
