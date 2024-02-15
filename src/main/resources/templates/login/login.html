@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/login/login.css}">
+    <title>브레드 포털정보시스템</title>
+
+</head>
+<body>
+
+    <div id="content">
+        <div id="leftContent">
+            <div class="box bread_events">
+                <h4 id="new_events">브레드뉴스/행사안내</h4>
+                    <ul id="new_events_board">
+                        <li id="news" class="active"><a href="">브레드뉴스</a></li>
+                        <li id="events" class="inactivate"><a href="">행사안내</a></li>
+                    </ul>
+
+                <div class="boardContainer">
+                     <li class="board">모든 세대가 함께 꿈꾸는 새로운 캠퍼스 되기를</li>
+                     <li class="board">뉴스2</li>
+                     <li class="board">뉴스3</li>
+                     <li class="board">뉴스4</li>
+                     <li class="board">뉴스5</li>
+                </div>
+            </div>
+
+            <div id="icons">
+                <div class="icon" onclick="location.href='링크1';">
+                    <img th:src="@{/images/Icon/학생정보시스템.png}" alt="학생정보시스템">학생정보시스템
+                </div>
+
+                <div class="icon" onclick="location.href='링크2';">
+                    <img th:src="@{/images/Icon/성적관리.png}" alt="성적관리">성적관리
+                </div>
+
+                <div class="icon" onclick="location.href='링크3';">
+                    <img th:src="@{/images/Icon/분실물.png}" alt="분실물">분실물
+                </div>
+
+                <div class="icon" onclick="location.href='링크4';">
+                    <img th:src="@{/images/Icon/Butter Connet.png}" alt="Butter Connet">Butter Connet
+                </div>
+
+                <div class="icon" onclick="location.href='링크5';">
+                    <img th:src="@{/images/Icon/시간표.png}" alt="강의 조회">강의 조회
+                </div>
+
+                <div class="icon" onclick="location.href='링크6';">
+                    <img th:src="@{/iamges/Icon/수강신청.png}" alt="수강신청">수강신청
+                </div>
+            </div> <!-- icons -->
+        
+
+            <div class="ask">
+                <span class="ask_bread"> 브레드에 바란다 Ask for BREAD</span>
+                <div id="icons2">
+                    <div class="icon2" onclick="location.href='링크7';">
+                        <img th:src="@{/images/Icon/불편_건의사항.png}" alt="불편/건의사항">불편/건의사항
+                    </div>
+                
+                    <div class="icon2" onclick="location.href='링크8';">
+                        <img th:src="@{/images/Icon/Q&A.png}" alt="Question_Answer">Q&A
+                    </div>
+                </div>
+            </div>
+        </div> <!-- left content -->
+
+        <div id="rightContent">
+
+            <div class="breadPortal_top">
+                <img th:src="@{/images/logo/imageLogo.png}" alt="브레드포탈정보시스템" style="width: 135px; height: 75px;">
+
+                <div class="breadPortal_top2">
+
+                    <div id="breadPortal_name" onclick="location.href='링크9';"   style="font-weight: bold;">
+                        브레드 포탈정보시스템
+                    </div>
+
+                    <div id="breadPortal_name_en" style="margin-top: 3px;">BREAD PORTAL INFORMATION SYSTEM</div>
+                </div>
+
+            </div> <!-- breadPortal_top -->
+
+            <div class="breadPortal_bottom">
+                <div id="quote">"그대의 빛으로 우리가 빛을 보리라"</div>
+                <div id="bread_name">BREAD UNIVERSITY</div>
+                <button id="loginButton">로그인(Login)</button>
+            </div>
+
+        </div> <!-- rightContent -->
+
+    </div> <!-- content -->
+
+</body>
+</html>
