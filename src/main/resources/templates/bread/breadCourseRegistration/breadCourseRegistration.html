@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- jquery -->
+     <script th:src="@{https://code.jquery.com/jquery-3.6.4.min.js}"></script>
+     <!-- 변경해야할 CSS 링크 -->
+     <link rel="stylesheet" th:href="@{/css/background/background.css}">
+     <link rel="stylesheet" th:href="@{/css/bread/breadNotice/breadNoticeModifyAdmin.css}">
+     <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadheader.css}">
+     <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadfooter.css}">
+     <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSideBar.css}">
+<!--     <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadTitleContainer.css}">-->
+     <link rel="stylesheet" th:href="@{/css/bread/breadCourseRegistration/breadCourseRegistration.css}">
+
+     <!-- 변경해야할 JS 링크 -->
+    <script th:src="@{/scripts/menuChoice.js}"></script>
+    <script th:src="@{/scripts/sideBar.js}"></script>
+     
+    <title>breadCourseRegistration(수강신청)</title>
+</head>
+<body>
+    <div class="mainContainer">
+
+        <article>
+
+            <div th:replace="common/breadHeader.html"></div>
+
+            <div class="sectionHead">
+
+                <div class="section01">
+
+                    <div class="section01Container">
+                        <div class="titleText">
+                            <p>수강신청</p>
+                        </div>
+
+                        <br><br><br><br><br>
+
+                        <div class="titleContainer">
+                            <div class="searchContainer">
+                                <label for="search ">검색</label>
+                                <input type="text">
+                            </div>
+
+                            <div class="dropdown">
+                                <label for="category">카테고리</label>
+                                <select>
+                                    <option value="list">전체</option>
+                                    <option value="list">전공필수</option>
+                                    <option value="list">전공</option>
+                                    <option value="list">교양</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdown">
+                                <label for="sorting">정렬조건</label>
+                                <select>
+                                    <option value="list">없음</option>
+                                    <option value="list">강의번호 오름차순</option>
+                                    <option value="list">강의번호 내림차순</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdownButton">
+                                <button>검색</button>
+                            </div>
+
+                        </div> <!-- titleContainer -->
+
+                        <div class="titleText1">
+                            <p>강좌목록</p>
+                        </div>
+                        <div class="tbl_head">
+                            <table>
+                                <colgroup>
+                                    <col class="w50">
+                                    <col class="w50">
+                                    <col class="w50">
+                                    <col class="w50">
+                                    <col class="w50">
+                                    <col class="w80">
+                                    <col class="w50">
+                                    <col class="w50">
+                                    <col class="w50">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th scope="col">장바구니</th>
+                                    <th scope="col">강의번호</th>
+                                    <th scope="col">교수명</th>
+                                    <th scope="col">학부</th>
+                                    <th scope="col">학과</th>
+                                    <th scope="col">강의명</th>
+                                    <th scope="col">강의분류</th>
+                                    <th scope="col">학년</th>
+                                    <th scope="col">강의정보</th>
+                                </tr>
+                                </thead>
+                                <!-- <tbody><tr><td colspan="10" class="empty_table">자료가 없습니다.</td></tr></tbody> -->
+                                <tbody>
+                                <tr>
+                                    <td><input type="button" id="basketButton" name="chkall" value="장바구니" style="width: 60px; cursor: pointer;" onclick="check_all(this.form);"></td>
+                                    <td>240213</td>
+                                    <td>하경진</td>
+                                    <td>디자인학부</td>
+                                    <td>시각디자인</td>
+                                    <td>시각디자인1</td>
+                                    <td>전공필수</td>
+                                    <td>1</td>
+                                    <td><input type="button" id="inquiryButton" name="chkall" value="조회" style="width: 60px; cursor: pointer;" onclick="check_all(this.form);"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="button" id="basketButton" name="chkall" value="장바구니" style="width: 60px; cursor: pointer;" onclick="check_all(this.form);"></td>
+                                    <td>240213</td> <!-- NO 번호 증가 -->
+                                    <td>하경진</td>
+                                    <td>디자인학부</td>
+                                    <td>패션디자인</td>
+                                    <td>패션디자인1</td>
+                                    <td>전공</td>
+                                    <td>1</td>
+                                    <td><input type="button" id="inquiryButton" name="chkall" value="조회" style="width: 60px;" onclick="check_all(this.form);"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="button" id="basketButton" name="chkall" value="장바구니" style="width: 60px; cursor: pointer;" onclick="check_all(this.form);"></td>
+                                    <td>240213</td> <!-- NO 번호 증가 -->
+                                    <td>하경진</td>
+                                    <td>디자인학부</td>
+                                    <td>시각정보디자인</td>
+                                    <td>시각디자인1</td>
+                                    <td>교양</td>
+                                    <td>1</td>
+                                    <td><input type="button" id="inquiryButton" name="chkall" value="조회" style="width: 60px;" onclick="check_all(this.form);"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div> <!-- tbl_head -->
+
+                    </div> <!-- section01Container-->
+                </div> <!-- section01> -->
+
+                <br><br><br>
+
+                <div class=" section02">
+
+                    <div class="section02Container">
+                        <div class="titleText2">
+                            <p>장바구니</p>
+                            <button id="deleteButton" onclick="deleteButton()">삭제</button>
+                        </div>
+
+                        <div class="tbl_body">
+                            <table>
+                                <colgroup>
+                                    <col class="w10">
+                                    <col class="w80">
+                                    <col class="w10">
+                                    <col class="w10">
+                                    <col class="w10">
+                                    <col class="w50">
+                                    <col class="w80">
+                                    <col class="w50">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th scope="col"><input type="checkbox" id="boarderTitleCheckbox" name="chkall" value="전체선택" onclick="check_all(this.form);"></th>
+                                    <th scope="col">번호</th>
+                                    <th scope="col">강의번호</th>
+                                    <th scope="col">교수명</th>
+                                    <th scope="col">강의명</th>
+                                    <th scope="col">강의실</th>
+                                    <th scope="col">수업시간</th>
+                                    <th scope="col">강의분류</th>
+                                    <th scope="col">제한인원</th>
+                                    <th scope="col">신청인원</th>
+                                    <th scope="col">수강신청</th>
+                                </tr>
+                                </thead>
+                                <!-- <tbody><tr><td colspan="11" class="empty_table">자료가 없습니다.</td></tr></tbody> -->
+                                <tbody>
+                                <tr>
+                                    <td><input type="checkbox" class="boardCheckbox" name="chkall" value="선택" onclick="check_all(this.form);"></td>
+                                    <td>1</td> <!-- NO 번호 증가 -->
+                                    <td>20240205</td>
+                                    <td>하경진</td>
+                                    <td>시각디자인1</td>
+                                    <td>조형동 101호</td>
+                                    <td>월/10:00~10:50</td>
+                                    <td>전공필수</td>
+                                    <td>30</td>
+                                    <td>30</td>
+                                    <td><input type="button" id="applicationButton" name="chkall" value="신청" style="width: 60px; cursor: pointer;" onclick="check_all(this.form);"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="boardCheckbox" name="chkall" value="선택" onclick="check_all(this.form);"></td>
+                                    <td>2</td> <!-- NO 번호 증가 -->
+                                    <td>20240207</td>
+                                    <td>김민하</td>
+                                    <td>시각디자인2</td>
+                                    <td>조형동 103호</td>
+                                    <td>월/09:00~09:50</td>
+                                    <td>전공</td>
+                                    <td>30</td>
+                                    <td>29</td>
+                                    <td><input type="button" id="applicationButton" name="chkall" value="신청" style="width: 60px;" onclick="check_all(this.form);"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="boardCheckbox" name="chkall" value="선택" onclick="check_all(this.form);"></td>
+                                    <td>3</td> <!-- NO 번호 증가 -->
+                                    <td>20240208</td>
+                                    <td>유승제</td>
+                                    <td>시각디자인</td>
+                                    <td>조형동 101호</td>
+                                    <td>월/11:00~11:50</td>
+                                    <td>교양</td>
+                                    <td>30</td>
+                                    <td>28</td>
+                                    <td><input type="button" id="applicationButton" name="chkall" value="신청" style="width: 60px;" onclick="check_all(this.form);"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div> <!-- tbl_body -->
+
+                    </div> <!-- section02Container-->
+                </div> <!-- section02-->
+
+                <div class=" section03">
+                    <div class="section03Container">
+                        <div class="titleText3">
+                            <p>수강신청 목록</p>
+                            <button id="Cancellation" onclick="CancellationButton()">수강취소</button>
+                        </div>
+                        <div class="tbl_bottom">
+                            <table>
+                                <colgroup>
+                                    <col class="w10">
+                                    <col class="w80">
+                                    <col class="w10">
+                                    <col class="w10">
+                                    <col class="w10">
+                                    <col class="w50">
+                                    <col class="w80">
+                                    <col class="w50">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th scope="col"><input type="checkbox" name="chkall" value="조회" onclick="check_all(this.form);"></th>
+                                    <th scope="col">순번</th>
+                                    <th scope="col">강의번호</th>
+                                    <th scope="col">교수명</th>
+                                    <th scope="col">강의명</th>
+                                    <th scope="col">강의실</th>
+                                    <th scope="col">수업시간</th>
+                                    <th scope="col">강의분류</th>
+                                    <th scope="col">제한인원</th>
+                                    <th scope="col">신청인원</th>
+                                    <th scope="col">강의정보</th>
+                                </tr>
+                                </thead>
+                                <!-- <tbody><tr><td colspan="11" class="empty_table">자료가 없습니다.</td></tr></tbody> -->
+                                <tbody>
+                                <tr>
+                                    <td><input type="checkbox" class="boardCheckbox" name="chkall" value="선택" onclick="check_all(this.form);"></td>
+                                    <td>1</td> <!-- NO 번호 증가 -->
+                                    <td>20240205</td>
+                                    <td>하경진</td>
+                                    <td>시각디자인1</td>
+                                    <td>조형동 101호</td>
+                                    <td>월/10:00~10:50</td>
+                                    <td>전공필수</td>
+                                    <td>30</td>
+                                    <td>30</td>
+                                    <td><input type="button" id="inquiryButton" name="chkall" value="조회" style="width: 60px; cursor: pointer;" onclick="check_all(this.form);"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="boardCheckbox" name="chkall" value="선택" onclick="check_all(this.form);"></td>
+                                    <td>2</td> <!-- NO 번호 증가 -->
+                                    <td>20240207</td>
+                                    <td>김민하</td>
+                                    <td>시각디자인2</td>
+                                    <td>조형동 103호</td>
+                                    <td>월/09:00~09:50</td>
+                                    <td>전공</td>
+                                    <td>30</td>
+                                    <td>29</td>
+                                    <td><input type="button" id="inquiryButton" name="chkall" value="조회" style="width: 60px;" onclick="check_all(this.form);"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="boardCheckbox" name="chkall" value="선택" onclick="check_all(this.form);"></td>
+                                    <td>3</td> <!-- NO 번호 증가 -->
+                                    <td>20240208</td>
+                                    <td>유승제</td>
+                                    <td>시각디자인</td>
+                                    <td>조형동 101호</td>
+                                    <td>월/11:00~11:50</td>
+                                    <td>교양</td>
+                                    <td>30</td>
+                                    <td>28</td>
+                                    <td><input type="button" id="inquiryButton" name="chkall" value="조회" style="width: 60px;" onclick="check_all(this.form);"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div> <!-- tbl_bottom -->
+                    </div> <!-- section03Container-->
+                </div> <!-- section03-->
+
+            </div> <!-- sectionHead-->
+
+        </article>
+
+        <div th:replace="common/breadSideBar.html"></div>
+    
+        </div> <!-- mainContainer -->
+    
+    </body>
+
+<div th:replace="common/breadFooter.html"></div>
+
+    </html>

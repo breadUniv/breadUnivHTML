@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/login/login_failed.css}">
+    <title>로그인 실패 페이지</title>
+</head>
+
+<body>
+    <div id="content">
+
+        <div class="login_failed_page">
+
+            <div id="login_failed">
+                <!-- 대학교 로고 이미지를 사용하세요 -->
+                <img th:src="@{/images/logo/005.png}" alt="University Logo"  width="300"> <!-- width="300"> -->
+            </div>
+
+            <br><br><br><br><br><br>
+
+            <div id="Back_Page">
+                <div id="login_error">통합행정시스템을 사용하시려면
+                    <br>포탈정보시스템으로 로그인하시기 바랍니다.
+                </div>
+                    <br><br><br><br><br><br><br><br><br><br>
+                <div id="Back" onclick="goToBack()">되돌아가기</div>
+            </div>
+
+        </div> <!-- login_page-->
+
+    </div>  <!-- content -->
+</body>
+<script>
+    function goToBack() {
+        window.location.href = "login_input";
+        alert("이전 페이지로 이동합니다.");
+    }
+</script>
+</html>

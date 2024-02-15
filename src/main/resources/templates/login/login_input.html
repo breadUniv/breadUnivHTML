@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포털시스템 로그인 입력화면</title>
+    <link rel="stylesheet" th:href="@{/css/login/login_input.css}">
+</head>
+
+<body>
+    <div id="content">
+
+        <div class="login_page">
+
+            <div id="logo">
+                <!-- 대학교 로고 이미지를 사용하세요 -->
+                <img th:src="@{/images/logo/005.png}" alt="University Logo"  width="300"> <!-- width="300"> -->
+            </div>
+
+            <div id="loginForm">
+                <input type="text" placeholder="Enter your ID (학번)">
+                <input type="password" placeholder="Enter your Password">
+                <button id="loginButton">로그인(Login)</button><br><br>
+                <div id="forgotPassword" onclick="goToForgotPassword()">비밀번호 찾기</div><br>
+                <div id="newStudent" onclick="goToAdmissions()">브레드 학교 학생이신가요? 입학원서 접수</div>
+
+                <br><br>
+
+                <div id="logoutInfo">이용 후 반드시 로그아웃 해주세요!
+                    <br>Please be sure to log out after use.</div>
+            </div>
+
+        </div> <!-- login_page-->
+
+    </div>  <!-- content -->
+
+</body>
+
+<script>
+    function goToForgotPassword() {
+        window.location.href = "find_password.html"
+        alert("비밀번호 찾기 페이지로 이동합니다.");
+    }
+
+    function goToAdmissions() {
+        window.location.href ="enrollment.html"
+        alert("입학원서 접수 페이지로 이동합니다.");
+    }
+</script>
+
+</html>

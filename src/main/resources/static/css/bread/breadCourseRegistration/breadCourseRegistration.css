@@ -1,0 +1,379 @@
+.titleContainer {
+    width: 1200px;
+    display: flex;
+}
+
+.titleContainer > * {
+    font-size: 14px;
+    color: #6c6c6c;
+    display: flex;
+}
+
+.searchContainer > label {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.titleContainer input { /* 검색창 INPUT.들*/
+    width: 180px;
+    height: 25px;
+    margin-right: 20px;
+    border-radius: 5px;
+    border: 0.5px solid #b9b9b9;
+    outline: none;
+}
+
+select {
+    width: 180px;
+    height: 25px;
+    margin-right: 20px;
+    border-radius: 5px;
+    border: 0.5px solid #b9b9b9;
+    outline: none;
+}
+
+select#adminSelect {
+    margin-right: 0px;
+}
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    position: absolute;
+    margin-left: 52px;
+}
+
+.dropdown > option {
+    font-size: 20px;
+}
+
+.dropdownButton button{
+    width: 80px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color:#456E2A;
+    color:#fff;
+    font-size: 12px;
+    font-weight: medium;
+    cursor: pointer;
+}
+
+.dropdownButton button:hover {
+    background-color:#DAE2D4;
+    color: #000;
+}
+
+/* ----------- breadTitleContainer.css 끝------------*/
+/* ----------- button에 관한 ------------*/
+#basketButton{
+    width: 80px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color:#456E2A;
+    color:#fff;
+    font-size: 12px;
+    font-weight: medium;
+    /* cursor: pointer; */
+}
+
+#basketButton:hover {
+    background-color:#DAE2D4;
+    color: #000;
+}
+
+#deleteButton { /*삭제 버튼 */
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1100px;
+    /* margin-bottom: 10px; */
+}
+
+#deleteButton{  /*삭제 버튼 */
+    width: 80px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color:#456E2A;
+    color:#fff;
+    font-size: 12px;
+    font-weight: medium;
+    cursor: pointer;
+}
+
+#deleteButton:hover { /*삭제 버튼 */
+    background-color:#DAE2D4;
+    color: #000;
+}
+
+/*.manageButton {
+    margin-left: 200px;
+    display: flex;
+    justify-content: flex-end;
+
+} */
+
+#Cancellation { /*수강취소 버튼 */
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1100px;
+}
+
+#Cancellation{ /*수강취소 버튼 */
+    width: 80px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color:#456E2A;
+    color:#fff;
+    font-size: 12px;
+    font-weight: medium;
+    cursor: pointer;
+}
+
+#Cancellation:hover{ /*수강취소 버튼 */
+    background-color:#DAE2D4;
+    color: #000;
+}
+
+#applicationButton{
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color:#456E2A;
+    color:#fff;
+    font-size: 12px;
+    font-weight: medium;
+    cursor: pointer;
+}
+
+#applicationButton:hover{
+    background-color:#DAE2D4;
+    color: #000;
+}
+
+
+
+
+/* ----------- button 끝 ------------*/
+
+/* -------- input에 관한 css --------------*/
+
+/* /* input{
+    width: 20px;
+    height: 15px;
+    margin-left: 5px;
+} */
+
+
+
+
+
+
+
+
+table{
+    border-top: 1px solid #e4e5e7;
+}
+
+
+
+
+.tbl_head th{
+    vertical-align:middle;
+}
+
+.tbl_head {
+    margin-top: 10px;
+    /* border-top:1px solid #aeaeae; */
+    border-bottom:1px solid #e4e5e7;
+}
+
+.tbl_head table {
+    width:100%;
+}
+
+
+.tbl_head th {
+    padding:8px 10px;
+    line-height:1em;
+    font-weight:600;
+    background:#f1f1f1;
+    font-size: 14px;
+}
+
+.tbl_head th, .tbl_head td {
+    /* border-left: 1px solid #e4e5e7; */
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tbl_head tbody tr td {
+    height: 30px; /* 원하는 높이로 수정하세요 */
+    border-top:1px solid #e4e5e7;
+    font-size: 14PX;
+}
+
+/* ---------------------- table head (강좌 목록)----------------------------- */
+
+.tbl_body th{
+    vertical-align:middle;
+}
+
+.tbl_body {
+    margin-top: 10px;
+    /* border-top:1px solid #aeaeae; */
+    border-bottom:1px solid #e4e5e7;
+}
+
+.tbl_body table {
+    width:100%;
+}
+
+
+.tbl_body th {
+    padding:8px 10px;
+    line-height:1em;
+    font-weight:600;
+    background:#f1f1f1;
+    font-size: 14px;
+}
+
+.tbl_body th, .tbl_body td {
+    /* border-left: 1px solid #e4e5e7; */
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tbl_body tbody tr td {
+    height: 30px; /* 원하는 높이로 수정하세요 */
+    border-top:1px solid #e4e5e7;
+    font-size: 14PX;
+}
+
+/* ------------------------ table body (장바구니) --------------------------- */
+
+
+.tbl_bottom th{
+    vertical-align:middle;
+}
+
+.tbl_bottom {
+    margin-top: 10px;
+    /* border-top:1px solid #aeaeae; */
+    border-bottom:1px solid #e4e5e7;
+}
+
+.tbl_bottom table {
+    width:100%;
+}
+
+
+.tbl_bottom th {
+    padding:8px 10px;
+    line-height:1em;
+    font-weight:600;
+    background:#f1f1f1;
+    font-size: 14px;
+}
+
+.tbl_bottom th, .tbl_bottom td {
+    /* border-left: 1px solid #e4e5e7; */
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tbl_bottom tbody tr td {
+    height: 30px; /* 원하는 높이로 수정하세요 */
+    border-top:1px solid #e4e5e7;
+    font-size: 14PX;
+}
+
+/* -----------------------table bottom (수강신청 목록) ---------------------------- */
+
+.section01 {
+    margin: 100px 0px 100px 0px;
+    display: flex;
+    justify-content: center;
+}
+.section01Container {
+    width: 1200px;
+    height: 300px;
+}
+
+.titleText1 p{
+    font-size: 20px;
+    font-weight: bolder;
+    color:#456E2A;
+    margin-top: 50px;
+}
+
+
+
+.section02 {
+    margin: 0px 0px 100px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.section02Container {
+    width: 1200px;
+}
+
+.titleText2 p{
+    font-size: 20px;
+    font-weight: bolder;
+    color:#456E2A;
+}
+
+
+
+.section03 {
+    margin: 0px 0px 200px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.section03Container {
+    width: 1200px;
+}
+.titleText3 p{
+    font-size: 20px;
+    font-weight: bolder;
+    color:#456E2A;
+}
+
+
+
+input#inquiryButton {
+    width: 80px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color:#456E2A;
+    color:#fff;
+    font-size: 12px;
+    /* font-weight: medium; */
+    margin-right: 0PX;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+#inquiryButton:hover {
+    background-color:#DAE2D4;
+    color: #000;
+}
