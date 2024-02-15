@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- jquery -->
+     <script th:src="@{https://code.jquery.com/jquery-3.6.4.min.js}"></script>
+     <!-- 변경해야할 CSS 링크 -->
+     <link rel="stylesheet" th:href="@{/css/background/background.css}">
+     <link rel="stylesheet" th:href="@{/css/bread/breadNotice/breadNoticeModifyAdmin.css}">
+     <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadheader.css}">
+     <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadfooter.css}">
+     <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSideBar.css}">
+     <link rel="stylesheet" th:href="@{/css/bread/breadLectureInquiry/breadLectureInquiryAdmin.css}">
+
+     <!-- 변경해야할 JS 링크 -->
+    <script th:src="@{/scripts/menuChoice.js}"></script>
+    <script th:src="@{/scripts/sideBar.js}"></script>
+    <script th:src="@{/scripts/checkBox.js}"></script>
+    <script th:src="@{/scripts/bread/breadLectureInquiry/breadLectureInquiryAdmin.js}"></script> <!-- 아직 안 했음!!!!!!! -->
+
+     
+    <title>breadLectureInquiryAdmin(관리자-강의관리)</title>
+</head>
+<body>
+    <div class="mainContainer">
+
+        <article>
+
+            <div th:replace="common/breadHeader.html"></div>
+
+            <div class="sectionHead">  
+
+                <div class="section01">   
+
+                    <div class="section01Container">
+                        <div class="titleText">
+                            <p>통합정보시스템 > 강의관리</p>           
+                        </div>
+
+                        <br><br><br><br><br>
+
+                        <div class="titleContainer">
+                            <div class="searchContainer">
+                                <label for="search ">검색</label>
+                                <input type="text">
+                            </div>
+                        
+                            <div class="dropdown">
+                                <label for="category">카테고리</label>
+                                <select>
+                                    <option value="list">전체</option>
+                                    <option value="list">전공필수</option>
+                                    <option value="list">전공</option>
+                                    <option value="list">교양</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdown">
+                                <label for="sorting">정렬조건</label>
+                                <select>
+                                    <option value="list">없음</option>
+                                    <option value="list">강의번호 오름차순</option>
+                                    <option value="list">강의번호 내림차순</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdownButton">
+                                <button>검색</button>
+                            </div>
+
+                            <div class="manageButton">
+                                <div class="adminButton">
+                                    <button onclick="goToinsertButton()">등록</button>
+                                    <button onclick="deleteButton()">삭제</button>
+                                </div>
+                            </div>
+                        
+                        </div> <!-- titleContainer -->
+
+                        <div class="tbl_head">
+
+                            <table>
+                                <colgroup>
+                                    <col class="w10">
+                                    <col class="w80">
+                                    <col class="w10">
+                                    <col class="w10">
+                                    <col class="w10">
+                                    <col class="w50">
+                                    <col class="w80">
+                                    <col class="w50">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th scope="col"><input type="checkbox" id="boarderTitleCheckbox" name="chkall" value="전체선택" onclick="check_all(this.form);"></th>  
+                                    <th scope="col">강의번호</th>
+                                    <th scope="col">교수</th>
+                                    <th scope="col">학부</th>
+                                    <th scope="col">학과</th>
+                                    <th scope="col">강의명</th>
+                                    <th scope="col">강의분류</th>
+                                    <th scope="col">학년</th>
+                                    <th scope="col">강의정보</th>
+                                </tr>
+                                </thead>
+                                <!-- <tbody><tr><td colspan="8" class="empty_table">조회된 강의가 없습니다.</td></tr></tbody> -->
+                                <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" class="boardCheckbox" name="chkall" value="선택" onclick="check_all(this.form);"></td>
+                                        <td>240213</td> <!-- NO 번호 증가 -->
+                                        <td>하경진</td>
+                                        <td>조형예술</td>
+                                        <td>시각정보디자인</td>
+                                        <td>시각디자인1</td>
+                                        <td>전공필수</td>
+                                        <td>1</td>
+                                        <td><input type="button" id="inquiryButton" name="chkall" value="조회" style="width: 60px; cursor: pointer;" onclick="check_all(this.form);"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" class="boardCheckbox" name="chkall" value="선택" onclick="check_all(this.form);"></td>
+                                        <td>240213</td> <!-- NO 번호 증가 -->
+                                        <td>하경진</td>
+                                        <td>조형예술</td>
+                                        <td>시각정보디자인</td>
+                                        <td>시각디자인1</td>
+                                        <td>전공필수</td>
+                                        <td>1</td>
+                                        <td><input type="button" id="inquiryButton" name="chkall" value="조회" style="width: 60px;" onclick="check_all(this.form);"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" class="boardCheckbox" name="chkall" value="선택" onclick="check_all(this.form);"></td>
+                                        <td>240213</td> <!-- NO 번호 증가 -->
+                                        <td>하경진</td>
+                                        <td>조형예술</td>
+                                        <td>시각정보디자인</td>
+                                        <td>시각디자인1</td>
+                                        <td>전공필수</td>
+                                        <td>1</td>
+                                        <td><input type="button" id="inquiryButton" name="chkall" value="조회" style="width: 60px;" onclick="check_all(this.form);"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> <!-- tbl_head01 -->
+
+                        <br><br><br><br><br>
+
+                        <div class="pagination">
+                            <button class="buttonArrow"><<</button>&nbsp;
+                            <button class="buttonPage">1&nbsp;</button>
+                            <button class="buttonPage">2&nbsp;</button>
+                            <button class="buttonPage">3</button>&nbsp;
+                            <button class="buttonArrow">>></button>
+                        </div>
+
+                    </div>  <!--section01Container -->
+                </div > <!-- section01 -->
+
+            </div> <!-- sectionHead -->
+
+        </article>
+
+        <div th:replace="common/breadSideBar.html"></div>
+
+    </div> <!-- mainContainer -->
+    
+</body>
+
+<div th:replace="common/breadFooter.html"></div>
+
+</html>

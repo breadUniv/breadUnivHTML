@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery -->
+    <script th:src="@{https://code.jquery.com/jquery-3.6.4.min.js}"></script>
+    <!-- 변경해야할 CSS 링크 -->
+    <link rel="stylesheet" th:href="@{/css/background/background.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadMypage/breadEdit.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadHeader.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadFooter.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSideBar.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadTitleContainer.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSaveButton.css}">
+    <!-- 변경해야할 JS 링크 -->
+    <script th:src="@{/scripts/profileImageUploadDelete.js}"></script>
+    <script th:src="@{/scripts/menuChoice.js}"></script>
+    <script th:src="@{/scripts/sideBar.js}"></script>
+
+    <title>breadEdit</title>
+</head>
+<body>
+    <div class="mainContainer">
+
+        <article>
+
+            <div th:replace="common/breadHeader.html"></div>
+
+           <div class="section01">
+
+                <div class="section01Container">
+                    <div class="titleText">
+                        <p>마이페이지</p>
+                    </div>
+
+                    <br><br><br>
+                    <div class="titleMenu">
+                        <span>개인정보수정</span>
+                        <span>시간표조회</span>
+                        <span>수강신청조회</span>
+                        <br><br>
+                        <hr>
+                        <br>
+                    </div> <!-- titleMenu -->
+
+                    <br><br><br><br><br>
+
+                    <div class="profileButton">
+                        <img src="/RESOURCES/IMAGE/profile/경진새.jpeg" alt="profileImage" id="profileImage">
+                        <input type="file" id="imageUploadInput" style="display: none;">
+                        <button id="editProfileButton">프로필수정</button>
+                        <button id="deleteProfileButton">프로필삭제</button>
+                    </div>
+
+                    <br><br><br>
+
+                    <div class="listContainer">
+                        <div class="nameList">
+                            <li>이름</li>
+                            <li>학부</li>
+                            <li>학과</li>
+                            <li>학번</li>
+                            <li>비밀번호</li>
+                            <li>핸드폰번호</li>
+                            <li>이메일</li>
+                            <li>주소</li>
+                        </div>
+
+                        <div class="inputList">
+                            <li><input type="text"></li>
+                            <li><input type="text"></li>
+                            <li><input type="text"></li>
+                            <li><input type="text" id="number"></li>
+                            <li><input type="text" id="password"><input type="text" id="passwordCheck"></li>
+                            <li><input type="text" id="phoneNumber"><button>수정</button></li>
+                            <li><input type="text" id="email"><input type="text" id="emailCheck"><button>인증번호받기</button></li>
+                            <li><input type="text" id="address"><input type="text" id="secondAddress"></li>
+                            <li><input type="text" id="post"><button>수정</button></li>
+                        </div>
+                  </div> <!-- listContainer -->
+                  
+                <br><br><br><br><br><br><br><br>
+
+                <div class="saveButton">
+                    <button>저장</button>
+                </div>
+
+                </div> <!-- section01Container -->
+
+           </div> <!-- section01 -->
+        </article>
+
+        <div th:replace="common/breadSideBar.html"></div>
+
+</div> <!-- mainContainer -->
+
+</body>
+
+<div th:replace="common/breadFooter.html"></div>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery -->
+    <script th:src="@{https://code.jquery.com/jquery-3.6.4.min.js}"></script>
+    <!-- 변경해야할 CSS 링크 -->
+    <link rel="stylesheet" th:href="@{/css/background/background.css}">
+    <link rel="stylesheet" th:href="@{/css/breadProfessor/breadGradeManagementPro/breadGradeManagementPro.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadHeader.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadfooter.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSideBar.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadTitleContainer.css}">
+    <!-- 변경해야할 JS 링크 -->
+    <script th:src="@{/scripts/menuChoice.js}"></script>
+    <script th:src="@{/scripts/sideBar.js}"></script>
+    <script th:src="@{/scripts/checkBox.js}"></script>
+
+    <title>breadGradeManagementPro</title>
+</head>
+<body>
+    <div class="mainContainer">
+
+        <article>
+
+            <div th:replace="common/breadHeader.html"></div>
+
+            <div class="section01">
+
+                <div class="section01Container">
+                    <div class="titleText">
+                        <p>성적관리</p>
+                    </div>
+
+                    <br><br><br><br><br>
+
+                    <div class="titleContainer">
+                        <div class="titleBox">
+                            <div class="searchContainer">
+                                <label for="search">검색</label>
+                                <input type="text">
+                            </div>
+                        
+                            <div class="dropdown">
+                                <label for="sorting">정렬조건</label>
+                                <select>
+                                    <option value="list">선택</option>
+                                    <option value="list">이름별 오름차순</option>
+                                    <option value="list">이름별 내림차순</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdownButton">
+                                <button>검색</button>
+                            </div>
+                        </div>
+
+                        <div class="manageButton">
+                            <div class="adminButton">
+                                <button>등록</button>
+                            </div>
+                        </div>
+
+                    </div> <!-- titleContainer -->
+
+                    <br><br><br><br><br><br>
+
+                <div class="boardContainer">
+                    <div class="boarderTitle">
+                        <input type="checkbox" id="boarderTitleCheckbox">
+                        <span>학번</span>
+                        <span>이름</span>
+                        <span>강의명</span>
+                        <span>학과</span>
+                        <span>출석률</span>
+                        <span>성적</span>
+                    </div>
+                        <br>
+                        <hr>
+                        <br>    
+                    <div class="board">
+                        <input type="checkbox" class="boardCheckbox">
+                        <span>20240001</span>
+                        <span>하경진</span>
+                        <span>기초디자인1</span>
+                        <span>시각정보디자인</span>
+                        <span>100%</span>
+                        <select name="grade" id="grade">
+                            <option value="gradeOption">A+</option>
+                            <option value="gradeOption">A0</option>
+                            <option value="gradeOption">A-</option>
+                            <option value="gradeOption">B+</option>
+                            <option value="gradeOption">B0</option>
+                            <option value="gradeOption">B-</option>
+                            <option value="gradeOption">C+</option>
+                            <option value="gradeOption">C0</option>
+                            <option value="gradeOption">C-</option>
+                            <option value="gradeOption">D+</option>
+                            <option value="gradeOption">D0</option>
+                            <option value="gradeOption">D-</option>
+                            <option value="gradeOption">F</option>
+                        </select>
+                    </div>
+
+                    <br><hr><br>
+
+                    <div class="board">
+                        <input type="checkbox" class="boardCheckbox">
+                        <span>20240001</span>
+                        <span>하경진</span>
+                        <span>기초디자인1</span>
+                        <span>시각정보디자인</span>
+                        <span>100%</span>
+                        <select name="grade" id="grade">
+                            <option value="gradeOption">A+</option>
+                            <option value="gradeOption">A0</option>
+                            <option value="gradeOption">A-</option>
+                            <option value="gradeOption">B+</option>
+                            <option value="gradeOption">B0</option>
+                            <option value="gradeOption">B-</option>
+                            <option value="gradeOption">C+</option>
+                            <option value="gradeOption">C0</option>
+                            <option value="gradeOption">C-</option>
+                            <option value="gradeOption">D+</option>
+                            <option value="gradeOption">D0</option>
+                            <option value="gradeOption">D-</option>
+                            <option value="gradeOption">F</option>
+                        </select>
+                    </div>
+
+                    <br><hr><br>
+                    
+                    <div class="board">
+                        <input type="checkbox" class="boardCheckbox">
+                        <span>20240001</span>
+                        <span>하경진</span>
+                        <span>기초디자인1</span>
+                        <span>시각정보디자인</span>
+                        <span>100%</span>
+                        <select name="grade" id="grade">
+                            <option value="gradeOption">A+</option>
+                            <option value="gradeOption">A0</option>
+                            <option value="gradeOption">A-</option>
+                            <option value="gradeOption">B+</option>
+                            <option value="gradeOption">B0</option>
+                            <option value="gradeOption">B-</option>
+                            <option value="gradeOption">C+</option>
+                            <option value="gradeOption">C0</option>
+                            <option value="gradeOption">C-</option>
+                            <option value="gradeOption">D+</option>
+                            <option value="gradeOption">D0</option>
+                            <option value="gradeOption">D-</option>
+                            <option value="gradeOption">F</option>
+                        </select>
+                    </div>
+
+                    <br><hr><br>
+                    
+                    <div class="board">
+                        <input type="checkbox" class="boardCheckbox">
+                        <span>20240001</span>
+                        <span>하경진</span>
+                        <span>기초디자인1</span>
+                        <span>시각정보디자인</span>
+                        <span>100%</span>
+                        <select name="grade" id="grade">
+                            <option value="gradeOption">A+</option>
+                            <option value="gradeOption">A0</option>
+                            <option value="gradeOption">A-</option>
+                            <option value="gradeOption">B+</option>
+                            <option value="gradeOption">B0</option>
+                            <option value="gradeOption">B-</option>
+                            <option value="gradeOption">C+</option>
+                            <option value="gradeOption">C0</option>
+                            <option value="gradeOption">C-</option>
+                            <option value="gradeOption">D+</option>
+                            <option value="gradeOption">D0</option>
+                            <option value="gradeOption">D-</option>
+                            <option value="gradeOption">F</option>
+                        </select>
+                    </div>
+
+                    <br><hr><br>
+                    
+                    <div class="board">
+                        <input type="checkbox" class="boardCheckbox">
+                        <span>20240001</span>
+                        <span>하경진</span>
+                        <span>기초디자인1</span>
+                        <span>시각정보디자인</span>
+                        <span>100%</span>
+                        <select name="grade" id="grade">
+                            <option value="gradeOption">A+</option>
+                            <option value="gradeOption">A0</option>
+                            <option value="gradeOption">A-</option>
+                            <option value="gradeOption">B+</option>
+                            <option value="gradeOption">B0</option>
+                            <option value="gradeOption">B-</option>
+                            <option value="gradeOption">C+</option>
+                            <option value="gradeOption">C0</option>
+                            <option value="gradeOption">C-</option>
+                            <option value="gradeOption">D+</option>
+                            <option value="gradeOption">D0</option>
+                            <option value="gradeOption">D-</option>
+                            <option value="gradeOption">F</option>
+                        </select>
+                    </div>
+
+                </div> <!-- boardContainer -->
+
+                <br><br><br><br><br><br>
+
+                <div class="pagination">
+                    <button class="buttonArrow"><<</button>&nbsp;
+                    <button class="buttonPage">1&nbsp;</button>
+                    <button class="buttonPage">2&nbsp;</button>
+                    <button class="buttonPage">3</button>&nbsp;
+                    <button class="buttonArrow">>></button>
+                </div>
+
+            </div> <!-- section01Container -->
+            
+        </div> <!-- section01 -->
+        </article>
+
+        <div th:replace="common/breadSideBar.html"></div>
+
+</div> <!-- mainContainer -->
+
+</body>
+
+<div th:replace="common/breadFooter.html"></div>
+
+</html>

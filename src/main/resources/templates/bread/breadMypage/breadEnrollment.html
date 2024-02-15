@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery -->
+    <script th:src="@{https://code.jquery.com/jquery-3.6.4.min.js}"></script>
+    <!-- 변경해야할 CSS 링크 -->
+    <link rel="stylesheet" th:href="@{/css/background/background.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadMypage/breadEnrollment.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadHeader.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadFooter.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSideBar.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadTitleContainer.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSaveButton.css}">
+    <!-- 변경해야할 JS 링크 -->
+    <script th:src="@{/scripts/menuChoice.js}"></script>
+    <script th:src="@{/scripts/sideBar.js}"></script>
+
+    <title>breadEnrollment</title>
+</head>
+<body>
+    <div class="mainContainer">
+
+        <article>
+
+            <div th:replace="common/breadHeader.html"></div>
+
+            <div class="section01">
+
+                <div class="section01Container">
+                    <div class="titleText">
+                        <p>수강신청조회</p>
+                    </div>
+
+                    <br><br><br>
+                    <div class="titleMenu">
+                        <span>개인정보수정</span>
+                        <span>시간표조회</span>
+                        <span>수강신청조회</span>
+                        <br><br>
+                        <hr>
+                        <br>
+                    </div> <!-- titleMenu -->
+
+                    <br><br>
+
+                    <div class="titleContainer">
+                        <div class="titleBox">
+                            <div class="searchContainer">
+                                <label for="search ">검색</label>
+                                <input type="text">
+                            </div>
+                        
+                            <div class="dropdown">
+                                <label for="category">카테고리</label>
+                                <select>
+                                    <option value="list">전체</option>
+                                    <option value="list">전공필수</option>
+                                    <option value="list">전공</option>
+                                    <option value="list">교양</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdown">
+                                <label for="sorting">정렬조건</label>
+                                <select>
+                                    <option value="list">선택</option>
+                                    <option value="list">강의번호 오름차순</option>
+                                    <option value="list">강의번호 내림차순</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdownButton">
+                                <button>검색</button>
+                            </div>
+                        </div>    
+                    
+                    </div> <!-- titleContainer -->
+
+                        <br><br><br><br><br><br>
+
+                    <div class="boardContainer">
+                        <div class="boarderTitle">
+                            <span>강의번호</span>
+                            <span>교수명</span>
+                            <span>강의명</span>
+                            <span>강의실</span>
+                            <span>수업시간</span>
+                            <span>강의분류</span>
+                            <span>제한인원</span>
+                            <span>신청인원</span>
+                            <span>강의정보</span>
+                        </div>
+                        <br>
+                        <hr>
+                        <br>    
+                        <div class="board">
+                            <span>240213</span>
+                            <span>김민하</span>
+                            <span>뉴미디어광고기초</span>
+                            <span>조형동/디자인관/101호</span>
+                            <span>월 10:00~12:50</span>
+                            <span>전공필수</span>
+                            <span>30</span>
+                            <span>25</span>
+                            <button>조회</button>
+                        </div>
+
+                    </div> <!-- boardContainer -->
+                    <br>
+
+                    <br><br><br><br><br>
+
+                    <div class="pagination">
+                        <button class="buttonArrow"><<</button>&nbsp;
+                        <button class="buttonPage">1&nbsp;</button>
+                        <button class="buttonPage">2&nbsp;</button>
+                        <button class="buttonPage">3</button>&nbsp;
+                        <button class="buttonArrow">>></button>
+                    </div>
+
+                </div> <!-- section01Container -->
+                
+            </div> <!-- section01 -->
+
+        </article>
+
+        <div th:replace="common/breadSideBar.html"></div>
+
+</div> <!-- mainContainer -->
+
+</body>
+
+<div th:replace="common/breadFooter.html"></div>
+
+</html>
