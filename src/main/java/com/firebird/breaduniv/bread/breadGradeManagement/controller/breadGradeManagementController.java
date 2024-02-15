@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class breadGradeManagementController {
 
     @RequestMapping("/breadGradeManagement")
-    public String breadCourseRegistration() {
+    public String breadGradeManagement() {
             return "/bread/breadGradeManagement/breadGradeManagement";
         }
 }
