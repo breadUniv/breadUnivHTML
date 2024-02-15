@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery -->
+    <script th:src="@{https://code.jquery.com/jquery-3.6.4.min.js}"></script>
+    <!-- 변경해야할 CSS 링크 -->
+    <link rel="stylesheet" th:href="@{/css/background/background.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadNotice/breadNoticeModifyAdmin.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadheader.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadfooter.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSideBar.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSaveButton.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadLectureInquiry/breadLectureInsertAdmin.css}">
+
+    <!-- 변경해야할 JS 링크 -->
+    <script th:src="@{/scripts/menuChoice.js}"></script>
+    <script th:src="@{/scripts/sideBar.js}"></script>
+    <script th:src="@{/scripts/bread/breadLectureInquiry/breadLectureInsertAdmin.js}"></script>
+
+    <title>breadLectureInsertAdmin(관리자-강의정보등록)</title>
+</head>
+<body>
+    <div class="mainContainer">
+
+        <article>
+
+            <div th:replace="common/breadHeader.html"></div>
+
+            <div class="sectionHead">  
+                <div class="section01">
+                    <div class="section01Container">
+                        <div class="titleText">
+                            <p>통합정보시스템 > 강의정보등록</p>           
+                        </div> 
+                        <br><br><br><br><br>
+
+                        <div class="tbl_frm01">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">개설날짜</th>
+                                        <td colspan="3">
+                                            <input type="date" name="fr_date" value="" id="fr_date" class="frm_input w300 hasDatepicker" maxlength="10">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">학기</th>
+                                        <td colspan="3">
+                                        <select id="semester" name="semester">
+                                            <option value="1학기">1학기</option>
+                                            <option value="2학기">2학기</option>
+                                        </select>
+                                        <br>
+                                        <input type="date" name="fr_date" value="" id="fr_date" class="frm_input w300 hasDatepicker" maxlength="10">
+                                        &nbsp;&nbsp;~&nbsp;&nbsp;
+                                        <input type="date" name="fr_date" value="" id="fr_date" class="frm_input w300 hasDatepicker" maxlength="10">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">개설학과</th>
+                                        <td>
+                                            <input type="text" name="name" class="frm_input w300">
+                                        </td>
+                                        <th scope="row">학부</th>
+                                        <td>
+                                            <input type="text" name="name" class="frm_input w300">
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">이수구분</th>
+                                        <td colspan="3">
+                                        <select id="completion_division" name="completion_division">
+                                            <option value="전공필수">전공필수</option>
+                                            <option value="전공">전공</option>
+                                            <option value="교양">교양</option>
+                                        </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">강의명</th>
+                                        <td>
+                                            <input type="text" name="name" class="frm_input w300">
+                                        </td>
+                                        <th scope="row">강의정원</th>
+                                        <td>
+                                            <input type="number" name="name" class="frm_input w300" value="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">학년</th>
+                                        <td>
+                                        <select id="grade" name="grade">
+                                            <option value="1학년">1</option>
+                                            <option value="2학년">2</option>
+                                            <option value="3학년">3</option>
+                                            <option value="4학년">4</option>
+                                        </select>
+                                        </td>
+                                        <th scope="row">학점</th>
+                                        <td>
+                                            <input type="number" name="name" class="frm_input w300" value="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">담당교수명</th>
+                                        <td colspan="3">
+                                            <input type="text" name="name" class="frm_input w300">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">교수연락처</th>
+                                        <td colspan="3">
+                                            <input type="text" name="name" class="frm_input w300" value="000-0000-0000">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">이메일</th>
+                                        <td colspan="3">
+                                            <input type="text" name="name" class="frm_input w300">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">강의실</th>
+                                        <td>
+                                            <select id="classroom" name="classroom">
+                                                <option value="1학년">조형동 101호</option>
+                                                <option value="1학년">조형동 103호</option>
+                                                <option value="2학년">조형동 201호</option>
+                                                <option value="2학년">조형동 203호</option>
+                                                <option value="3학년">조형동 301호</option>
+                                                <option value="3학년">조형동 303호</option>
+                                                <option value="4학년">조형동 401호</option>
+                                                <option value="4학년">조형동 403호</option>
+                                            </select>
+                                        </td>
+                                        <th scope="row">강의시간</th>
+                                        <td>
+                                        <select id="lecture_time" name="lecture_time">
+                                            <option value="09시타임">09:00 ~ 09:50</option>
+                                            <option value="10시타임">10:00 ~ 10:50</option>
+                                            <option value="11시타임">11:00 ~ 11:50</option>
+                                            <option value="12시타임">12:00 ~ 12:50</option>
+                                            <option value="13시타임">13:00 ~ 13:50</option>
+                                            <option value="14시타임">14:00 ~ 14:50</option>
+                                            <option value="15시타임">15:00 ~ 15:50</option>
+                                            <option value="16시타임">16:00 ~ 16:50</option>
+                                            <option value="17시타임">17:00 ~ 17:50</option>
+                                        </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">강의요일</th>
+                                        <td colspan="3">
+                                        <select id="lecture_day" name="lecture_day">
+                                            <option value="1학년">월</option>
+                                            <option value="2학년">화</option>
+                                            <option value="3학년">수</option>
+                                            <option value="1학년">목</option>
+                                            <option value="2학년">금</option>
+                                        </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br><br><br><br>
+                        
+                            <div class="manageButton">
+                                <div class="adminButton">
+                                    <button id="saveButton=" onclick="saveButton()">이전으로</button>
+                                    <button id="acButton" onclick="goToinsertButton()" type="submit">등록</button>
+                                </div>
+                            </div>
+                            
+                        </div><!-- tbl_frm01 -->
+
+                    </div><!-- section01Container-->
+                </div> <!-- section01-->   
+            </div>  <!-- sectionHead -->
+
+        </article>
+
+        <div th:replace="common/breadSideBar.html"></div>
+
+    </div> <!-- mainContainer -->
+
+</body>
+
+<div th:replace="common/breadFooter.html"></div>
+
+</html>

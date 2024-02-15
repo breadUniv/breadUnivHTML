@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery -->
+    <script th:src="@{ttps://code.jquery.com/jquery-3.6.4.min.js}"></script>
+    <!-- 변경해야할 CSS 링크 -->
+    <link rel="stylesheet" th:href="@{/css/background/background.css}">
+    <link rel="stylesheet" th:href="@{/css/breadProfessor/breadAttendancePro/breadAttendancePro.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadHeader.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadfooter.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSideBar.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadTitleContainer.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSaveButton.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/button.css}">
+    <!-- 변경해야할 JS 링크 -->
+    <script th:src="@{/script/menuChoice.js}"></script>
+    <script th:src="@{/script/sideBar.js}"></script>
+    <script th:src="@{/script/checkBox.js}"></script>
+    <script th:src="@{/script/attendance.js}"></script>
+
+    <title>breadAttendancePro</title>
+</head>
+<body>
+    <div class="mainContainer">
+
+        <article>
+
+            <div th:replace="common/breadHeader.html"></div>
+
+            <div class="section01">
+
+                <div class="section01Container">
+                    <div class="titleText">
+                        <p>출석관리</p>
+                    </div>
+
+                    <br><br><br><br><br>
+
+                    <div class="titleContainer">
+                        <div class="titleBox">
+                            <div class="searchContainer">
+                                <label for="search">검색</label>
+                                <input type="text">
+                            </div>
+                        
+                            <div class="dropdown">
+                                <label for="category">카테고리</label>
+                                <select>
+                                    <option value="list">전체</option>
+                                    <option value="list">전공필수</option>
+                                    <option value="list">전공</option>
+                                    <option value="list">교양</option>
+                                </select>
+                            </div>
+                        
+                            <div class="dropdown">
+                                <label for="sorting">정렬조건</label>
+                                <select>
+                                    <option value="list">선택</option>
+                                    <option value="list">이름별 오름차순</option>
+                                    <option value="list">이름별 내림차순</option>
+                                </select>
+                            </div>
+                        
+                            <div class="dropdownButton">
+                                <button>검색</button>
+                            </div>
+                        </div>    
+
+                        <div class="dropdownBox">
+                            <div class="dropdown">
+                                <label for="category">상태</label>
+                                <select>
+                                    <option value="list">선택</option>
+                                    <option value="list">출석</option>
+                                    <option value="list">지각</option>
+                                    <option value="list">조퇴</option>
+                                    <option value="list">결석</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdownButton">
+                                <button>일괄등록</button>
+                            </div>
+                        </div>       
+
+                    </div> <!-- titleContainer -->
+
+                    <br><br><br><br><br><br>
+
+                <div class="boardContainer">
+                    <div class="boarderTitle">
+                        <input type="checkbox" id="boarderTitleCheckbox">
+                        <span>학번</span>
+                        <span>이름</span>
+                        <span>강의명</span>
+                        <span>학과</span>
+                        <span>구분</span>
+                        <span class="state">상태 (출석률)</span>
+                        <span>등록</span>
+                    </div>
+                        <br>
+                        <hr>
+                        <br>    
+                        <div class="board">
+                            <input type="checkbox" class="boardCheckbox">
+                            <span>20240001</span>
+                            <span>김민하</span>
+                            <span>기초디자인1</span>
+                            <span>시각정보디자인</span>
+                            <span>전공필수</span>
+                            <form id="attendanceForm">
+                                <div id="radioContainer">
+                                    <label><input type="radio" name="attendanceStatus" value="출석"> 출석</label>
+                                    <label><input type="radio" name="attendanceStatus" value="지각"> 지각</label>
+                                    <label><input type="radio" name="attendanceStatus" value="조퇴"> 조퇴</label>
+                                    <label><input type="radio" name="attendanceStatus" value="결석"> 결석</label>
+                                </div>
+
+                                <div id="attendanceRate"></div>
+
+                                <div class="EditButton">
+                                    <div class="attendanceButton">
+                                        <button type="button" id="submitBtn">등록</button>
+                                        <button type="button" id="modifyBtn" style="display:    none;  ">수정</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    <br><hr><br>
+
+                    <div class="board">
+                        <input type="checkbox" class="boardCheckbox">
+                        <span>20240001</span>
+                        <span>김민하</span>
+                        <span>기초디자인1</span>
+                        <span>시각정보디자인</span>
+                        <span>전공필수</span>
+                        <form id="attendanceForm">
+                            <div id="radioContainer">
+                                <label><input type="radio" name="attendanceStatus" value="출석"> 출석</label>
+                                <label><input type="radio" name="attendanceStatus" value="지각"> 지각</label>
+                                <label><input type="radio" name="attendanceStatus" value="조퇴"> 조퇴</label>
+                                <label><input type="radio" name="attendanceStatus" value="결석"> 결석</label>
+                            </div>
+
+                            <div id="attendanceRate"></div>
+
+                            <div class="EditButton">
+                                <div class="attendanceButton">
+                                    <button type="button" id="submitBtn">등록</button>
+                                    <button type="button" id="modifyBtn" style="display:    none;  ">수정</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <br><hr><br>
+                    
+                    <div class="board">
+                        <input type="checkbox" class="boardCheckbox">
+                        <span>20240001</span>
+                        <span>김민하</span>
+                        <span>기초디자인1</span>
+                        <span>시각정보디자인</span>
+                        <span>전공필수</span>
+                        <form id="attendanceForm">
+                            <div id="radioContainer">
+                                <label><input type="radio" name="attendanceStatus" value="출석"> 출석</label>
+                                <label><input type="radio" name="attendanceStatus" value="지각"> 지각</label>
+                                <label><input type="radio" name="attendanceStatus" value="조퇴"> 조퇴</label>
+                                <label><input type="radio" name="attendanceStatus" value="결석"> 결석</label>
+                            </div>
+
+                            <div id="attendanceRate"></div>
+                            
+                            <div class="EditButton">
+                                <div class="attendanceButton">
+                                    <button type="button" id="submitBtn">등록</button>
+                                    <button type="button" id="modifyBtn" style="display:    none;  ">수정</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <br><hr><br>
+                    
+                    <div class="board">
+                        <input type="checkbox" class="boardCheckbox">
+                        <span>20240001</span>
+                        <span>김민하</span>
+                        <span>기초디자인1</span>
+                        <span>시각정보디자인</span>
+                        <span>전공필수</span>
+                        <form id="attendanceForm">
+                            <div id="radioContainer">
+                                <label><input type="radio" name="attendanceStatus" value="출석"> 출석</label>
+                                <label><input type="radio" name="attendanceStatus" value="지각"> 지각</label>
+                                <label><input type="radio" name="attendanceStatus" value="조퇴"> 조퇴</label>
+                                <label><input type="radio" name="attendanceStatus" value="결석"> 결석</label>
+                            </div>
+
+                            <div id="attendanceRate"></div>
+
+                            <div class="EditButton">
+                                <div class="attendanceButton">
+                                    <button type="button" id="submitBtn">등록</button>
+                                    <button type="button" id="modifyBtn" style="display:    none;  ">수정</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div> <!-- boardContainer -->
+
+                <br><br><br><br><br><br>
+
+                <div class="pagination">
+                    <button class="buttonArrow"><<</button>&nbsp;
+                    <button class="buttonPage">1&nbsp;</button>
+                    <button class="buttonPage">2&nbsp;</button>
+                    <button class="buttonPage">3</button>&nbsp;
+                    <button class="buttonArrow">>></button>
+                </div>
+
+            </div> <!-- section01Container -->
+            
+        </div> <!-- section01 -->
+        </article>
+
+        <div th:replace="common/breadSideBar.html"></div>
+
+</div> <!-- mainContainer -->
+
+</body>
+
+<div th:replace="common/breadFooter.html"></div>
+
+</html>
