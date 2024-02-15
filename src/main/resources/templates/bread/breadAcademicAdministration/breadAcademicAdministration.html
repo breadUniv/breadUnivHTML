@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- 변경해야할 CSS 링크 -->
+    <link rel="stylesheet" href="/RESOURCES/CSS/background/background.css">
+    <link rel="stylesheet" href="/RESOURCES/CSS/bread/breadNotice/breadNoticeModifyAdmin.css">
+    <link rel="stylesheet" href="/RESOURCES/CSS/bread/breadEtc/breadheader.css">
+    <link rel="stylesheet" href="/RESOURCES/CSS/bread/breadEtc/breadfooter.css">
+    <link rel="stylesheet" href="/RESOURCES/CSS/bread/breadEtc/breadSideBar.css">
+    <link rel="stylesheet" href="/RESOURCES/CSS/bread/breadEtc/breadTitleContainer.css">
+    <link rel="stylesheet" href="/RESOURCES/CSS/bread//breadAcademicAdministration/breadAcademicAdministration.css">
+
+    <!-- 변경해야할 JS 링크 -->
+    <script src="/RESOURCES/JS/menuChoice.js"></script>
+    <script src="/RESOURCES/JS/sideBar.js"></script>
+    <script src="/RESOURCES/JS/bread/breadAcademicAdministration/breadAcademicAdministration.js"></script>
+
+    <title>breadAcademicAdministration(학사행정)</title>
+</head>
+<body>
+    <div class="mainContainer">
+
+        <article>
+            <div class="header">
+                <div class="headerBackground">
+                    <div class="headerMenu">
+                        <div class="headerMenuClick">
+                            <span>포탈정보시스템</span>
+                            <span>버터커넥트</span>
+                        </div>
+                        <div class="searchBox">
+                            <input type="text">
+                            <button>검색</button>
+                        </div>
+                        <div class="logOut">
+                            <span>로그아웃</span>
+                        </div>
+                    </div> <!-- headerMenu -->
+                </div> <!-- headerBackground -->
+            </div> <!-- header -->
+
+        <div class="sectionHead">  
+
+            <div class="section01">
+
+                <div class="section01Container">
+                    <div class="titleText">
+                        <p>학사행정 > 휴학/자퇴신청</p>           
+                    </div> 
+
+                    <br><br><br><br><br>
+
+                    <div class="tbl_frm01">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">이름</th>
+                                    <td>
+                                        <span class="frm_input w300" name="name">하경진</span>
+                                    </td>
+                                    <th>학번</th>
+                                    <td>
+                                        <span class="frm_input w300" name="studentId">20240001</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">학과</th>
+                                    <td>
+                                        <span class="frm_input w300" name="department">시각디자인학과</span>
+                                    </td>
+                                    <th>연락처</th>
+                                    <td>
+                                        <span class="frm_input w300" name="phoneNumber">000-0000-0000</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">신청구분</th>
+                                    <td class="td_label">
+                                        <label><input type="radio" name="application_type" value="일반휴학">일반휴학</label>
+                                        <label><input type="radio" name="application_type" value="군휴학">군휴학</label>
+                                        <label><input type="radio" name="application_type" value="자퇴">자퇴</label>
+                                    </td>
+                                    <th>강의명</th>
+                                    <td>
+                                        <span class="frm_input w300" name="lectureName">디자인의 이해1</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="application_semester">신청기간</th>
+                                    <td colspan="3">
+                                    <select id="application_semester" name="application_semester">
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                        <option value="2026">2026</option>
+                                        <option value="2027">2027</option>
+                                        <option value="2028">2028</option>
+                                    </select>&nbsp;학년도&nbsp;
+                                    <select id="application_semester" name="application_semester">
+                                        <option value="1">1학기</option>
+                                        <option value="2">2학기</option>
+                                    </select>&nbsp;부터&nbsp;&nbsp;&nbsp;
+                                    <select id="application_semester" name="application_semester">
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                        <option value="2026">2026</option>
+                                        <option value="2027">2027</option>
+                                        <option value="2028">2028</option>
+                                    </select>&nbsp;학년도&nbsp;
+                                    <select id="application_semester" name="application_semester">
+                                        <option value="1">1학기</option>
+                                        <option value="2">2학기</option>
+                                    </select>&nbsp;까지&nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">휴학사유</th>
+                                    <td class="td_label" colspan="3">
+                                        <label><input type="radio" name="reason_type" value="0">개인사유</label>
+                                        <label><input type="radio" name="reason_type" value="1">군입대</label>
+                                        <label><input type="radio" name="reason_type" value="2">기타</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">사유</th>
+                                    <td class="td_label" colspan="3">
+                                        <textarea name="reason" class="frm_input" style="width: 845px; height: 200px; border: 1px solid #ddd;" cols="50" rows="20" resize="none;" border:1px solid #ddd></textarea>
+                                        <!-- <inpud type="text" name="reason" class="frm_input w80" style="width: 820px; height: 200px;">  -->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br><br><br><br>
+                        <div class="manageButton">
+                            <div class="adminButton">
+                                <button id="acButton" type="submit">신청</button>
+                            </div>
+                        </div>
+                        
+                    </div><!-- tbl_frm01 -->
+                    
+                </div><!-- section01Container-->
+            </div> <!-- section01-->   
+            
+            <div class=" section02">
+                <div class="section02Container">
+                    <div class="titleText2">
+                        <p>휴학 및 자퇴 신청현황</p>           
+                    </div>
+                    <br><br>
+                        <div class="tbl_head01">
+                            <table>
+                                <colgroup>
+                                    <col class="w10">
+                                    <col class="w80">
+                                    <col class="w10">
+                                    <col class="w10">
+                                    <col class="w10">
+                                    <col class="w50">
+                                    <col class="w80">
+                                    <col class="w50">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th scope="col">번호</th>
+                                    <th scope="col">신청일자</th>
+                                    <th scope="col">학년도</th>
+                                    <th scope="col">학기</th>
+                                    <th scope="col">신청구분</th>
+                                    <th scope="col">학과</th>
+                                    <th scope="col">접수여부</th>
+                                    <th scope="col">취소일자</th>
+                                </tr>
+                                </thead>
+                                <tbody><tr><td colspan="8" class="empty_table">자료가 없습니다.</td></tr></tbody>
+                            </table>
+                        </div> <!-- tbl_head01 -->
+                </div> <!-- section02Container-->
+            </div> <!-- section02-->
+
+        </div>  <!-- sectionHead -->
+
+        </article>
+        
+            <div class="sideBarBackground">
+
+                <div class="sideBarTopBackground">
+                    <div class="sideBarTopContainer">
+                        <img src="/RESOURCES/IMAGE/logo/005.png" alt="sideBarTopImage">
+                        <p>통합정보시스템</p>
+                    </div>
+                </div>
+
+                <div class="sideBarDropdown">
+
+                    <ul class="sideBarDropdownToggle">
+                        <li class="sideBarDropdownClick"><a href="#">마이페이지</a>
+                            <ul class="subToggle"> 
+                                <li><a href="#">개인정보수정</a></li>
+                                <li><a href="#">시간표조회</a></li>
+                                <li><a href="#">수강신청조회</a></li>
+                            </ul>
+                        </li>
+                        <li class="sideBarDropdownClick"><a href="#">학사행정</a>
+                            <ul class="subToggle">
+                                <li><a href="#">휴학 및 자퇴신청</a></li> 
+                            </ul>
+                        </li>
+
+                        <li class="sideBarDropdownClick"><a href="#">강의조회</a></li>
+                        <li class="sideBarDropdownClick"><a href="#">수강신청</a></li>
+                        <li class="sideBarDropdownClick"><a href="#">성적관리</a></li>
+                        <li class="sideBarDropdownClick"><a href="#">브레드에바란다</a>
+                            <ul class="subToggle">
+                                <li><a href="#">Q&A</a></li>
+                                <li><a href="#">불편/건의사항</a></li>           
+                            </ul>
+                        </li>
+
+                        <li class="sideBarDropdownClick"><a href="#">공지사항</a></li>
+                        <li class="sideBarDropdownClick"><a href="#">분실물</a></li>
+                    </ul>
+                </div> <!-- sideBarDropdownToggle -->
+
+            </div> <!-- sideBarBackground -->
+
+    </div> <!-- mainContainer -->
+
+</body>
+
+    <footer>
+        <div class="footerBackground">
+            <div class="footerText">
+                <li class="footerTextFirst">브레드 대학교 BREAD UNIVERSITY</li><br>
+                <li class="footerTextSecond">서울특별시 종로구 인사동길 12 대일빌딩 7층, 15층, T. 02-3277-2114 / 52, 7th and 15th floors of Daeil Building, 12 Insadong-gil, Jongno-gu, Seoul<br>
+                    COPYRIGHT 2024 BY BREAD UNIVERSITY. ALL RIGHTS RESERVED.
+                </li>
+            </div>
+        </div> 
+    </footer>
+
+</html>
