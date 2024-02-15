@@ -3,8 +3,11 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/css/breadMain.css}"/>
-    <link rel="stylesheet" th:href="@{/css/breadEtc/breadFooter.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bread/breadMain/breadMain.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadHeader.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadFooter.css}">
+    <link rel="stylesheet" th:href="@{/css/background/background.css}">
+
     <title>main</title>
 </head>
 <body>
@@ -117,4 +120,7 @@
 
 </div> <!-- mainContainer -->
 </body>
+
+<div th:replace="common/breadFooter.html"></div>
+
 </html>

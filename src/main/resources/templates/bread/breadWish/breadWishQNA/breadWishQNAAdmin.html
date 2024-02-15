@@ -3,90 +3,95 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- jquery -->
     <script th:src="@{https://code.jquery.com/jquery-3.6.4.min.js}"></script>
     <!-- 변경해야할 CSS 링크 -->
-    <link rel="stylesheet" th:href="@{/css/background/background.css}"/>
-    <link rel="stylesheet" th:href="@{/css/bread/breadWish/breadWishQNA/breadWishQNA.css}"/>
-    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadHeader.css}"/>
-    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadfooter.css}"/>
-    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSideBar.css}"/>
-    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadTitleContainer.css}"/>
+    <link rel="stylesheet" th:href="@{/css/background/background.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadWish/breadWishQNA/breadWishQNAAdmin.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadHeader.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadFooter.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSideBar.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadTitleContainer.css}">
     <!-- 변경해야할 JS 링크 -->
     <script th:src="@{/scripts/menuChoice.js}"></script>
     <script th:src="@{/scripts/sideBar.js}"></script>
     <script th:src="@{/scripts/checkBox.js}"></script>
 
-    <title>breadWishQNA</title>
+    <title>breadWishQNAdmin</title>
 </head>
 <body>
-<div class="mainContainer">
+    <div class="mainContainer">
 
-    <article>
+        <article>
+            <div th:replace="common/breadHeader.html"></div>
 
-        <div th:replace="common/breadHeader.html"></div>
+            <div class="section01">
 
-        <div class="section01">
-
-            <div class="section01Container">
-                <div class="titleText">
-                    <p>브레드에바란다</p>
-                </div>
-
-                <br><br><br>
-                <div class="titleMenu">
-                    <a th:href="@{/breadWishQNA}" th:style="'color: ' + ${textColor} + '; font-weight: bolder;'">Q&A</a>
-                    <a th:href="@{/breadWishSuggestion}">불편/건의사항</a>
-                    <br><br>
-                    <hr>
-                    <br>
-                </div> <!-- titleMenu -->
-
-                <br><br><br><br><br>
-
-                <div class="titleContainer">
-                    <div class="titleBox">
-                        <div class="searchContainer">
-                            <label for="search">검색</label>
-                            <input type="text">
-                        </div>
-
-                        <div class="dropdown">
-                            <label for="category">카테고리</label>
-                            <select>
-                                <option value="list">전체</option>
-                                <option value="list">계정</option>
-                                <option value="list">학교생활</option>
-                                <option value="list">기숙사</option>
-                                <option value="list">등록금</option>
-                                <option value="list">기타</option>
-                            </select>
-                        </div>
-
-                        <div class="dropdown">
-                            <label for="sorting">정렬조건</label>
-                            <select>
-                                <option value="list">선택</option>
-                                <option value="list">글번호 오름차순</option>
-                                <option value="list">글번호 내림차순</option>
-                            </select>
-                        </div>
-
-                        <div class="dropdownButton">
-                            <button>검색</button>
-                        </div>
+                <div class="section01Container">
+                    <div class="titleText">
+                        <p>브레드에바란다</p>
                     </div>
 
-                    <div class="manageButton">
-                        <div class="adminButton">
-                            <button>글작성</button>
-                            <button>삭제</button>
+                    <br><br><br>
+                    <div class="titleMenu">
+                        <a th:href="@{/breadWishQNA}" th:style="'color: ' + ${textColor} + '; font-weight: bolder;'">Q&A</a>
+                        <a th:href="@{/breadWishSuggestion}">불편/건의사항</a>
+                        <br><br>
+                        <hr>
+                        <br>
+                    </div> <!-- titleMenu -->
+
+                    <br><br><br><br><br>
+
+                    <div class="titleContainer">
+                        <div class="titleBox">
+                            <div class="searchContainer">
+                                <label for="search">검색</label>
+                                <input type="text">
+                            </div>
+                        
+                            <div class="dropdown">
+                                <label for="category">카테고리</label>
+                                <select>
+                                    <option value="list">전체</option>
+                                    <option value="list">계정</option>
+                                    <option value="list">학교생활</option>
+                                    <option value="list">기숙사</option>
+                                    <option value="list">등록금</option>
+                                    <option value="list">기타</option>
+                                </select>
+                            </div>
+                        
+                            <div class="dropdown">
+                                <label for="sorting">정렬조건</label>
+                                <select>
+                                    <option value="list">선택</option>
+                                    <option value="list">글번호 오름차순</option>
+                                    <option value="list">글번호 내림차순</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdownButton">
+                                <button>검색</button>
+                            </div>
+                        </div>    
+    
+                        <div class="manageButton">
+                            <div class="adminButton">
+                                <select name="adminSelect" id="adminSelect">
+                                    <option value="adminOption">선택</option>
+                                    <option value="adminOption">게시글숨기기</option>
+                                    <option value="adminOption">사용자경고</option>
+                                </select>
+                                <button>관리</button>
+                                <button>삭제</button>
+                            </div>
                         </div>
-                    </div>
 
-                </div> <!-- titleContainer -->
+                    </div> <!-- titleContainer -->
 
-                <br><br><br><br><br><br>
+                    <br><br><br><br><br><br>
 
                 <div class="boardContainer">
                     <div class="boarderTitle">
@@ -98,9 +103,9 @@
                         <span>조회수</span>
                         <span>작성일</span>
                     </div>
-                    <br>
-                    <hr>
-                    <br>
+                        <br>
+                        <hr>
+                        <br>    
                     <div class="board">
                         <input type="checkbox" class="boardCheckbox">
                         <span>1</span>
@@ -124,7 +129,7 @@
                     </div>
 
                     <br><hr><br>
-
+                    
                     <div class="board">
                         <input type="checkbox" class="boardCheckbox">
                         <span>3</span>
@@ -136,7 +141,7 @@
                     </div>
 
                     <br><hr><br>
-
+                    
                     <div class="board">
                         <input type="checkbox" class="boardCheckbox">
                         <span>4</span>
@@ -148,7 +153,7 @@
                     </div>
 
                     <br><hr><br>
-
+                    
                     <div class="board">
                         <input type="checkbox" class="boardCheckbox">
                         <span>5</span>
@@ -172,10 +177,11 @@
                 </div>
 
             </div> <!-- section01Container -->
-
+            
         </div> <!-- section01 -->
-    </article>
-
+        
+        </article>
+  
     <div th:replace="common/breadSideBar.html"></div>
 
 </div> <!-- mainContainer -->
@@ -183,5 +189,6 @@
 </body>
 
 <div th:replace="common/breadFooter.html"></div>
+
 
 </html>
