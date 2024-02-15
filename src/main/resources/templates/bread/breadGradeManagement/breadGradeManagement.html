@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery -->
+    <script th:src="@{https://code.jquery.com/jquery-3.6.4.min.js}"></script>
+    <!-- 변경해야할 CSS 링크 -->
+    <link rel="stylesheet" th:href="@{/css/background/background.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadNotice/breadNoticeModifyAdmin.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadheader.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadfooter.css}">
+    <link rel="stylesheet" th:href="@{/css/bread/breadEtc/breadSideBar.css}">
+    <!-- <link rel="stylesheet" href="/RESOURCES/CSS/bread/breadEtc/breadTitleContainer.css"> -->
+    <link rel="stylesheet" th:href="@{/css/bread/breadGradeManagement/breadGradeManagement.css}">
+
+    <!-- 변경해야할 JS 링크 -->
+    <script th:src="@{/scripts/menuChoice.js}"></script>
+    <script th:src="@{/scripts/sideBar.js}"></script>
+    <script th:src="@{/scripts/breadGradeManagement.js}"></script>
+
+    <title>breadGradeManagement(성적관리)</title>
+</head>
+<body>
+    <div class="mainContainer">
+
+        <article>
+
+            <div th:replace="common/breadHeader.html"></div>
+
+            <div class="sectionHead">
+
+                <div class="section01">
+                    <div class="section01Container">
+                        <div class="titleText">
+                            <p>성적관리</p>
+                        </div>
+
+                        <br><br><br><br><br>
+
+                        <div class="tbl_frm01">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">이름</th>
+                                        <td>
+                                            <span class="frm_input w300" name="name">하경진</span>
+                                        </td>
+                                        <th>입학구분</th>
+                                        <td>
+                                            <span class="frm_input w300" name="AdmissionClassification" >신입학</span>
+                                        </td>
+                                        <th>입학일</th>
+                                        <td>
+                                            <span class="frm_input w300" name="dateOfAdmission">2024-02-29</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">학과</th>
+                                        <td>
+                                            <span class="frm_input w300" name="department">시각디자인학과</span>
+                                        </td>
+                                        <th scope="row">학부</th>
+                                        <td>
+                                            <span class="frm_input w300" name="undergraduate">디자인학부</span>
+                                        </td>
+                                        <th scope="row">학번</th>
+                                        <td>
+                                            <span class="frm_input w300" name="studentId">20240001</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">학년</th>
+                                        <td>
+                                            <span class="frm_input w300" name="grade">1학년</span>
+                                        </td>
+                                        <th scope="row">이수학기</th>
+                                        <td>
+                                            <span class="frm_input w300" name="semester">1학기</span>
+                                        </td>
+                                        <th scope="row">학적상태</th>
+                                        <td>
+                                            <span class="frm_input w300" name="AcademicStatus">재학중</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br><br><br><br>
+                        </div><!-- tbl_frm01 -->
+
+                    </div><!-- section01Container-->
+                </div> <!-- section01-->
+            
+                <div class=" section02">
+                    <div class="section02Container">
+                        <div class="titleText2">
+                            <label for="sorting">년도/학기</label>
+                            <select id="yearSemesterSelect">
+                                <option value="list">전체</option>
+                                <option value="list">학년도 학기</option>
+                                <option value="list">학년도 학기</option>
+                            </select>
+                        </div>
+                        <div class="tbl_head01">
+                            <table>
+                                <colgroup>
+                                    <col class="w5">
+                                    <col class="w30">
+                                    <col class="w30">
+                                    <col class="w100">
+                                    <col class="w50">
+                                    <col class="w30">
+                                    <col class="w30">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th scope="col" style="width: 80px;">번호</th>
+                                    <th scope="col" style="width: 120px;">년도</th>
+                                    <th scope="col" style="width: 120px;">학기</th>
+                                    <th scope="col">강의명</th>
+                                    <th scope="col" style="width: 150px;">강의분류</th>
+                                    <th scope="col" style="width: 120px;">학점</th>
+                                    <th scope="col" style="width: 120px;">성적</th>
+                                </tr>
+                                </thead>
+                                <!-- <tbody><tr><td colspan="7" class="empty_table">자료가 없습니다.</td></tr></tbody> -->
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>2024</td>
+                                        <td>1학기</td>
+                                        <td>디자인의 이해</td>
+                                        <td>전공필수</td>
+                                        <td>3.0</td>
+                                        <td>A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>2024</td>
+                                        <td>2학기</td>
+                                        <td>디자인의 이해</td>
+                                        <td>전공필수</td>
+                                        <td>3.0</td>
+                                        <td>A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>2025</td>
+                                        <td>1학기</td>
+                                        <td>디자인의 이해</td>
+                                        <td>전공필수</td>
+                                        <td>3.0</td>
+                                        <td>A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>2025</td>
+                                        <td>2학기</td>
+                                        <td>디자인의 이해</td>
+                                        <td>전공필수</td>
+                                        <td>3.0</td>
+                                        <td>A</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> <!-- tbl_head01 -->
+
+                    </div> <!-- section02Container-->
+                </div> <!-- section02-->
+
+            </div>  <!-- sectionHead -->
+
+        </article>
+
+            <div th:replace="common/breadSideBar.html"></div>
+
+    </div> <!-- mainContainer -->
+
+</body>
+
+<div th:replace="common/breadFooter.html"></div>
+
+</html>

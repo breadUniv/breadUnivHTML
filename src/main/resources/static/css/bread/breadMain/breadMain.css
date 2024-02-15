@@ -14,7 +14,6 @@
     display: flex;
 }
 
-
 article {
     width: 100%;
 }
@@ -131,11 +130,23 @@ article {
     align-items: center;
 }
 
-.breadMainImg img{
-    margin-top: 0px;
-    width: 100%;
-    height: 550px;
+.breadMainImg{
+    width: 1870px;
+    height: 500px;
+    overflow: hidden; /* 요소를 벗어나는 부분을 잘라냄 */
+    background-size: cover;  /* 이미지 크기를 자동으로 설정하여 요소에 맞게 확대 */
+    background-position: center; /* 이미지를 가운데 정렬 */
+    background-repeat: no-repeat;
 }
+
+
+.breadMainImg img{
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
+
+
 
 h1, h2{
     border-bottom: 1px solid rgba(105, 105, 105, 0.6); /* 글자 아래 검은 선*/
@@ -234,10 +245,10 @@ li{
     margin-left: -10px;
 }
 
-.leftCtegory{
-    /* margin-bottom: 10px; */
-    /* width: 680px; */
-}
+/*.leftCtegory{*/
+/*     margin-bottom: 10px;*/
+/*     width: 680px;*/
+/*}*/
 
 .rightCtegory{
     margin-bottom: 5px;
