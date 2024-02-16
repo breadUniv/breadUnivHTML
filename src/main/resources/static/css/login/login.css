@@ -53,6 +53,7 @@ body, div, li, p, td, th, ul, input{
         /* flex-direction: row; 가로 정렬  */
         font-size: 20px;
         color:rgba(0, 0, 0, 0.685);
+        cursor: pointer;
 
     }
 
@@ -164,6 +165,9 @@ body, div, li, p, td, th, ul, input{
     img{
         width: 55px;
         height: 55px;
+    }
+    #logo img:hover {
+        cursor: pointer;
     }
 
     #icons2{ /* 불편/건의사항 및 Q&A 아이콘들 부모 */

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.firebird.breaduniv.bread.breadWish.model.dao.BreadWishQNADao">
+
+    <resultMap id="breadWishBoardResultMap" type="com.firebird.breaduniv.bread.breadWish.breadWishQNA.model.dto.BreadWishBoardDTO">
+
+        <id property="boardCode" column="board_code"/>
+        <result property="boardTitle" column="board_title"/>
+    </resultMap>
+    <!--
+        resultType : 기본타입의 값을 리턴받을 경우에 사용 (int, string....)
+        resultMap : 여러개의 타입의 묶음을 받을 때 (DTO)
+    -->
+    <select id="selectBreadBoardInfo" resultMap="breadWishBoardResultMap">
+        select board_code, user_code, board_title from user where board_code=#{boardCode}
+    </select>
+</mapper>
