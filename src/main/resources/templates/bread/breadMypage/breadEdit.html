@@ -68,16 +68,17 @@ xmlns:th="http://www.thymeleaf.org">
                             <li>주소</li>
                         </div>
 
+
                         <div class="inputList">
-                            <li><input type="text"></li>
-                            <li><input type="text"></li>
-                            <li><input type="text"></li>
-                            <li><input type="text" id="number"></li>
-                            <li><input type="text" id="password"><input type="text" id="passwordCheck"></li>
-                            <li><input type="text" id="phoneNumber"><button>수정</button></li>
-                            <li><input type="text" id="email"><input type="text" id="emailCheck"><button>인증번호받기</button></li>
-                            <li><input type="text" id="address"><input type="text" id="secondAddress"></li>
-                            <li><input type="text" id="post"><button>수정</button></li>
+                            <li><div th:text="${breadUser.userName}"></div></li>
+                            <li><div th:text="${breadUser.undergraduateName}"></div></li>
+                            <li><div th:text="${breadUser.departmentName}"></div></li>
+                            <li><div th:text="${breadUser.studentAdmission} + ${breadUser.departmentCode} + ${breadUser.studentCode}"></div></li>
+                            <li><div th:text="${breadUser.userPwd}"></div></li>
+                            <li><div th:text="${breadUser.userPhone}"></div><button>수정</button></li>
+                            <li><div th:text="${breadUser.userEmail}"></div><button>인증번호받기</button></li>
+                            <li><div th:text="${breadUser.userAddress}"></div></li>
+                            <li><div th:text="${breadUser.userDetailedAddress}"></div><button>수정</button></li>
                         </div>
                   </div> <!-- listContainer -->
                   

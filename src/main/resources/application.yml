@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:log4jdbc:mysql://mysql.coffit.today/thymeleafspringboot
-    username: ohgiraffers
-    password: ohgiraffers
+    url: jdbc:mysql://mysql.coffit.today/fireBird
+    username: fireBird
+    password: fireBird
   servlet:
     multipart:
       enabled: true
@@ -27,9 +27,9 @@ spring:
 image:
   image-dir: img
 
-#mybatis:
+mybatis:
 #  # mapper.xml location Setting
-#  mapper-locations: mybatis/mapper/*.xml
+  mapper-locations: mappers/**/*.xml
 #  # alias Setting
 #  type-aliases-package: com.fireBird.breadUniv
 #  configuration:

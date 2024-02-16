@@ -135,5 +135,8 @@ select {
     padding: 3px 0;
 
 }
-   
+
+#logo img:hover {
+    cursor: pointer;
+}
 

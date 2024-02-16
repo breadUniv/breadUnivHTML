@@ -16,9 +16,9 @@ public class BreadLectureInquiryController {
         return "/bread/breadLectureInquiry/breadLectureInquiryAdmin";
     }
 
-    @RequestMapping("/breadLectureIsertAdmin")
-    public String breadLectureIsertAdmin(){
-        return "/bread/breadLectureInquiry/breadLectureIsertAdmin";
+    @RequestMapping("/breadLectureInsertAdmin")
+    public String breadLectureInsertAdmin(){
+        return "/bread/breadLectureInquiry/breadLectureInsertAdmin";
     }
 
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.firebird.breaduniv.bread.breadMypage.model.dao.BreadMypageDao">
+
+    <resultMap id="breadMypageUserResultMap" type="com.firebird.breaduniv.bread.breadMypage.model.dto.BreadUserDTO">
+
+        <id property="userCode" column="user_code"/>
+        <result property="departmentCode" column="department_code"/>
+        <result property="userName" column="user_name"/>
+        <result property="userPwd" column="user_pwd"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="userCreateDate" column="user_createDate"/>
+        <result property="userAddress" column="user_address"/>
+        <result property="userDetailedAddress" column="user_detailedAddress"/>
+        <result property="userPhone" column="user_phone"/>
+        <result property="userPermission" column="user_permission"/>
+        <result property="studentCode" column="student_code"/>
+        <result property="studentGrade" column="student_grade"/>
+        <result property="academicStatusCode" column="academicStatus_code"/>
+        <result property="studentAdmission" column="student_admission"/>
+        <result property="departmentName" column="department_name"/>
+        <result property="undergraduateName" column="undergraduate_name"/>
+
+    </resultMap>
+    <!--
+        resultType : 기본타입의 값을 리턴받을 경우에 사용 (int, string....)
+        resultMap : 여러개의 타입의 묶음을 받을 때 (DTO)
+    -->
+    <select id="selectBreadUserInfo" resultMap="breadMypageUserResultMap">
+        SELECT
+                u.user_code,
+                u.department_code,
+                u.user_name,
+                u.user_pwd,
+                u.user_email,
+                u.user_address,
+                u.user_detailedAddress,
+                u.user_phone,
+                u.user_permission,
+                s.student_code,
+                s.student_grade,
+                s.academicStatus_code,
+                s.student_admission,
+                d.department_name,
+                g.undergraduate_name
+        FROM
+                user u
+        INNER JOIN
+                student s ON u.user_code = s.user_code
+        LEFT JOIN
+                department d ON u.department_code = d.department_code
+        LEFT JOIN
+                undergraduate g ON d.undergraduate_code = g.undergraduate_code
+
+        WHERE
+                u.user_code=#{userCode}
+
+    </select>
+</mapper>
