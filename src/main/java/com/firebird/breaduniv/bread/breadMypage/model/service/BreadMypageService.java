@@ -15,12 +15,12 @@ public class BreadMypageService {
 
     /***
      * 사용자 정보 조회용 메소드
-     * @param userId 사용자 아이디
+     * @param userCode 사용자 아이디
      * @return 사용자 전체 데이터
      */
-    public BreadUserDTO selectBreadUserInfo(int userId) {
+    public BreadUserDTO selectBreadUserInfo(int userCode) {
 
-        BreadUserDTO breadUserDTO = breadMypageDao.selectBreadUserInfo(userId);
+        BreadUserDTO breadUserDTO = breadMypageDao.selectBreadUserInfo(userCode);
 
         System.out.println("[BreadMypageService] selectBreadUserInfo result ==== " + breadUserDTO);
 

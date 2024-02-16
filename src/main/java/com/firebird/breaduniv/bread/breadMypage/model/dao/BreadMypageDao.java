@@ -5,5 +5,5 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface BreadMypageDao {
-    BreadUserDTO selectBreadUserInfo(int userId);
+    BreadUserDTO selectBreadUserInfo(int userCode);
 }

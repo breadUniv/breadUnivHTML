@@ -27,15 +27,17 @@ public class BreadMypageController {
     public String breadEdit(Model model) {
 
         // 임시로 사용자 아이디를 고정해서 테스트
-        int userId = 3;
+        int userCode = 3;
 
         // service -> dao -> DB 후에 역순으로 다시 값을 들고 돌아온다.
-        BreadUserDTO breadUserDTO = breadMypageService.selectBreadUserInfo(userId);
+        BreadUserDTO breadUserDTO = breadMypageService.selectBreadUserInfo(userCode);
 
         System.out.println("breadUserDTO ============> " + breadUserDTO);
         model.addAttribute("breadUser", breadUserDTO);
+
         model.addAttribute("textColor", "#456E2A");
-        return "/bread/breadMypage/breadedit";
+
+        return "/bread/breadMypage/breadEdit";
     }
 
     @RequestMapping("/breadEnrollment")
