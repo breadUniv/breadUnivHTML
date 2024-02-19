@@ -1,4 +1,4 @@
-package com.firebird.breaduniv.bread.breadWish.breadWishQNA.model.dto;
+package com.firebird.breaduniv.bread.breadWish.breadWishSuggestion.model.dto;
 
 
 import lombok.*;
@@ -10,7 +10,7 @@ import java.util.Date;
 @Setter
 @Getter
 @ToString
-public class BreadWishBoardDTO {
+public class BreadWishBoard1DTO {
 
     private int boardCode;
     private int boardCategoryCode;
@@ -23,12 +23,6 @@ public class BreadWishBoardDTO {
 
     private boolean boardDeleteStatus;
 
-    public boolean getBoardDeleteStatus() {
-        return boardDeleteStatus;
-    }
 
-    public void setBoardDeleteStatus(boolean boardDeleteStatus) {
-        this.boardDeleteStatus = boardDeleteStatus;
-    }
+
 }
-

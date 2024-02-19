@@ -13,11 +13,16 @@ public class BreadWishQNAService {
     public BreadWishQNAService(BreadWishQNADao breadWishQNADao) {
         this.breadWishQNADao = breadWishQNADao;}
 
+    /***
+     *
+     * @param boardCode
+     * @return
+     */
 
     public BreadWishBoardDTO selectBreadBoardInfo(int boardCode){
 
         BreadWishBoardDTO breadWishBoardDTO = breadWishQNADao.selectBreadBoardInfo(boardCode);
-        System.out.println("breadWishBoardDTO = " + breadWishBoardDTO);
+        System.out.println("breadWishBoard = " + breadWishBoardDTO);
         return breadWishBoardDTO;
 
     }

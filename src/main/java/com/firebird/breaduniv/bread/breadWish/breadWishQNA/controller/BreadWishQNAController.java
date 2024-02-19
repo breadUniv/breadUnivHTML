@@ -1,6 +1,5 @@
 package com.firebird.breaduniv.bread.breadWish.breadWishQNA.controller;
 
-import com.firebird.breaduniv.bread.breadMypage.model.service.BreadMypageService;
 import com.firebird.breaduniv.bread.breadWish.breadWishQNA.model.dto.BreadWishBoardDTO;
 import com.firebird.breaduniv.bread.breadWish.breadWishQNA.model.service.BreadWishQNAService;
 import org.springframework.stereotype.Controller;
@@ -18,7 +17,7 @@ public class BreadWishQNAController {
     }
 
     /***
-     * 불편/건의사항
+     * QNA
      * @param model 데이터
      * @return
      */
@@ -26,12 +25,11 @@ public class BreadWishQNAController {
     public String breadWishQNA(Model model) {
 
 
-        int boardCode = 1;
+        int boardCode = 2;
 
         BreadWishBoardDTO breadWishBoardDTO = breadWishQNAService.selectBreadBoardInfo(boardCode);
-        System.out.println("breadWishBoardDTO = " + breadWishBoardDTO);
-
-
+        System.out.println("breadWishBoardDTO ================ " + breadWishBoardDTO);
+        model.addAttribute("breadWishBoard", breadWishBoardDTO);
 
 
         model.addAttribute("textColor", "#456E2A");

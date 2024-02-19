@@ -91,78 +91,51 @@
 
                 <div class="boardContainer">
                     <div class="boarderTitle">
-                        <input type="checkbox" id="boarderTitleCheckbox">
-                        <span>글번호</span>
-                        <span class="title">제목</span>
-                        <span>작성자</span>
-                        <span>처리상태</span>
-                        <span>조회수</span>
-                        <span>작성일</span>
+                        <span><li><input type="checkbox" id="boarderTitleCheckbox" style="width: 15px"></li></span>
+                        <span><li>글번호</li></span>
+                        <span class="title"><li>제목</li></span>
+                        <span><li>작성자</li></span>
+                        <span><li>처리상태</li></span>
+                        <span><li>조회수</li></span>
+                        <span><li>작성일</li></span>
                     </div>
-                        <br>
-                        <hr>
-                        <br>    
+                        <br><hr><br>
                     <div class="board">
-                        <input type="checkbox" class="boardCheckbox">
-                        <span>1</span>
-                        <span class="title">[학교생활] 버터동 언덕에 버터발려있어요</span>
-                        <span>하경진</span>
-                        <span>답변완료</span>
-                        <span>2213</span>
-                        <span>2024-01-25</span>
-                    </div>
+                        <span><li><input type="checkbox" class="boardCheckbox" style="width: 15px"></li></span>
+                        <span><li>1</li></span>
+                        <span class="title"><li th:text="${breadWishBoard.boardTitle}"></li></span>
+                        <span><li th:text="${breadWishBoard.userName}"></li></span>
+                        <span><li>답변완료</li></span>
+                        <span><li th:text="${breadWishBoard.boardViewCount}"></li></span>
+                        <Span><li th:text="${breadWishBoard.boardPostDate}"></li></Span>
 
-                    <br><hr><br>
+<!--                    <div class="board">-->
+<!--                        <input type="checkbox" class="boardCheckbox">-->
+<!--                        <span>2</span>-->
+<!--                        <span class="title">[학교생활] 해외로 뻗어나가는 빵 쪼아먹기 기술 강의</span>-->
+<!--                        <span>김민하</span>-->
+<!--                        <span>미답변</span>-->
+<!--                        <span>2321</span>-->
+<!--                        <span>2024-01-30</span>-->
+<!--                    </div>-->
 
-                    <div class="board">
-                        <input type="checkbox" class="boardCheckbox">
-                        <span>2</span>
-                        <span class="title">[학교생활] 해외로 뻗어나가는 빵 쪼아먹기 기술 강의</span>
-                        <span>김민하</span>
-                        <span>미답변</span>
-                        <span>2321</span>
-                        <span>2024-01-30</span>
-                    </div>
+<!--                    <br><hr><br>-->
 
-                    <br><hr><br>
-                    
-                    <div class="board">
-                        <input type="checkbox" class="boardCheckbox">
-                        <span>3</span>
-                        <span class="title">[기숙사] 기숙사에 쿠키가루가 너무 많이 떨어져있어요</span>
-                        <span>김민하</span>
-                        <span>답변완료</span>
-                        <span>2390</span>
-                        <span>2024-01-30</span>
-                    </div>
+<!--                    <div class="board">-->
+<!--                        <input type="checkbox" class="boardCheckbox">-->
+<!--                        <span>3</span>-->
+<!--                        <span class="title">[기숙사] 기숙사에 쿠키가루가 너무 많이 떨어져있어요</span>-->
+<!--                        <span>김민하</span>-->
+<!--                        <span>답변완료</span>-->
+<!--                        <span>2390</span>-->
+<!--                        <span>2024-01-30</span>-->
+<!--                    </div>-->
 
-                    <br><hr><br>
-                    
-                    <div class="board">
-                        <input type="checkbox" class="boardCheckbox">
-                        <span>4</span>
-                        <span class="title">[등록금] 등록금 쿠키로 내도 되나요?</span>
-                        <span>김민하</span>
-                        <span>답변완료</span>
-                        <span>2390</span>
-                        <span>2024-01-30</span>
-                    </div>
-
-                    <br><hr><br>
-                    
-                    <div class="board">
-                        <input type="checkbox" class="boardCheckbox">
-                        <span>5</span>
-                        <span class="title">[기타] 빵에 버터 많이넣어주세요</span>
-                        <span>하경진</span>
-                        <span>미답변</span>
-                        <span>2390</span>
-                        <span>2024-01-30</span>
-                    </div>
+<!--                    <br><hr><br>-->
 
                 </div> <!-- boardContainer -->
 
-                <br><br><br><br><br><br>
+                    <br><hr><br><br><br><br><br><br>
 
                 <div class="pagination">
                     <button class="buttonArrow"><<</button>&nbsp;

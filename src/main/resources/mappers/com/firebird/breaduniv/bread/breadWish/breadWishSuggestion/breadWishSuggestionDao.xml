@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.firebird.breaduniv.bread.breadWish.breadWishQNA.model.dao.BreadWishQNADao">
+<mapper namespace="com.firebird.breaduniv.bread.breadWish.breadWishSuggestion.model.dao.BreadWishSuggestionDao">
 
-    <resultMap id="breadWishBoardResultMap" type="com.firebird.breaduniv.bread.breadWish.breadWishQNA.model.dto.BreadWishBoardDTO">
+    <resultMap id="breadWishBoardResultMap" type="com.firebird.breaduniv.bread.breadWish.breadWishSuggestion.model.dto.BreadWishBoard1DTO">
 
         <id property="boardCode" column="board_code"/>
         <result property="boardCategoryCode" column="boardCategory_code"/>
@@ -21,24 +21,24 @@
     -->
     <select id="selectBreadBoardInfo" resultMap="breadWishBoardResultMap">
         select
-            b.board_code,
-            b.boardCategory_code,
-            b.user_code,
-            b.board_title,
-            b.board_contents,
-            b.board_postDate,
-            b.board_viewCount,
-            b.board_deleteStatus,
-            u.user_code,
-            u.user_name,
-            c.boardCategory_code
+        b.board_code,
+        b.boardCategory_code,
+        b.user_code,
+        b.board_title,
+        b.board_contents,
+        b.board_postDate,
+        b.board_viewCount,
+        b.board_deleteStatus,
+        u.user_code,
+        u.user_name,
+        c.boardCategory_code
         from
-            board b
+        board b
         INNER JOIN
-            user u ON b.user_code = u.user_code
+        user u ON b.user_code = u.user_code
         LEFT JOIN
-            board_category c ON b.boardCategory_code = c.boardCategory_code
+        board_category c ON b.boardCategory_code = c.boardCategory_code
         where
-            b.board_code=#{boardCode}
+        b.board_code=#{boardCode}
     </select>
 </mapper>
