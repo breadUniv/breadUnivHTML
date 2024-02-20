@@ -1,4 +1,4 @@
-package com.firebird.breaduniv.bread.breadMypage.model.dto;
+package com.firebird.breaduniv.breadProfessor.breadMypagePro.model.dto;
 
 import lombok.*;
 
@@ -6,12 +6,13 @@ import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
 @Getter
+@Setter
 @ToString
-public class BreadUserDTO {
-    // 마이페이지
+public class BreadMypageProDTO {
+
     private int userCode;
+    private String departmentName;
     private String departmentCode;
     private String userName;
     private String userPwd;
@@ -21,10 +22,11 @@ public class BreadUserDTO {
     private String userDetailedAddress;
     private String userPhone;
     private String userPermission;
-    private String studentCode;
-    private int studentGrade;
-    private int academicStatusCode;
-    private int studentAdmission;
-    private String departmentName;
+
+    private int professorCode;
+    private int professorAdmission;
+    private int employmentCode;
+
     private String undergraduateName;
+
 }

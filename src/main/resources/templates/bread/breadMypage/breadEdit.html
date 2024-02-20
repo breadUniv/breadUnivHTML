@@ -73,20 +73,22 @@ xmlns:th="http://www.thymeleaf.org">
                             <li><div th:text="${breadUser.userName}"></div></li>
                             <li><div th:text="${breadUser.undergraduateName}"></div></li>
                             <li><div th:text="${breadUser.departmentName}"></div></li>
-                            <li><div th:text="${breadUser.studentAdmission} + ${breadUser.departmentCode} + ${breadUser.studentCode}"></div></li>
+                            <li>
+                                <div th:text="${breadUser.studentAdmission + '' + breadUser.departmentCode + '' + breadUser.studentCode}"></div>
+                            </li>
                             <li><div th:text="${breadUser.userPwd}"></div></li>
-                            <li><div th:text="${breadUser.userPhone}"></div><button>수정</button></li>
-                            <li><div th:text="${breadUser.userEmail}"></div><button>인증번호받기</button></li>
+                            <li><div th:text="${breadUser.userPhone}"></div></li>
+                            <li><div th:text="${breadUser.userEmail}"></div></li>
                             <li><div th:text="${breadUser.userAddress}"></div></li>
-                            <li><div th:text="${breadUser.userDetailedAddress}"></div><button>수정</button></li>
+                            <li><div th:text="${breadUser.userDetailedAddress}"></div></li>
                         </div>
                   </div> <!-- listContainer -->
                   
                 <br><br><br><br><br><br><br><br>
 
-                <div class="saveButton">
-                    <button>저장</button>
-                </div>
+                    <div class="saveButton">
+                        <button onclick="location.href='/breadEditUpdate'">수정</button>
+                    </div>
 
                 </div> <!-- section01Container -->
 

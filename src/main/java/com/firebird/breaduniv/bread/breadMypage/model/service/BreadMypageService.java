@@ -1,6 +1,8 @@
 package com.firebird.breaduniv.bread.breadMypage.model.service;
 
 import com.firebird.breaduniv.bread.breadMypage.model.dao.BreadMypageDao;
+import com.firebird.breaduniv.bread.breadMypage.model.dto.BreadCourseRegistrationDTO;
+import com.firebird.breaduniv.bread.breadMypage.model.dto.BreadEnrollmentDTO;
 import com.firebird.breaduniv.bread.breadMypage.model.dto.BreadUserDTO;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +21,21 @@ public class BreadMypageService {
      * @return 사용자 전체 데이터
      */
     public BreadUserDTO selectBreadUserInfo(int userCode) {
-
         BreadUserDTO breadUserDTO = breadMypageDao.selectBreadUserInfo(userCode);
-
-        System.out.println("[BreadMypageService] selectBreadUserInfo result ==== " + breadUserDTO);
-
+        System.out.println("[BreadMypageService] selectBreadUserInfo result =====> " + breadUserDTO);
         return breadUserDTO;
     }
+
+    public BreadEnrollmentDTO selectBreadCourseInfo(int courseCode) {
+        BreadEnrollmentDTO breadEnrollmentDTO = breadMypageDao.selectBreadCourseInfo(courseCode);
+        System.out.println("[BreadMypageService] selectBreadCourseInfo result =====> " + breadEnrollmentDTO);
+        return breadEnrollmentDTO;
+    }
+
+    public BreadCourseRegistrationDTO selectBreadCourseRegistrationInfo(int courseRegistrationCode) {
+        BreadCourseRegistrationDTO breadCourseRegistrationDTO = breadMypageDao.selectBreadCourseRegistrationInfo(courseRegistrationCode);
+        System.out.println("[BreadMypageService] selectBreadCourseInfo result =====> " + breadCourseRegistrationDTO);
+        return breadCourseRegistrationDTO;
+    }
+
 }

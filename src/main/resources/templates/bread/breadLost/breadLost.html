@@ -72,7 +72,7 @@ xmlns:th="http://www.thymeleaf.org">
                 <div class="boardContainer">
                     <div class="boarderTitle">
                         <input type="checkbox" id="boarderTitleCheckbox">
-                        <span>글번호</span>
+                        <span th:text="${breadLost.boardCode}">글번호</span>
                         <span class="title">제목</span>
                         <span>작성자</span>
                         <span>조회수</span>

@@ -24,6 +24,10 @@ article {
     justify-content: center;
 }
 
+.section01Container {
+    width: 1200px;
+}
+
 .titleText p {
     font-size: 30px;
     font-weight: bolder;
@@ -81,7 +85,7 @@ article {
 .listContainer {
     display: flex;
     justify-content: space-between;
-    width: 650px;
+    width: 450px;
 }
 
 .nameList {
@@ -100,14 +104,29 @@ article {
     text-align: left;
 }
 
-.inputList input {
+/*.inputList input {*/
+/*    width: 200px;*/
+/*    height: 30px;*/
+/*    margin-top: 30px;*/
+/*    margin-right: 10px;*/
+/*    border-radius: 5px;*/
+/*    border: 0.5px solid #b9b9b9;*/
+/*    outline: none;*/
+/*}*/
+
+.inputList div {
     width: 200px;
     height: 30px;
     margin-top: 30px;
     margin-right: 10px;
-    border-radius: 5px;
-    border: 0.5px solid #b9b9b9;
     outline: none;
+    display: flex;
+    align-items: center;
+}
+
+.inputList li {
+    display: flex;
+    justify-content: space-between;
 }
 
 .inputList button {
@@ -120,6 +139,7 @@ article {
     font-size: 12px;
     font-weight: medium;
     cursor: pointer;
+    margin-top: 30px;
 }
 
 .inputList button:hover {

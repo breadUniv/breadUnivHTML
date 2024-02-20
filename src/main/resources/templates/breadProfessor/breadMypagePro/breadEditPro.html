@@ -60,7 +60,7 @@ xmlns:th="http://www.thymeleaf.org">
                             <li>이름</li>
                             <li>학부</li>
                             <li>학과</li>
-                            <li>학번</li>
+                            <li>교번</li>
                             <li>비밀번호</li>
                             <li>핸드폰번호</li>
                             <li>이메일</li>
@@ -68,23 +68,25 @@ xmlns:th="http://www.thymeleaf.org">
                         </div>
 
                         <div class="inputList">
-                            <li><input type="text"></li>
-                            <li><input type="text"></li>
-                            <li><input type="text"></li>
-                            <li><input type="text" id="number"></li>
-                            <li><input type="text" id="password"><input type="text" id="passwordCheck"></li>
-                            <li><input type="text" id="phoneNumber"><button>수정</button></li>
-                            <li><input type="text" id="email"><input type="text" id="emailCheck"><button>인증번호받기</button></li>
-                            <li><input type="text" id="address"><input type="text" id="secondAddress"></li>
-                            <li><input type="text" id="post"><button>수정</button></li>
+                            <li><div th:text="${breadMypageProDTO.userName}"></div></li>
+                            <li><div th:text="${breadMypageProDTO.undergraduateName}"></div></li>
+                            <li><div th:text="${breadMypageProDTO.departmentName}"></div></li>
+                            <li>
+                                <div th:text="${breadMypageProDTO.professorAdmission + '' + breadMypageProDTO.departmentCode + '' + breadMypageProDTO.professorCode}"></div>
+                            </li>
+                            <li><div th:text="${breadMypageProDTO.userPwd}"></div></li>
+                            <li><div th:text="${breadMypageProDTO.userPhone}"></div></li>
+                            <li><div th:text="${breadMypageProDTO.userEmail}"></div></li>
+                            <li><div th:text="${breadMypageProDTO.userAddress}"></div></li>
+                            <li><div th:text="${breadMypageProDTO.userDetailedAddress}"></div></li>
                         </div>
                   </div> <!-- listContainer -->
                   
                 <br><br><br><br><br><br><br><br>
 
-                <div class="saveButton">
-                    <button>저장</button>
-                </div>
+                    <div class="saveButton">
+                        <button onclick="location.href='/breadEditUpdate'">수정</button>
+                    </div>
 
                 </div> <!-- section01Container -->
 
