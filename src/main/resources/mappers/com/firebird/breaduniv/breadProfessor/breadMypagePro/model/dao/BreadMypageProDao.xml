@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.firebird.breaduniv.breadProfessor.breadMypagePro.model.dao.BreadMypageProDao">
+
+    <resultMap id="breadMypageProResultMap" type="com.firebird.breaduniv.breadProfessor.breadMypagePro.model.dto.BreadMypageProDTO">
+        <result property="departmentCode" column="department_code"/>
+        <result property="userName" column="user_name"/>
+        <result property="userPwd" column="user_pwd"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="userCreateDate" column="user_createDate"/>
+        <result property="userAddress" column="user_address"/>
+        <result property="userDetailedAddress" column="user_detailedAddress"/>
+        <result property="userPhone" column="user_phone"/>
+        <result property="userPermission" column="user_permission"/>
+        <result property="professorCode" column="professor_code"/>
+        <result property="professorAdmission" column="professor_admission"/>
+        <result property="employmentCode" column="employment_code"/>
+        <result property="departmentName" column="department_name"/>
+        <result property="undergraduateName" column="undergraduate_name"/>
+
+    </resultMap>
+
+    <select id="selectBreadMypageProInfo" resultMap="breadMypageProResultMap">
+        SELECT
+                u.user_code,
+                LPAD(u.department_code, '2', '0') AS department_code,
+                u.user_name,
+                u.user_pwd,
+                u.user_email,
+                u.user_address,
+                u.user_detailedAddress,
+                u.user_phone,
+                u.user_permission,
+                LPAD(p.professor_code, '3', '50') AS professor_code,
+                p.professor_admission,
+                p.employment_code,
+                d.department_name,
+                g.undergraduate_name
+        FROM
+                user u
+        INNER JOIN
+                professor p ON u.user_code = p.user_code
+        LEFT JOIN
+                department d ON u.department_code = d.department_code
+        LEFT JOIN
+                undergraduate g ON d.undergraduate_code = g.undergraduate_code
+        WHERE
+                u.user_code=#{userCode}
+
+    </select>
+</mapper>

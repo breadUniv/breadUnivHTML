@@ -97,14 +97,15 @@ xmlns:th="http://www.thymeleaf.org">
                         <hr>
                         <br>    
                         <div class="board">
-                            <span>240213</span>
-                            <span>김민하</span>
-                            <span>뉴미디어광고기초</span>
-                            <span>조형동/디자인관/101호</span>
-                            <span>월 10:00~12:50</span>
-                            <span>전공필수</span>
-                            <span>30</span>
-                            <span>25</span>
+                            <span th:text="${breadEnrollment.courseCode}"></span>
+                            <span th:text="${breadEnrollment.userName}"></span>
+                            <span th:text="${breadEnrollment.courseName}"></span>
+                            <span th:text="${breadEnrollment.classRoomName}"></span>
+                            <span th:text="${breadEnrollment.courseScheduleStartTime + '~' + breadEnrollment.courseScheduleEndTime}"></span>
+                            <span th:text="${breadEnrollment.courseCompletionType}"></span>
+                            <span th:text="${breadEnrollment.courseCapacity}"></span>
+                            <!-- 신청인원 : 학생이 신청하면 count 되어야 함 -->
+                            <span th:text="${breadEnrollment.courseCapacity}"></span>
                             <button>조회</button>
                         </div>
 
