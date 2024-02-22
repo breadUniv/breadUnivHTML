@@ -11,4 +11,6 @@ public interface BreadMypageDao {
     BreadEnrollmentDTO selectBreadCourseInfo(int courseCode);
 
     BreadCourseRegistrationDTO selectBreadCourseRegistrationInfo(int courseRegistrationCode);
+
+    int updateBread(BreadUserDTO breadUser);
 }

@@ -5,11 +5,14 @@ import com.firebird.breaduniv.bread.breadMypage.model.dto.BreadCourseRegistratio
 import com.firebird.breaduniv.bread.breadMypage.model.dto.BreadEnrollmentDTO;
 import com.firebird.breaduniv.bread.breadMypage.model.dto.BreadUserDTO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class BreadMypageService {
 
     private final BreadMypageDao breadMypageDao;
+
 
     public BreadMypageService(BreadMypageDao breadMypageDao) {
         this.breadMypageDao = breadMypageDao;
@@ -37,5 +40,15 @@ public class BreadMypageService {
         System.out.println("[BreadMypageService] selectBreadCourseInfo result =====> " + breadCourseRegistrationDTO);
         return breadCourseRegistrationDTO;
     }
+
+    @Transactional
+    public int updateBread(BreadUserDTO breadUser) {
+        int result = 0;
+        result = breadMypageDao.updateBread(breadUser);
+        System.out.println("result = " + result);
+        return result;
+    }
+
+//
 
 }

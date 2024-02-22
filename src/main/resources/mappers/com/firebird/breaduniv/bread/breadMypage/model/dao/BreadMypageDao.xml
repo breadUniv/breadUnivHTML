@@ -122,4 +122,15 @@
         WHERE
                 r.courseRegistration_code=#{courseRegistrationCode}
     </select>
+
+    <update id="updateBread">
+        UPDATE
+                user
+        SET
+                user_pwd = #{userPwd},
+                user_address = #{userAddress},
+                user_email = #{userEmail}
+        WHERE
+                user_code=3
+    </update>
 </mapper>
