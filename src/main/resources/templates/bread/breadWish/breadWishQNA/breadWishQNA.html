@@ -101,7 +101,7 @@
 
                     <br><hr><br>
 
-                    <div class="board">
+                    <div class="board" th:each="board : ${ boardList }">
                         <Span><li><input type="checkbox" class="boardCheckbox" style="width: 15px"></li></Span>
                         <Span><li>1</li></Span>
                         <Span class="title"><li th:text="${breadWishBoard.boardTitle}"></li></Span>
@@ -125,27 +125,6 @@
 
 <!--                    <br><hr><br>-->
 
-<!--                    <div class="board">-->
-<!--                        <input type="checkbox" class="boardCheckbox">-->
-<!--                        <span>4</span>-->
-<!--                        <span class="title">[등록금] 등록금 쿠키로 내도 되나요?</span>-->
-<!--                        <span>김민하</span>-->
-<!--                        <span>답변완료</span>-->
-<!--                        <span>2390</span>-->
-<!--                        <span>2024-01-30</span>-->
-<!--                    </div>-->
-
-<!--                    <br><hr><br>-->
-
-<!--                    <div class="board">-->
-<!--                        <input type="checkbox" class="boardCheckbox">-->
-<!--                        <span>5</span>-->
-<!--                        <span class="title">[기타] 빵에 버터 많이넣어주세요</span>-->
-<!--                        <span>하경진</span>-->
-<!--                        <span>미답변</span>-->
-<!--                        <span>2390</span>-->
-<!--                        <span>2024-01-30</span>-->
-<!--                    </div>-->
 
                 </div> <!-- boardContainer -->
 
