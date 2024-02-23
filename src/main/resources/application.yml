@@ -24,16 +24,17 @@ spring:
     resources:
       static-locations: C:/thymeleaf-springboot/
 
-image:
-  image-dir: img
+# MAC용 url
+img:
+  macurl: /Users/theakim/Desktop/dev/04_Project/bread/breadImages/
 
 mybatis:
 #  # mapper.xml location Setting
   mapper-locations: mappers/**/*.xml
 #  # alias Setting
 #  type-aliases-package: com.fireBird.breadUniv
-#  configuration:
-#    map-underscore-to-camel-case: true
+  configuration:
+    map-underscore-to-camel-case: true
 
 logging:
   level:

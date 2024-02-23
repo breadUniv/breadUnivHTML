@@ -46,13 +46,14 @@ xmlns:th="http://www.thymeleaf.org">
                     </div> <!-- titleMenu -->
 
                     <br><br><br><br><br>
-
+<!--                <form id="frm" action="/breadEditFileUpdate" method="POST" enctype="multipart/form-data">-->
                     <div class="profileButton">
-                        <img th:src="@{/images/profile/경진새.jpeg}" alt="profileImage" id="profileImage">
-                        <input type="file" id="imageUploadInput" style="display: none;">
-                        <button id="editProfileButton">프로필수정</button>
+                        <img th:src="@{/images/profile/none.png}" alt="profileImage" id="profileImage">
+                        <input type="file" id="imageUploadInput" name="profileImage" style="display: none;">
+                        <button type="submit" id="editProfileButton">프로필수정</button>
                         <button id="deleteProfileButton">프로필삭제</button>
                     </div>
+<!--                </form>-->
 
                     <br><br><br>
 
@@ -68,7 +69,7 @@ xmlns:th="http://www.thymeleaf.org">
                             <li>주소</li>
                         </div>
 
-
+                        <p th:text="${breadUser.breadFile.profileUploadFileName}"></p>
                         <div class="inputList">
                             <li><div th:text="${breadUser.userName}"></div></li>
                             <li><div th:text="${breadUser.undergraduateName}"></div></li>
@@ -83,7 +84,7 @@ xmlns:th="http://www.thymeleaf.org">
                             <li><div th:text="${breadUser.userDetailedAddress}"></div></li>
                         </div>
                   </div> <!-- listContainer -->
-                  
+
                 <br><br><br><br><br><br><br><br>
 
                     <div class="saveButton">
