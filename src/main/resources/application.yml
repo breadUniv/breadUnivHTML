@@ -26,7 +26,7 @@ spring:
 
 # MAC용 url
 img:
-  macurl: /Users/kimminha/Desktop/JAVA/dev/04_Project/bread/breadImages/
+  macurl: /Users/theakim/Desktop/dev/04_Project/bread/breadImages/
 
 mybatis:
 #  # mapper.xml location Setting

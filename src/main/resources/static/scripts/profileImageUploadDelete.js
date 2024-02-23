@@ -10,7 +10,7 @@
                 if (selectedFile) {
                     var formData = new FormData(); //폼객체
                     formData.append("file",selectedFile); //name, 값
-
+                    // formData.append("preFileName", "[[${breadUser.breadFile.profileUploadFileName}]]");
 
                     const imageUrl = URL.createObjectURL(selectedFile);
                     profileImage.src = imageUrl;
@@ -22,12 +22,16 @@
                         processData:false,
                         success: function(data) {
                             // 성공했을 때
-                            alert('파일변경성공');
+                            if(data == 'success') {
+                                alert('파일변경 성공');
+                            } else {
+                                alert('파일변경 실패');
+                            }
                         },
-                        error: function(error) {
+                        error: function(error) {1
                             console.log(error);
-
-                        }                    })
+                        }
+                    })
                 }
             });
 
@@ -35,7 +39,6 @@
                 profileImage.src = "/images/profile/none.png";
             });
         });
-
 // document.getElementById("editProfileButton").addEventListener('click',function (){
 //     const a = document.getElementById('profileImage');
 //     console.log(a.src);

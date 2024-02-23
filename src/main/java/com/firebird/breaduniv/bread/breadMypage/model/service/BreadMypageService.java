@@ -3,10 +3,11 @@ package com.firebird.breaduniv.bread.breadMypage.model.service;
 import com.firebird.breaduniv.bread.breadMypage.model.dao.BreadMypageDao;
 import com.firebird.breaduniv.bread.breadMypage.model.dto.BreadCourseRegistrationDTO;
 import com.firebird.breaduniv.bread.breadMypage.model.dto.BreadEnrollmentDTO;
+import com.firebird.breaduniv.bread.breadMypage.model.dto.BreadFileDTO;
 import com.firebird.breaduniv.bread.breadMypage.model.dto.BreadUserDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class BreadMypageService {
@@ -49,6 +50,23 @@ public class BreadMypageService {
         return result;
     }
 
-//
+    @Transactional
+    public int breadEditFileUpdate(BreadFileDTO breadFileDTO) {
+        int result = breadMypageDao.breadEditFileUpdate(breadFileDTO);
+        System.out.println("result = " + result);
+        return result;
+    }
+
+    public String getOriginFileNameByUserCode(int userCode) {
+        // userCode에 해당하는 사용자 조회
+        BreadFileDTO userFile = breadMypageDao.selectBreadUserFileInfo(userCode);
+        if (userFile != null) {
+            // 사용자가 존재하면 프로필의 originFileName 반환
+            return userFile.getProfileUploadFileName();
+        } else {
+            // 사용자가 존재하지 않으면 예외 처리 또는 기본값 반환
+            return null;
+        }
+    }
 
 }

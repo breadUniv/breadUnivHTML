@@ -8,15 +8,10 @@ import lombok.*;
 @Setter
 @ToString
 public class BreadFileDTO {
-    private int fileCode;
-    private int boardCode;
-    private String fileOriginalFileName;
-    private String fileUploadName;
-    private String fileType;
-    private boolean fileDeleteStatus;
+    private int profileCode;
+    private int userCode;
+    private String profileOriginFileName;
+    private String profileUploadFileName;
+    private String profileDeleteStatus;
 
-//    public BreadFileDTO(String fileOriginalFileName, String fileUploadName) {
-//        this.fileOriginalFileName = fileOriginalFileName;
-//        this.fileUploadName = fileUploadName;
-//    }
 }
