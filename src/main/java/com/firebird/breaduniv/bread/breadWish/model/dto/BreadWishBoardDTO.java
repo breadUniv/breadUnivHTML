@@ -1,13 +1,15 @@
 package com.firebird.breaduniv.bread.breadWish.model.dto;
 
-
 import lombok.*;
 
 import java.util.Date;
 
+
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter@Getter@ToString
+@Setter
+@Getter
+@ToString
 public class BreadWishBoardDTO {
 
     private int boardCode;

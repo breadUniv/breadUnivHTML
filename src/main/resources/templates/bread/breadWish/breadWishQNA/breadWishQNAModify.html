@@ -34,16 +34,17 @@
                     </div>
 
                     <br><br><br><br><br>
-
+                <form action= "boardIsert" method="post">
                         <div class="manageButton">
                             <div class="adminButton">
-                                <button>등록</button>
+                                <button TYPE="submit">등록</button>
                             </div>
                         </div>
 
                     <br><br><br><br><br>
 
                     <div class="boardContainer">
+                        <form th:action="@{/bread/breadWish/breadWishQNA/breadWishQNAModify}" method="post">
                         <div class="boarderTitle">
                             <label for="title">제목</label>
                             <input type="text" id="title" name="title" placeholder="제목을 입력해주세요">
@@ -54,13 +55,15 @@
                         <hr>
                         <br><br><br>
                         <div class="board">
-                            <label for="boardText">내용</label>
-                            <textarea name="boardText" id="boardText" placeholder="내용 입력" cols="30" rows="10">
+                            <label for="contents">내용</label>
+                            <textarea name="contents" id="contents" placeholder="내용 입력" cols="30" rows="10">
 
                             </textarea>
                         </div>
-                    
+                        </form>
                     </div> <!-- boardContainer -->
+
+                </form>
                     
                     <br><br><br>
 

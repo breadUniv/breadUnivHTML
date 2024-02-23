@@ -48,18 +48,15 @@
                     <div class="boardContainer">
                         <div class="boarderTitle">
                             <span>제목</span>
-                            <span class="title">[학교생활] 세계로 뻗어나가는 빵 쪼아먹기 강의</span>
-                            <span>2024-01-30</span>
+                            <span class="title" th:text="${breadWishBoard.boardTitle}"></span>
+                            <span th:date="${breadWishBoard.boardPostDate}">2024-02-23</span>
                         </div>
                         <br><br>
                         <hr>
                         <br><br><br>
                         <div class="board">
                             <span>내용</span>
-                            <p>
-                                글로벌한 빵 쪼아먹기 기술 강의 2024년 01월 31일 설탕동에서 14시 30분 강의한다는데<br>
-                                비둘기 친구랑 같이 들어도 되나요?
-                            </p>
+                            <p th:text="${breadWishBoard.boardContents}"></p>
                         </div>
                         
                     </div> <!-- boardContainer -->
@@ -74,7 +71,7 @@
                         <div class="comment01">
                             <div class="commentText01">
                                 <span>답변</span>
-                                <p>비둘기 털 날리지 않나요? 안 됩니다.</p>
+                                <p th:text="${breadWishComments.commentsContents}">비둘기 털 날리지 않나요? 안 됩니다.</p>
                             </div>
                         </div>
                     </div>

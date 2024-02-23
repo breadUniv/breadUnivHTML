@@ -27,6 +27,32 @@
         <result property="boardViewCount" column="board_viewCount"/>
         <result property="boardDeleteStatus" column="board_deleteStatus"/>
     </resultMap>
+
+    <resultMap id="QNAViewResultMap" type="com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishBoardDTO">
+
+        <id property="boardCode" column="board_code"/>
+        <result property="boardCategoryCode" column="boardCategory_code"/>
+        <result property="userCode" column="user_code"/>
+        <result property="boardTitle" column="board_title"/>
+        <result property="userName" column="user_Name"/>
+        <result property="boardContents" column="board_contents"/>
+        <result property="boardViewCount" column="board_viewCount"/>
+        <result property="boardDeleteStatus" column="board_deleteStatus"/>
+    </resultMap>
+
+
+    <resultMap id="CommentsResultMap" type="com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishCommentsDTO">
+        <id property="commentsCode" column="comments_code"/>
+        <result property="boardCode" column="board_code"/>
+        <result property="userName" column="user_Name"/>
+        <result property="commentsContents" column="comments_contents"/>
+        <result property="boardCategoryCode" column="boardCategory_code"/>
+        <result property="commentsDate" column="comments_date"/>
+        <association property="board" javaType="com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishBoardDTO">
+        <id property="boardCode" column="board_code"/>
+        </association>
+
+    </resultMap>
     <!--
         resultType : 기본타입의 값을 리턴받을 경우에 사용 (int, string....)
         resultMap : 여러개의 타입의 묶음을 받을 때 (DTO)
@@ -52,7 +78,9 @@
         board_category c ON b.boardCategory_code = c.boardCategory_code
         where
         b.board_code=#{boardCode}
+
     </select>
+
 
     <select id="selectSuggestionBoard" resultMap="SuggestionBoardResultMap">
         select
@@ -75,6 +103,47 @@
         board_category c ON b.boardCategory_code = c.boardCategory_code
         where
         b.board_code=#{boardCode}
+
+    </select>
+
+    <select id="selectQNAView" resultMap="QNAViewResultMap">
+        select
+        b.board_code,
+        b.boardCategory_code,
+        b.user_code,
+        b.board_title,
+        b.board_contents,
+        b.board_postDate,
+        b.board_viewCount,
+        b.board_deleteStatus,
+        u.user_code,
+        u.user_name,
+        c.boardCategory_code
+        from
+        board b
+        INNER JOIN
+        user u ON b.user_code = u.user_code
+        LEFT JOIN
+        board_category c ON b.boardCategory_code = c.boardCategory_code
+        where
+        b.board_code=#{boardCode}
+    </select>
+
+
+    <select id="Comments" resultMap="CommentsResultMap">
+        SELECT
+            c.comments_code
+            c.board_Code
+            c.boardCategory_code
+            b.board_code
+            c.comments_contents
+            u.user_name
+        FROM
+            bread_wish_comments c
+        INNER JOIN
+            bread_wish_board b ON c.board_Code = b.board_code
+        INNER JOIN
+            user u ON b.user_code = u.user_code
     </select>
 
 

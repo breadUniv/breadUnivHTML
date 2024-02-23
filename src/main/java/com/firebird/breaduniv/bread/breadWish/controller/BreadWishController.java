@@ -4,9 +4,12 @@ import com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishBoardDTO;
 import com.firebird.breaduniv.bread.breadWish.model.service.BreadWishService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+//@RequestMapping("/boardWish")
 public class BreadWishController {
 
     private final BreadWishService breadWishService;
@@ -50,7 +53,16 @@ public class BreadWishController {
     }
 
     @RequestMapping("/breadWishQNAPage")
-    public String breadWishPage() {
+    public String breadWishQNAPage(Model model) {
+//        log.info("");
+//        log.info("[BreadWishController] ============================");
+
+       int boardCode = 2;
+
+        BreadWishBoardDTO breadWishBoardDTO = breadWishService.selectQNAView(boardCode);
+//        log.info("breadWishBoardDTO ------------------------- " + breadWishBoardDTO);
+
+        model.addAttribute("breadWishBoard", breadWishBoardDTO);
         return "/bread/breadWish/breadWishQNA/breadWishQNAPage";
     }
 
@@ -88,7 +100,7 @@ public class BreadWishController {
     }
 
     @RequestMapping("/breadWishSuggestionPage")
-    public String breadWishSuggestionPage() {
+    public String breadWishSuggestionPage(Model model) {
         return "/bread/breadWish/breadWishSuggestion/breadWishSuggestionPage";
     }
 

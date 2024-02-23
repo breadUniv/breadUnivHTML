@@ -101,7 +101,7 @@
 
                     <br><hr><br>
 
-                    <div class="board" th:each="board : ${ boardList }">
+                    <div class="board">
                         <Span><li><input type="checkbox" class="boardCheckbox" style="width: 15px"></li></Span>
                         <Span><li>1</li></Span>
                         <Span class="title"><li th:text="${breadWishBoard.boardTitle}"></li></Span>
@@ -112,18 +112,6 @@
                     </div>
 
                     <br><hr><br>
-
-<!--                    <div class="board">-->
-<!--                        <Span><li><input type="checkbox" class="boardCheckbox" style="width: 15px"></li></Span>-->
-<!--                        <Span><li>2</li></Span>-->
-<!--                        <Span><li th:text="${breadWishBoard.boardTitle}"></li></Span>-->
-<!--                        <Span><li th:text="${breadWishBoard.userName}"></li></Span>-->
-<!--                        <Span><li>미답변</li></Span>-->
-<!--                        <Span><li th:text="${breadWishBoard.boardViewCount}"></li></Span>-->
-<!--                        <Span><li th:date="${breadWishBoard.boardPostDate}"></li></Span>-->
-<!--                    </div>-->
-
-<!--                    <br><hr><br>-->
 
 
                 </div> <!-- boardContainer -->
@@ -148,6 +136,13 @@
 </div> <!-- mainContainer -->
 
 </body>
+<script>
+    $(document).ready(function(){
+    $(".title li").click(function(){
+        window.location.href = "breadWishQNAPage.html";
+    });
+});
+</script>
 
 <div th:replace="common/breadFooter.html"></div>
 
