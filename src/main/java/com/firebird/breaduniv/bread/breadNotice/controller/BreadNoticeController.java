@@ -24,9 +24,12 @@ public class BreadNoticeController {
      */
     @RequestMapping("/breadNotice")
     public String breadNotice(Model model) {
-        int boardCode = 1;
+        int boardCode = 6;
+        // DTO에서 boardCode 6에 해당하는 정보 가져오기
         BreadNoticeDTO breadNoticeDTO = breadNoticeService.selectBreadNoticeInfo(boardCode);
         System.out.println("breadNoticeDTO =========> " + breadNoticeDTO);
+
+        // breadNotice에 위에서 가져온 breadNoticeDTO 넣어줌
         model.addAttribute("breadNotice", breadNoticeDTO);
 
         return "/bread/breadNotice/breadNotice";

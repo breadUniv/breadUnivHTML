@@ -12,7 +12,6 @@ import java.util.List;
 @Getter
 @ToString
 public class BreadUserDTO {
-    // 마이페이지
     private int userCode;
     private String departmentCode;
     private String userName;
