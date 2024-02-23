@@ -21,8 +21,16 @@
         <result property="studentAdmission" column="student_admission"/>
         <result property="departmentName" column="department_name"/>
         <result property="undergraduateName" column="undergraduate_name"/>
+        <association property="breadFile" resultMap="breadFileResultMap"/>
     </resultMap>
-    
+
+    <resultMap id="breadFileResultMap" type="com.firebird.breaduniv.bread.breadMypage.model.dto.BreadFileDTO">
+        <id property="profileCode" column="profile_code"/>
+        <result property="profileOriginFileName" column="profile_originFileName"/>
+        <result property="profileUploadFileName" column="profile_uploadFileName"/>
+        <result property="profileDeleteStatus" column="profile_deleteStatus"/>
+    </resultMap>
+
     <resultMap id="breadEnrollmentResultMap" type="com.firebird.breaduniv.bread.breadMypage.model.dto.BreadEnrollmentDTO">
         <result property="courseCode" column="course_code"/>
         <result property="classRoomName" column="classRoom_name"/>
@@ -63,7 +71,11 @@
                 s.academicStatus_code,
                 s.student_admission,
                 d.department_name,
-                g.undergraduate_name
+                g.undergraduate_name,
+                p.profile_code,
+                p.profile_originFileName,
+                p.profile_uploadFileName,
+                p.profile_deleteStatus
         FROM
                 user u
         INNER JOIN
@@ -72,6 +84,8 @@
                 department d ON u.department_code = d.department_code
         LEFT JOIN
                 undergraduate g ON d.undergraduate_code = g.undergraduate_code
+        LEFT JOIN
+                profile p ON u.user_code = p.user_code
         WHERE
                 u.user_code=#{userCode}
 
@@ -121,5 +135,36 @@
                 user u ON u.user_code = c.user_code
         WHERE
                 r.courseRegistration_code=#{courseRegistrationCode}
+    </select>
+
+    <update id="updateBread">
+        UPDATE
+                user
+        SET
+                user_pwd = #{userPwd},
+                user_address = #{userAddress},
+                user_email = #{userEmail}
+        WHERE
+                user_code=3
+    </update>
+
+    <update id="breadEditFileUpdate">
+        UPDATE
+                profile
+        SET
+                profile_originFileName = #{profileOriginFileName},
+                profile_uploadFileName = #{profileUploadFileName}
+        WHERE
+                user_code = #{userCode}
+    </update>
+
+    <select id="selectBreadUserFileInfo" resultMap="breadFileResultMap">
+        SELECT
+               p.profile_code
+             , p.profile_originFileName
+             , p.profile_uploadFileName
+             , p.profile_deleteStatus
+          FROM profile p
+         WHERE p.user_code = #{userCode}
     </select>
 </mapper>

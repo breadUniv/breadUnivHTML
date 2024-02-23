@@ -1,9 +1,11 @@
 package com.firebird.breaduniv.bread.breadMypage.model.dto;
 
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
-
+import java.util.List;
+@Component
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -27,4 +29,8 @@ public class BreadUserDTO {
     private int studentAdmission;
     private String departmentName;
     private String undergraduateName;
+
+    private BreadFileDTO breadFile;
+    // 리스트로 가져올 때
+//    private List<BreadFileDTO> breadFileDTOList;
 }
