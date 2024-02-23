@@ -49,12 +49,10 @@ public class BreadMypageController {
     @PostMapping("/breadEditFileUpdate")
     @ResponseBody
     public String breadEditFileUpdate(Model model, @RequestParam("file") MultipartFile file
-            , @ModelAttribute BreadFileDTO breadFileDTO, @RequestParam String preFileName
+            , @ModelAttribute BreadFileDTO breadFileDTO
     ) {
         // 사용자가 변경하려는 파일을 전달 받음
         System.out.println("file =====> " + file);
-        System.out.println("preFileName = " + preFileName);
-
         // 여기서 부터는 파일을 업로드 할 경로 지정에 대한 설정을 진행
         String root = "/Users/theakim/Desktop/dev/04_Project/bread";
         String filePath = root + "/breadImages";
@@ -118,6 +116,8 @@ public class BreadMypageController {
             return "failed";
         }
     }
+
+    @PostMapping("/breadEditFileDelete")
 
     @GetMapping("/breadEditUpdate")
     public String breadEditUpdate(Model model) {

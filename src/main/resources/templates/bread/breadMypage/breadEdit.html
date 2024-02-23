@@ -48,7 +48,7 @@ xmlns:th="http://www.thymeleaf.org">
                     <br><br><br><br><br>
 <!--                <form id="frm" action="/breadEditFileUpdate" method="POST" enctype="multipart/form-data">-->
                     <div class="profileButton">
-                        <img th:src="@{/images/profile/none.png}" alt="profileImage" id="profileImage">
+                        <img th:src="@{|/upload/${breadUser.breadFile.profileUploadFileName}|}" alt="profileImage" id="profileImage">
                         <input type="file" id="imageUploadInput" name="profileImage" style="display: none;">
                         <button type="submit" id="editProfileButton">프로필수정</button>
                         <button id="deleteProfileButton">프로필삭제</button>
