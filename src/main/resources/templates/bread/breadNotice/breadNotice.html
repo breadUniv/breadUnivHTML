@@ -88,14 +88,17 @@ xmlns:th="http://www.thymeleaf.org">
                     </div>
                     <br>
                     <hr>
-                    <br>    
-                    <div class="board">
-                        <span th:text="${breadNotice.boardCode}"></span>
-                        <span class="title">[공지사항] 빵 많이먹으면 배부르니까 조심하세요</span>
-                        <span>관리자</span>
-                        <span>2213</span>
-                        <span>2024-01-25</span>
-                    </div>
+                    <br>
+
+                    <tr th:each="board : ${ boardList }">
+                        <div class="board">
+                            <span th:text="${breadNotice.boardCode}"></span>
+                            <span class="title" th:text="${breadNotice.boardTitle}"></span>
+                            <span th:text="${breadNotice.userName}"></span>
+                            <span th:text="${board.boardViewCount}"></span>
+                            <span th:text="${breadNotice.boardPostDate}"></span>
+                        </div>
+                    </tr>
 
                     <br><hr><br>
 

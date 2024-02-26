@@ -6,17 +6,34 @@
 
     <resultMap id="breadNoticeResultMap" type="com.firebird.breaduniv.bread.breadNotice.model.dto.BreadNoticeDTO">
         <id property="boardCode" column="board_code"/>
+        <result property="boardCode" column="board_code"/>
         <result property="boardCategoryCode" column="boardCategory_code"/>
+        <result property="boardTitle" column="board_title"/>
+        <result property="boardContents" column="board_contents"/>
+        <result property="boardPostDate" column="board_postDate"/>
+        <result property="boardViewCount" column="board_viewCount"/>
+        <result property="boardDeleteStatus" column="board_deleteStatus"/>
+        <result property="userName" column="user_name"/>
     </resultMap>
 
 
     <select id="selectBreadNoticeInfo" resultMap="breadNoticeResultMap">
         SELECT
-                board_code,
-                boardCategory_code
+        b.board_code,
+        b.boardCategory_code,
+        b.user_code,
+        b.board_title,
+        b.board_contents,
+        DATE_FORMAT(b.board_postDate, '%Y-%m-%d') AS board_postDate,
+        b.board_viewCount,
+        b.board_deleteStatus,
+        u.user_name
         FROM
-                board
+        board b
+        INNER JOIN
+        user u ON u.user_code = b.user_code
         WHERE
-                board_code=#{boardCode}
+        b.boardCategory_code = #{boardCategoryCode} AND
+        b.board_code = #{boardCode}
     </select>
 </mapper>

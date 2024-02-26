@@ -57,6 +57,13 @@ public class BreadMypageService {
         return result;
     }
 
+    @Transactional
+    public int breadEditFileDelete(BreadFileDTO breadFileDTO) {
+        int result = breadMypageDao.breadEditFileDelete(breadFileDTO);
+        System.out.println("result = " + result);
+        return result;
+    }
+
     public String getOriginFileNameByUserCode(int userCode) {
         // userCode에 해당하는 사용자 조회
         BreadFileDTO userFile = breadMypageDao.selectBreadUserFileInfo(userCode);
@@ -68,5 +75,4 @@ public class BreadMypageService {
             return null;
         }
     }
-
 }

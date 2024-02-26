@@ -48,10 +48,11 @@ xmlns:th="http://www.thymeleaf.org">
                     <br><br><br><br><br>
 <!--                <form id="frm" action="/breadEditFileUpdate" method="POST" enctype="multipart/form-data">-->
                     <div class="profileButton">
+<!--                        <img th:src="@{|/upload/${breadUser.breadFile.profileUploadFileName}|}" alt="profileImage" id="profileImage">-->
                         <img th:src="@{|/upload/${breadUser.breadFile.profileUploadFileName}|}" alt="profileImage" id="profileImage">
                         <input type="file" id="imageUploadInput" name="profileImage" style="display: none;">
                         <button type="submit" id="editProfileButton">프로필수정</button>
-                        <button id="deleteProfileButton">프로필삭제</button>
+                        <button type="button" id="deleteProfileButton">프로필삭제</button>
                     </div>
 <!--                </form>-->
 
@@ -69,7 +70,7 @@ xmlns:th="http://www.thymeleaf.org">
                             <li>주소</li>
                         </div>
 
-                        <p th:text="${breadUser.breadFile.profileUploadFileName}"></p>
+<!--                        <p th:text="${breadUser.breadFile.profileUploadFileName}"></p>-->
                         <div class="inputList">
                             <li><div th:text="${breadUser.userName}"></div></li>
                             <li><div th:text="${breadUser.undergraduateName}"></div></li>

@@ -158,6 +158,16 @@
                 user_code = #{userCode}
     </update>
 
+    <update id="breadEditFileDelete">
+        UPDATE
+                profile
+        SET
+                profile_originFileName = 'none.png',
+                profile_uploadFileName = 'none.png'
+        WHERE
+                user_code = #{userCode}
+    </update>
+
     <select id="selectBreadUserFileInfo" resultMap="breadFileResultMap">
         SELECT
                p.profile_code

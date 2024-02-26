@@ -14,11 +14,10 @@ public class BreadNoticeDTO {
 
     private int boardCode;
     private int boardCategoryCode;
-    private int userCode;
     private String boardTitle;
     private String boardContents;
-    private Date boardPostDate;
+    private String boardPostDate;
     private int boardViewCount;
     private String boardDeleteStatus;
-
+    private String userName;
 }

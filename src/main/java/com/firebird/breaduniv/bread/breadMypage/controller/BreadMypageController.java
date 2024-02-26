@@ -118,6 +118,48 @@ public class BreadMypageController {
     }
 
     @PostMapping("/breadEditFileDelete")
+    @ResponseBody
+    public String breadEditFileDelete (@ModelAttribute BreadFileDTO breadFileDTO) {
+        // 사용자 사진 정보가 저장 된 곳에 none.png로 업데이트만
+
+        System.out.println("breadFileDTO = " + breadFileDTO);
+
+        // 업데이트 경로, 파일이름 설정
+//        String fileUploadPath = "//upload";
+//        String fileName = "none.png";
+//        System.out.println("fileName = " + fileName);
+//        System.out.println("fileUploadPath = " + fileUploadPath);
+
+        // 저장되어있는 파일의 삭제처리를 위한 메소드
+        String root = "/Users/theakim/Desktop/dev/04_Project/bread";
+        String filePath = root + "/breadImages";
+
+        // 등록되어있는 이전 파일을 물리공간에서 삭제하고 none.png로 업데이트 하기위한 조회 메소드
+        String prevFileName = breadMypageService.getOriginFileNameByUserCode(3);
+        System.out.println("prevFileName = " + prevFileName);
+
+//        try {
+//            // transferTo() 메소드를 이용해서 해당 경로에 파일을 업로드한다.
+//            file.transferTo(new File(fileUploadPath + "/" + fileName)); // transferTo()를 통해서 파일을 업로드한다.
+//        } catch (IOException e) {
+//            e.printStackTrace(); // 오류나면 빨간색으로 오류표시
+//        }
+
+        int result = breadMypageService.breadEditFileDelete(breadFileDTO);
+        System.out.println("result = " + result);
+
+        if(result > 0) {
+            // success
+            // 경로 + 원본파일명으로 지울 파일의 경로 찾기
+            File deleteFile = new File(filePath + "/" + prevFileName);
+            boolean isDeleted = deleteFile.delete();
+            System.out.println("이전 파일 삭제 여부 : " + isDeleted);
+            return "success";  // 현재는 비동기처리를 해놓고 있어서 이동할 페이지는 필요하지 않고 결과값에 대한 값만 필요해서 특정 문자열값을 리턴
+            // 비동기 처리를 했을 때는 메소드위에 @ResponseBody를 꼭 붙여준다. 해당 어노테이션을 붙여주지 않으면 viewResolve 객체가 페이지를 forward방식으로 페이지를 이동시킨다.
+        } else {
+            return "failed";
+        }
+    }
 
     @GetMapping("/breadEditUpdate")
     public String breadEditUpdate(Model model) {
