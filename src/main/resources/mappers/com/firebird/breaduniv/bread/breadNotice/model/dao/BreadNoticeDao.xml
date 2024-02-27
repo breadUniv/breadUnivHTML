@@ -4,19 +4,171 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.firebird.breaduniv.bread.breadNotice.model.dao.BreadNoticeDao">
 
-    <resultMap id="breadNoticeResultMap" type="com.firebird.breaduniv.bread.breadNotice.model.dto.BreadNoticeDTO">
+<!--    <resultMap id="breadNoticeResultMap" type="com.firebird.breaduniv.bread.breadNotice.model.dto.BreadNoticeDTO">-->
+<!--        <id property="boardCode" column="board_code"/>-->
+<!--        <result property="boardCode" column="board_code"/>-->
+<!--        <result property="boardCategoryCode" column="boardCategory_code"/>-->
+<!--        <result property="boardTitle" column="board_title"/>-->
+<!--        <result property="boardContents" column="board_contents"/>-->
+<!--        <result property="boardPostDate" column="board_postDate"/>-->
+<!--        <result property="boardViewCount" column="board_viewCount"/>-->
+<!--        <result property="boardDeleteStatus" column="board_deleteStatus"/>-->
+<!--        <result property="categoryName" column="category_name"/>-->
+<!--        <result property="userName" column="user_name"/>-->
+<!--    </resultMap>-->
+
+    <resultMap id="generalBoardResultMap" type="com.firebird.breaduniv.bread.breadNotice.model.dto.BreadNoticeDTO">
         <id property="boardCode" column="board_code"/>
-        <result property="boardCategoryCode" column="boardCategory_code"/>
+        <result property="boardCategory" column="board_category"/>
+        <result property="boardTitle" column="board_title"/>
+        <result property="boardContents" column="board_contents"/>
+        <result property="boardPostDate" column="board_postDate"/>
+        <result property="boardViewCount" column="board_viewCount"/>
+        <result property="boardDeleteStatus" column="board_deleteStatus"/>
+        <association property="user" resultMap="userResultMap"/>
+        <association property="category" resultMap="categoryResultMap"/>
     </resultMap>
 
+    <resultMap id="userResultMap" type="com.firebird.breaduniv.bread.breadMypage.model.dto.BreadUserDTO">
+        <id property="userCode" column="user_code"/>
+        <result property="departmentCode" column="department_code"/>
+        <result property="userName" column="user_name"/>
+        <result property="userPwd" column="user_pwd"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="userCreateDate" column="user_createDate"/>
+        <result property="userAddress" column="user_address"/>
+        <result property="userDetailedAddress" column="user_detailedAddress"/>
+        <result property="userPhone" column="user_phone"/>
+        <result property="userPermission" column="user_permission"/>
+        <result property="studentGrade" column="student_grade"/>
+        <result property="academicStatusCode" column="academicStatus_code"/>
+        <result property="studentAdmission" column="student_admission"/>
+        <result property="departmentName" column="department_name"/>
+        <result property="undergraduateName" column="undergraduate_name"/>
+        <association property="breadFile" resultMap="breadFileResultMap"/>
+    </resultMap>
 
-    <select id="selectBreadNoticeInfo" resultMap="breadNoticeResultMap">
+    <resultMap id="categoryResultMap" type="com.firebird.breaduniv.bread.breadNotice.model.dto.BreadNoticeCategoryDTO">
+        <id property="boardCategoryCode" column="boardCategory_code"/>
+        <result property="breadUpperCategoryCode" column="boardUpperCategory_code"/>
+        <result property="categoryName" column="category_name"/>
+    </resultMap>
+
+    <resultMap id="breadFileResultMap" type="com.firebird.breaduniv.bread.breadMypage.model.dto.BreadFileDTO">
+        <id property="profileCode" column="profile_code"/>
+        <result property="profileOriginFileName" column="profile_originFileName"/>
+        <result property="profileUploadFileName" column="profile_uploadFileName"/>
+        <result property="profileDeleteStatus" column="profile_deleteStatus"/>
+    </resultMap>
+
+    <select id="selectTotalCount" resultType="_int" parameterType="hashmap">
         SELECT
-                board_code,
-                boardCategory_code
-        FROM
-                board
-        WHERE
-                board_code=#{boardCode}
+                COUNT(*)
+        FROM board b
+        <if test="searchCondition == 'category'">
+            JOIN board_category c ON(b.boardCategory_code = c.boardCategory_code)
+        </if>
+        <if test="searchCondition == 'writer'">
+            JOIN user u ON(b.user_code = u.user_code)
+        </if>
+        <where>
+            <if test="searchCondition == 'category'">
+                c.category_name = #{ searchValue }
+            </if>
+            <if test="searchCondition == 'writer'">
+                u.user_name('%', #{ searchValue }, '%')
+            </if>
+            <if test="searchCondition == 'title'">
+                b.board_title('%', #{ searchValue }, '%')
+            </if>
+            <if test="searchCondition == 'content'">
+                b.board_contents('%', #{ searchValue }, '%')
+            </if>
+                AND b.board_deleteStatus = 'N'
+        </where>
     </select>
+
+    <select id="selectBoardList" resultMap="generalBoardResultMap">
+        SELECT
+                A.board_code,
+                A.boardCategory_code,
+                A.user_code,
+                A.board_title,
+                A.board_contents,
+                E.category_name,
+                DATE_FORMAT(A.board_postDate, '%Y-%m-%d') AS board_postDate,
+                A.board_viewCount,
+                A.board_deleteStatus,
+                U.user_name
+        FROM (
+                SELECT
+
+                        B.board_code,
+                        B.boardCategory_code,
+                        B.user_code,
+                        B.board_title,
+                        B.board_contents,
+                        B.board_postDate,
+                        B.board_viewCount,
+                        B.board_deleteStatus
+                FROM board B
+                <if test="searchCondition == 'category'">
+                    JOIN board_category C ON(B.boardCategory_code = C.boardCategory_code)
+                </if>
+                <if test="searchCondition == 'writer'">
+                    JOIN user D ON(B.user_code = D.user_code)
+                </if>
+                <where>
+                    <if test="searchCondition == 'category'">
+                        C.category_name = #{ searchValue }
+                    </if>
+                    <if test="searchCondition == 'writer'">
+                        D.user_name LIKE CONCAT('%', #{ searchValue }, '%')
+                    </if>
+                    <if test="searchCondition == 'title'">
+                        B.board_title LIKE CONCAT('%', #{ searchValue }, '%')
+                    </if>
+                    <if test="searchCondition == 'content'">
+                        B.board_contents LIKE CONCAT('%', #{ searchValue }, '%')
+                    </if>
+
+                </where>
+        ) A
+        JOIN user U ON (A.user_code = U.user_code)
+        JOIN board_category E ON (A.boardCategory_code = E.boardCategory_code) AND E.boardCategory_code = 13
+        ORDER BY A.board_code DESC
+        LIMIT #{ startRow }, 10
+    </select>
+
+
+    <select id="selectBoardDetail" resultMap="generalBoardResultMap">
+        SELECT
+               b.board_code
+             , b.board_title
+             , b.board_contents
+             , b.user_code
+             , b.board_viewCount
+             , b.board_postDate
+             , c.category_name
+             , u.user_code
+          FROM
+                board b
+          JOIN
+                user u ON (u.user_code = b.user_code)
+          JOIN
+                board_category c ON (b.boardCategory_code = c.boardCategory_code)
+         WHERE
+                b.board_deleteStatus = 'N'
+                    AND b.board_code = #{ boardCode }
+    </select>
+
+    <update id="incrementBoardCount">
+        UPDATE
+                board
+        SET
+                board_viewCount = board_viewCount + 1
+        WHERE
+                board_code = #{ boardCode }
+    </update>
+
 </mapper>

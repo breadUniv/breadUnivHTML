@@ -17,6 +17,9 @@ public interface BreadMypageDao {
 
     int breadEditFileUpdate(BreadFileDTO breadFileDTO);
 
+    int breadEditFileDelete(BreadFileDTO breadFileDTO);
+
     // 사용자 코드로 프로필 사진 정보 조회
     BreadFileDTO selectBreadUserFileInfo(int userCode);
+
 }

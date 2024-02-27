@@ -28,17 +28,45 @@
                                 alert('파일변경 실패');
                             }
                         },
-                        error: function(error) {1
+                        error: function(error) {
                             console.log(error);
                         }
-                    })
+                    });
                 }
             });
 
+            var deleteProfileButton = document.getElementById('deleteProfileButton');
+
+            // 파일 삭제
             deleteProfileButton.addEventListener('click', function () {
-                profileImage.src = "/images/profile/none.png";
+                alert('프로필 삭제 버튼이 클릭되었습니다.');
+                changeProfileImage(3);
             });
-        });
+
+            function changeProfileImage(userCode) {
+                console.log('changeProfileImage 함수가 호출되었습니다. 사용자 코드:', userCode);
+
+                    $.ajax({
+                        url: '/breadEditFileDelete',
+                        type: 'post',
+                        data: {userCode: userCode},
+                        // contentType: false,
+                        // processData: false,
+                        success: function (data) {
+                            // 성공했을 때
+                            if (data == 'success') {
+                                alert('파일변경 성공');
+                            } else {
+                                alert('파일변경 실패');
+                            }
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                }
+            });
+
 // document.getElementById("editProfileButton").addEventListener('click',function (){
 //     const a = document.getElementById('profileImage');
 //     console.log(a.src);

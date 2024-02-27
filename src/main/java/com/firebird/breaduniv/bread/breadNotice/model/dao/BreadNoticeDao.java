@@ -1,10 +1,21 @@
 package com.firebird.breaduniv.bread.breadNotice.model.dao;
 
 import com.firebird.breaduniv.bread.breadNotice.model.dto.BreadNoticeDTO;
+import com.firebird.breaduniv.bread.common.paging.SelectCriteria;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface BreadNoticeDao {
 
-    BreadNoticeDTO selectBreadNoticeInfo(int boardCode);
+    int selectTotalCount(Map<String, String> searchMap);
+
+    int incrementBoardCount(int boardViewCount);
+
+    BreadNoticeDTO selectBoardDetail(int boardCode);
+
+    List<BreadNoticeDTO> selectBoardList(SelectCriteria selectCriteria);
+
 }
