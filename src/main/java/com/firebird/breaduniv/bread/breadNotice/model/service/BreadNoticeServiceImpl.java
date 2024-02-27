@@ -59,6 +59,7 @@ import java.util.Map;
         BreadNoticeDTO breadNoticeDTO = null;
 
         int result = breadNoticeDao.incrementBoardCount(boardCode);
+        System.out.println("result =======================> " + result);
 
         if(result > 0) {
             breadNoticeDTO = breadNoticeDao.selectBoardDetail(boardCode);

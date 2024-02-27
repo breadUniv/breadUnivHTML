@@ -17,4 +17,5 @@ public interface BreadNoticeDao {
     BreadNoticeDTO selectBoardDetail(int boardCode);
 
     List<BreadNoticeDTO> selectBoardList(SelectCriteria selectCriteria);
+
 }

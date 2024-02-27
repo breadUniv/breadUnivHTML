@@ -25,10 +25,10 @@ import java.util.Map;
 public class BreadNoticeController {
 
     // 사용하는 서비스의 구현체를 제공하기 위해 생성자를 통해 BreadNoticeServiceImpl 객체를 주입
-    private final BreadNoticeServiceImpl breadNoticeServiceImpl;
+    private final BreadNoticeService breadNoticeService;
 
-    public BreadNoticeController(BreadNoticeServiceImpl breadNoticeServiceImpl) {
-        this.breadNoticeServiceImpl = breadNoticeServiceImpl;
+    public BreadNoticeController(BreadNoticeService breadNoticeService) {
+        this.breadNoticeService = breadNoticeService;
     }
 
     /**
@@ -43,7 +43,13 @@ public class BreadNoticeController {
     public ModelAndView breadNotice(@RequestParam(required = false) String searchCondition,
                                     @RequestParam(required = false) String searchValue,
                                     @RequestParam(value="currentPage", defaultValue = "1") int pageNo,
+                                    @RequestParam(required = false) String type,
                                     ModelAndView mv) {
+
+        // 여기서 type 파라미터 값을 사용하여 로직을 처리할 수 있습니다.
+        if (type != null && type.equals("13")) {
+            System.out.println("type ============== " + type);
+        }
 
         log.info("[BoardController] ========================================================= start");
 
@@ -52,10 +58,11 @@ public class BreadNoticeController {
         Map<String, String> searchMap = new HashMap<>();
         searchMap.put("searchCondition", searchCondition);
         searchMap.put("searchValue", searchValue);
-        log.info("[BoardController] 컨트롤러에서 검색조건 확인하기 : " + searchMap);
+        searchMap.put("boardCategoryCode", type);
+        log.info("[BoardNoticeController] 컨트롤러에서 검색조건 확인하기 : " + searchMap);
 
         // 전체 게시물 수 조회, 검색조건이 있는 경우 조건에 맞게 게시물 수 조회
-        int totalCount = breadNoticeServiceImpl.selectTotalCount(searchMap);
+        int totalCount = breadNoticeService.selectTotalCount(searchMap);
         log.info("[BoardController] totalBoardCount : " + totalCount);
 
         /* 한 페이지에 보여 줄 게시물 수(파라미터로 전달 받아도 됨) */
@@ -76,10 +83,10 @@ public class BreadNoticeController {
         log.info("[BoardController] selectCriteria : " + selectCriteria);
 
         // 'boardCategoryCode'가 13인 게시물만 조회하도록 검색 조건 추가
-        searchMap.put("boardCategoryCode", "13");
+//        searchMap.put("boardCategoryCode", "13");
 
         /* 조회해 온다 */
-        List<BreadNoticeDTO> boardList = breadNoticeServiceImpl.selectBoardList(selectCriteria);
+        List<BreadNoticeDTO> boardList = breadNoticeService.selectBoardList(selectCriteria);
         log.info("[BoardController] boardList : " + boardList);
 
         mv.addObject("boardList", boardList);
@@ -103,7 +110,13 @@ public class BreadNoticeController {
     }
 
     @RequestMapping("/breadNoticePage")
-    public String breadNoticePage() {
+    public String breadNoticePage(@RequestParam int no, Model model) {
+        System.out.println("no = " + no);
+
+        BreadNoticeDTO breadNoticeDTO = breadNoticeService.selectBoardDetail(no);
+        System.out.println("breadNoticeDTO =============== " + breadNoticeDTO);
+
+        model.addAttribute("breadNotice", breadNoticeDTO);
         return "/bread/breadNotice/breadNoticePage";
     }
 

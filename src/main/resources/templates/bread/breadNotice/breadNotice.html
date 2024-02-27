@@ -17,7 +17,8 @@ xmlns:th="http://www.thymeleaf.org">
     <!-- 변경해야할 JS 링크 -->
     <script th:src="@{/scripts/menuChoice.js}"></script>
     <script th:src="@{/scripts/sideBar.js}"></script>
-    
+    <script th:src="@{/scripts/boardListClick.js}"></script>
+
     <title>breadNotice</title>
 </head>
 <body>
@@ -78,7 +79,7 @@ xmlns:th="http://www.thymeleaf.org">
 
                     <br><br><br><br><br><br>
 
-                <div class="boardContainer">
+                <div class="boardContainer" id="listArea">
                     <div class="boarderTitle">
                         <span>글번호</span>
                         <span class="title">제목</span>
@@ -90,36 +91,50 @@ xmlns:th="http://www.thymeleaf.org">
                     <hr>
                     <br>
 
-                    <tr th:each="board : ${ boardList }">
+                    <tr th:each="board, stut : ${ boardList }">
                         <div class="board">
-                            <span th:text="${breadNotice.boardCode}"></span>
-                            <span class="title" th:text="${breadNotice.boardTitle}"></span>
-                            <span th:text="${breadNotice.userName}"></span>
+                            <input type="hidden" th:value="${board.boardCode}"/>
+                            <span th:text="${stut.count}"></span>
+                            <span class="title" th:text="${board.boardTitle}"></span>
+                            <span th:text="${board.user.userName}"></span>
                             <span th:text="${board.boardViewCount}"></span>
-                            <span th:text="${breadNotice.boardPostDate}"></span>
+                            <span th:text="${board.boardPostDate}"></span>
                         </div>
+                        <br><hr><br>
                     </tr>
 
-                    <br><hr><br>
+                    <script th:inline="javascript">
+                        /*<![CDATA[*/
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const boardElements = document.querySelectorAll('.board');
+                            boardElements.forEach(function(element) {
+                                element.addEventListener('click', function() {
 
-                    <div class="board">
-                        <span>2</span>
-                        <span class="title">[브레드뉴스] 해외로 뻗어나가는 빵 쪼아먹기 기술!</span>
-                        <span>관리자</span>
-                        <span>2321</span>
-                        <span>2024-01-30</span>
-                    </div>
+                                    alert("click!!!!!!")
 
-                    <br><hr><br>
-                    
-                    <div class="board">
-                        <span>3</span>
-                        <span class="title">[행사안내] 교내 쿠키굴리기 대회가 개최됩니다</span>
-                        <span>관리자</span>
-                        <span>2390</span>
-                        <span>2024-01-30</span>
-                    </div>
-                
+                                    const boardCode = this.querySelector('span.board-code').innerText;
+                                    const viewCountElement = this.querySelector('span.view-count');
+                                    console.log("boardCode=============" + boardCode);
+                                    console.log("viewCountElement===========" + viewCountElement);
+
+                                    // AJAX 요청을 보냄
+                                    const xhr = new XMLHttpRequest();
+                                    xhr.onreadystatechange = function() {
+                                        if (xhr.readyState === 4 && xhr.status === 200) {
+                                            // 요청이 성공하면 조회수를 1 증가시킴
+                                            const newViewCount = parseInt(viewCountElement.innerText) + 1;
+                                            viewCountElement.innerText = newViewCount;
+                                        }
+                                    };
+                                    xhr.open('GET', '/incrementBoardCount?boardCode=' + boardCode, true);
+                                    xhr.send();
+                                });
+                            });
+                        });
+                        /*]]>*/
+                    </script>
+
+
                 </div> <!-- boardContainer -->
                 <br>
 
@@ -146,5 +161,7 @@ xmlns:th="http://www.thymeleaf.org">
 </body>
 
 <div th:replace="common/breadFooter.html"></div>
+
+<script th:src="@{/scripts/boardListClick.js}"></script>
 
 </html>
