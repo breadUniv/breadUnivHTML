@@ -152,7 +152,7 @@ article {
 }
 
 .boarderTitle span {
-    width: 200px;
+    /*width: 200px;*/
     text-align: center;
 }
 
@@ -206,3 +206,4 @@ article {
 .boarderTitle > span.title {
     width: 400px;
 }
+

@@ -155,7 +155,7 @@ h1, h2{
 }
 
 h1{
-    font-size: 33px;
+    font-size: 30px;
     margin: 0 0 0 5px ;
 }
 
@@ -213,7 +213,7 @@ li{
 
 .imgPost li{
     width: 700px;
-    font-size: 22px;
+    font-size: 20px;
     /* font-weight: 500px; */
 }
 

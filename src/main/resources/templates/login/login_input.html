@@ -15,15 +15,15 @@
 
             <div id="logo">
                 <!-- 대학교 로고 이미지를 사용하세요 -->
-                <img th:src="@{/images/logo/005.png}" alt="University Logo"  width="300"> <!-- width="300"> -->
+                <img th:src="@{/images/logo/005.png}" onclick="location.href='/login'" onmouserocer="changeCursor()" alt="University Logo"  width="300"> <!-- width="300"> -->
             </div>
 
             <div id="loginForm">
                 <input type="text" placeholder="Enter your ID (학번)">
                 <input type="password" placeholder="Enter your Password">
                 <button id="loginButton">로그인(Login)</button><br><br>
-                <div id="forgotPassword" onclick="goToForgotPassword()">비밀번호 찾기</div><br>
-                <div id="newStudent" onclick="goToAdmissions()">브레드 학교 학생이신가요? 입학원서 접수</div>
+                <div id="forgotPassword" onclick="location.href='/find_password'">비밀번호 찾기</div><br>
+                <div id="newStudent" onclick="location.href='/enrollment'">브레드 학교 학생이신가요? 입학원서 접수</div>
 
                 <br><br>
 
@@ -37,16 +37,16 @@
 
 </body>
 
-<script>
-    function goToForgotPassword() {
-        window.location.href = "find_password.html"
-        alert("비밀번호 찾기 페이지로 이동합니다.");
-    }
+<!--<script>-->
+<!--    function goToForgotPassword() {-->
+<!--        window.location.href = "find_password.html"-->
+<!--        alert("비밀번호 찾기 페이지로 이동합니다.");-->
+<!--    }-->
 
-    function goToAdmissions() {
-        window.location.href ="enrollment.html"
-        alert("입학원서 접수 페이지로 이동합니다.");
-    }
-</script>
+<!--    function goToAdmissions() {-->
+<!--        window.location.href ="enrollment.html"-->
+<!--        alert("입학원서 접수 페이지로 이동합니다.");-->
+<!--    }-->
+<!--</script>-->
 
 </html>

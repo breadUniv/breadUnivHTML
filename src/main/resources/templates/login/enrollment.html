@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@ xmlns:th="http://www.thymeleaf.org">
 
             <div id="logo">
                 <!-- 대학교 로고 이미지를 사용하세요 -->
-                <img th:src="@{/images/logo/005.png}" onclick="goToLogin()" onmouserocer="changeCursor()" alt="University Logo"  width="300">
+                <img th:src="@{/images/logo/005.png}" onclick="location.href='/login'" onmouserocer="changeCursor()" alt="University Logo" width="300">
             </div>
 
             <div class="enrollmentContainer">
