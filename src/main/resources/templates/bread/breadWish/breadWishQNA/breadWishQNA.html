@@ -45,44 +45,46 @@
                 <br><br><br><br><br>
 
                 <div class="titleContainer">
-                    <div class="titleBox">
-                        <div class="searchContainer">
-                            <label for="search">검색</label>
-                            <input type="text">
-                        </div>
+                    <form th:action="@{/breadWishQNA}" method="get">
+                        <div class="titleBox">
+                            <div class="searchContainer" >
+                                <label for="search">검색</label>
+                                <input type="text" name="searchValue">
+                            </div>
 
-                        <div class="dropdown">
-                            <label for="category">카테고리</label>
-                            <select>
-                                <option value="list">전체</option>
-                                <option value="list">계정</option>
-                                <option value="list">학교생활</option>
-                                <option value="list">기숙사</option>
-                                <option value="list">등록금</option>
-                                <option value="list">기타</option>
-                            </select>
-                        </div>
+                            <div class="dropdown">
+                                <label for="category">카테고리</label>
+                                <select>
+                                    <option value="list">전체</option>
+                                    <option value="list">계정</option>
+                                    <option value="list">학교생활</option>
+                                    <option value="list">기숙사</option>
+                                    <option value="list">등록금</option>
+                                    <option value="list">기타</option>
+                                </select>
+                            </div>
 
-                        <div class="dropdown">
-                            <label for="sorting">정렬조건</label>
-                            <select>
-                                <option value="list">선택</option>
-                                <option value="list">글번호 오름차순</option>
-                                <option value="list">글번호 내림차순</option>
-                            </select>
-                        </div>
+                            <div class="dropdown">
+                                <label for="sorting">정렬조건</label>
+                                <select>
+                                    <option value="list">선택</option>
+                                    <option value="list">글번호 오름차순</option>
+                                    <option value="list">글번호 내림차순</option>
+                                </select>
+                            </div>
 
-                        <div class="dropdownButton">
-                            <button>검색</button>
+                            <div class="dropdownButton">
+                                <button type="submit">검색</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
 
-                    <div class="manageButton">
-                        <div class="adminButton">
-                            <button onclick="location.href='/breadWishQNAModify'">글작성</button>
-                            <button>삭제</button>
+                        <div class="manageButton">
+                            <div class="adminButton">
+                                <button onclick="location.href='/breadWishQNAModify'">글작성</button>
+                                <button>삭제</button>
+                            </div>
                         </div>
-                    </div>
 
                 </div> <!-- titleContainer -->
 
@@ -103,12 +105,13 @@
 
                     <div class="board">
                         <Span><li><input type="checkbox" class="boardCheckbox" style="width: 15px"></li></Span>
-                        <Span><li>1</li></Span>
-                        <Span class="title"><li th:text="${breadWishBoard.boardTitle}"></li></Span>
+                        <Span><li th:text="${stus.count}"></li></Span>
+                        <Span class="title">
+                            <li th:text="${breadWishBoard.boardTitle}"></li></Span>
                         <Span><li th:text="${breadWishBoard.userName}"></li></Span>
                         <Span><li>답변완료</li></Span>
                         <Span><li th:text="${breadWishBoard.boardViewCount}"></li></Span>
-                        <Span><li th:date="${breadWishBoard.boardPostDate}"></li></Span>
+                        <Span><li th:text="${breadWishBoard.boardPostDate}"></li></Span>
                     </div>
 
                     <br><hr><br>
@@ -119,11 +122,24 @@
                 <br><br><br><br><br><br>
 
                 <div class="pagination">
-                    <button class="buttonArrow"><<</button>&nbsp;
-                    <button class="buttonPage">1&nbsp;</button>
-                    <button class="buttonPage">2&nbsp;</button>
-                    <button class="buttonPage">3</button>&nbsp;
-                    <button class="buttonArrow">>></button>
+
+                    <!-- 맨 앞으로 이동 버튼 -->
+                    <button class="buttonArrow"
+                            th:onclick="'location.href=\'/breadWish/breadWishQNA/list?currentPage='+ @{${selectCriteria.startPage}} + '\''"
+                            th:disabled="${selectCriteria.pageNo == 1}"><<</button>&nbsp;
+
+                    <!-- 숫자 버튼 -->
+                    <th:block th:each="page : ${#numbers.sequence(selectCriteria.startPage, selectCriteria.endPage)}">
+                        <button class="buttonPage"
+                            th:text="${ page }"
+                            th:onclick="'location.href=\'/breadWish/breadWishQNA/list?currentPage='+ @{${page}} + '\''"
+                            th:disabled="${ selectCriteria.pageNo eq page }">>1&nbsp;</button>
+                    </th:block>
+
+                    <!-- 맨 끝으로 이동 버튼 -->
+                    <button class="buttonArrow"
+                            th:onclick="'location.href=\'/breadWish/breadWishQNA/list?currentPage='+ @{${selectCriteria.maxPage}} + '\''"
+                            th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage}">>></button>
                 </div>
 
             </div> <!-- section01Container -->
@@ -136,12 +152,35 @@
 </div> <!-- mainContainer -->
 
 </body>
-<script>
-    $(document).ready(function(){
-    $(".title li").click(function(){
-        window.location.href = "breadWishQNAPage.html";
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let message = '[[${message}]]';
+
+    if (message != null && message !== 'null') {
+        alert(message);
+    }
+
+    // 게시글 리스트에서 해당 게시글에 마우스를 올릴 때의 스타일 처리
+    const $boards = document.querySelectorAll(".board");
+    $boards.forEach(function(board) {
+        board.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = "rgba(0, 0, 0, 0)";
+            this.style.cursor = "pointer";
+        });
+
+        board.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = ""; // 원래의 색상으로 변경 (비움)
+            this.style.cursor = "auto"; // 기본 커서로 변경
+        });
+
+        // 게시글 클릭 시 동작
+        board.addEventListener('click', function() {
+            const postCode = this.querySelector('li:nth-child(2)').textContent;
+            location.href = "/bread/breadWish/breadWishQNA?boardCode=" + boardCode;
+        });
     });
-});
+    /*]]>*/
 </script>
 
 <div th:replace="common/breadFooter.html"></div>

@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class BreadWishServiceImpl implements BreadWishService {
@@ -60,31 +62,15 @@ public class BreadWishServiceImpl implements BreadWishService {
         // 이 메서드는 BreadWishService 인터페이스에서 추상 메서드로 선언되어 있습니다.
         // 실제 비즈니스 로직을 구현하여 해당 페이지의 데이터를 반환하도록 작성해야 합니다.
     }
+
+    @Override
+    public List<BreadWishBoardDTO> searchBoardByTitle(String searchValue) {
+        return breadWishMapper.searchBoardByTitle(searchValue);
+    }
+
+    @Override
+    public List<BreadWishBoardDTO> getAllBoardList() {
+        return breadWishMapper.getAllBoardList();
+    }
 }
-
-
-//    @Override
-//    public BreadWishBoardDTO viewCount(int boardCode) {
-//        return null;
-//    }
-
-//@Override
-//@Transactional
-//    public BreadWishBoardDTO viewCount(int boardCode) {
-//
-//    BreadWishBoardDTO noticeView = null;
-//
-//        /* 조회수 증가 */
-//        int result = BreadWishMapper.viewCount(boardCode);
-//
-//        if (result > 0) {
-//            viewCount = BreadWishMapper.selectQNAView(boardCode);
-//        }
-//
-//        log.info("");
-//        log.info("");
-//        log.info("[BoardServiceImpl]  selectNoticeView ===================== {}", noticeView);
-//
-//        return noticeView;
-//    }
 

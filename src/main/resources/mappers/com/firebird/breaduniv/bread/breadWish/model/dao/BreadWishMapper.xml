@@ -5,7 +5,6 @@
 <mapper namespace="com.firebird.breaduniv.bread.breadWish.model.dao.BreadWishMapper">
 
     <resultMap id="QNABoardResultMap" type="com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishBoardDTO">
-
         <id property="boardCode" column="board_code"/>
         <result property="boardCategoryCode" column="boardCategory_code"/>
         <result property="userCode" column="user_code"/>
@@ -14,6 +13,17 @@
         <result property="boardContents" column="board_contents"/>
         <result property="boardViewCount" column="board_viewCount"/>
         <result property="boardDeleteStatus" column="board_deleteStatus"/>
+        <result property="userName" column="user_name"/>
+        <result property="boardPostDate" column="board_PostDate"/>
+        <collection property="comments" resultMap="CommentsResultMap"/>
+    </resultMap>
+
+    <resultMap id="CommentsResultMap" type="com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishCommentsDTO">
+        <id property="commentsCode" column="comments_code"/>
+        <result property="boardCode" column="board_code"/>
+        <result property="userCode" column="user_code"/>
+        <result property="commentsContents" column="comments_contents"/>
+        <result property="commentsDate" column="comments_date"/>
     </resultMap>
 
     <resultMap id="SuggestionBoardResultMap" type="com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishBoardDTO">
@@ -26,6 +36,8 @@
         <result property="boardContents" column="board_contents"/>
         <result property="boardViewCount" column="board_viewCount"/>
         <result property="boardDeleteStatus" column="board_deleteStatus"/>
+        <result property="userName" column="user_name"/>
+        <result property="boardPostDate" column="board_PostDate"/>
     </resultMap>
 
     <resultMap id="QNAViewResultMap" type="com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishBoardDTO">
@@ -41,18 +53,6 @@
     </resultMap>
 
 
-    <resultMap id="CommentsResultMap" type="com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishCommentsDTO">
-        <id property="commentsCode" column="comments_code"/>
-        <result property="boardCode" column="board_code"/>
-        <result property="userName" column="user_Name"/>
-        <result property="commentsContents" column="comments_contents"/>
-        <result property="boardCategoryCode" column="boardCategory_code"/>
-        <result property="commentsDate" column="comments_date"/>
-        <association property="board" javaType="com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishBoardDTO">
-        <id property="boardCode" column="board_code"/>
-        </association>
-
-    </resultMap>
     <!--
         resultType : 기본타입의 값을 리턴받을 경우에 사용 (int, string....)
         resultMap : 여러개의 타입의 묶음을 받을 때 (DTO)
@@ -64,7 +64,7 @@
         b.user_code,
         b.board_title,
         b.board_contents,
-        b.board_postDate,
+        DATE_FORMAT(b.board_postDate, '%Y-%m-%d') AS board_postDate,
         b.board_viewCount,
         b.board_deleteStatus,
         u.user_code,
@@ -78,7 +78,34 @@
         board_category c ON b.boardCategory_code = c.boardCategory_code
         where
         b.board_code=#{boardCode}
+    </select>
 
+    <select id="breadWishQNAPage" resultMap="QNABoardResultMap">
+<!--        select-->
+<!--        b.board_code,-->
+<!--        b.boardCategory_code,-->
+<!--        b.user_code,-->
+<!--        b.board_title,-->
+<!--        b.board_contents,-->
+<!--        DATE_FORMAT(b.board_postDate, '%Y-%m-%d') AS board_postDate,-->
+<!--        b.board_viewCount,-->
+<!--        b.board_deleteStatus,-->
+<!--        u.user_code,-->
+<!--        u.user_name,-->
+<!--        c.boardCategory_code-->
+<!--        from-->
+<!--        board b-->
+<!--        INNER JOIN-->
+<!--        user u ON b.user_code = u.user_code-->
+<!--        LEFT JOIN-->
+<!--        board_category c ON b.boardCategory_code = c.boardCategory_code-->
+<!--        where-->
+<!--        b.board_code=#{boardCode}-->
+        select
+            *
+        from board a
+        left join comments b on a.board_code = b.board_code
+        where a.board_code = #{boardCode}
     </select>
 
 
@@ -89,7 +116,7 @@
         b.user_code,
         b.board_title,
         b.board_contents,
-        b.board_postDate,
+        DATE_FORMAT(b.board_postDate, '%Y-%m-%d') AS board_postDate,
         b.board_viewCount,
         b.board_deleteStatus,
         u.user_code,
@@ -103,8 +130,13 @@
         board_category c ON b.boardCategory_code = c.boardCategory_code
         where
         b.board_code=#{boardCode}
-
     </select>
+
+    <update id="incrementBoardCount">
+        update board
+        set    boardViewCount = board_viewCount + 1
+        where  board_code = #{ boardCode }
+    </update>
 
     <select id="selectQNAView" resultMap="QNAViewResultMap">
         select
@@ -113,7 +145,7 @@
         b.user_code,
         b.board_title,
         b.board_contents,
-        b.board_postDate,
+        DATE_FORMAT(b.board_postDate, '%Y-%m-%d') AS board_postDate,
         b.board_viewCount,
         b.board_deleteStatus,
         u.user_code,
@@ -122,28 +154,43 @@
         from
         board b
         INNER JOIN
-        user u ON b.user_code = u.user_code
+            user u ON b.user_code = u.user_code
         LEFT JOIN
-        board_category c ON b.boardCategory_code = c.boardCategory_code
+            board_category c ON b.boardCategory_code = c.boardCategory_code
         where
         b.board_code=#{boardCode}
     </select>
 
 
-    <select id="Comments" resultMap="CommentsResultMap">
-        SELECT
-            c.comments_code
-            c.board_Code
+    <select id="selectComments" resultMap="CommentsResultMap">
+        select
+        c.user_name, d.user_name
+        from board a
+        left join comments b on a.board_code = b.board_code
+        left join user c on a.user_code = c.user_code
+        left join user d on b.user_code = d.user_code
+        where a.board_code=#{boardCode}
+    </select>
+
+    <select id="getAllBoardList" resultType="com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishBoardDTO">
+        select
+            b.board_code,
+            b.boardCategory_code,
+            b.user_code,
+            b.board_title,
+            b.board_contents,
+            DATE_FORMAT(b.board_postDate, '%Y-%m-%d') AS board_postDate,
+            b.board_viewCount,
+            b.board_deleteStatus,
+            u.user_code,
+            u.user_name,
             c.boardCategory_code
-            b.board_code
-            c.comments_contents
-            u.user_name
-        FROM
-            bread_wish_comments c
-        INNER JOIN
-            bread_wish_board b ON c.board_Code = b.board_code
+        from
+            board b
         INNER JOIN
             user u ON b.user_code = u.user_code
+        LEFT JOIN
+            board_category c ON b.boardCategory_code = c.boardCategory_code
     </select>
 
 

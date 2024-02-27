@@ -49,14 +49,14 @@
                         <div class="boarderTitle">
                             <span>제목</span>
                             <span class="title" th:text="${breadWishBoard.boardTitle}"></span>
-                            <span th:date="${breadWishBoard.boardPostDate}">2024-02-23</span>
+                            <span th:text="${breadWishBoard.boardPostDate}"></span>
                         </div>
                         <br><br>
                         <hr>
                         <br><br><br>
                         <div class="board">
                             <span>내용</span>
-                            <p th:text="${breadWishBoard.boardContents}"></p>
+                            <p id="boardContents" th:text="${breadWishBoard.boardContents}"></p>
                         </div>
                         
                     </div> <!-- boardContainer -->
@@ -68,10 +68,10 @@
                     <br><br><br>
 
                     <div class="commentContainer01">
-                        <div class="comment01">
+                        <div class="comment01" th:each="comment : ${breadWishBoard.comments}">
                             <div class="commentText01">
                                 <span>답변</span>
-                                <p th:text="${breadWishComments.commentsContents}">비둘기 털 날리지 않나요? 안 됩니다.</p>
+                                <p th:text="${comment.commentsContents}">댓글 내용이 없습니다.</p>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 package com.firebird.breaduniv.bread.breadWish.model.dto;
-
-
 import lombok.*;
+
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -11,18 +11,9 @@ import lombok.*;
 public class BreadWishCommentsDTO {
 
     private int commentsCode;
-    private int board_Code;
-    private int boardCategoryCode;
-    BreadWishBoardDTO board;
     private int boardCode;
+    private int userCode;
     private String commentsContents;
     private String userName;
-
-    public BreadWishCommentsDTO(int board_code, int boardCategory_code, String comments_contents, String userName ) {
-        this.boardCode = board_code;
-        this.boardCategoryCode = boardCategory_code;
-        this.commentsContents = comments_contents;
-        this.userName = userName;
-
-    }
+    private Date commentsDate;
 }

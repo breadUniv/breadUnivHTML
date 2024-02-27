@@ -1,8 +1,8 @@
 package com.firebird.breaduniv.bread.breadWish.model.dto;
-
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -18,13 +18,13 @@ public class BreadWishBoardDTO {
     private int userCode;
     private String boardContents;
     private int boardViewCount;
-    private Date boardPostDate;
+    private String boardPostDate;
     private String userName;
-
     private boolean boardDeleteStatus;
+    private List<BreadWishCommentsDTO> comments;
 
-    public boolean getBoardDeleteStatus() {
-        return boardDeleteStatus;
-    }
 
+//    public boolean getBoardDeleteStatus() {
+//        return boardDeleteStatus;
+//    }
 }
