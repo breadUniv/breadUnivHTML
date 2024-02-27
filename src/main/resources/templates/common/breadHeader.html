@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>breadHeader</title>
+</head>
+<body>
+<div class="header">
+    <div class="headerBackground">
+        <div class="headerMenu">
+            <div class="headerMenuClick">
+                <a th:href="@{/}">포탈정보시스템</a>
+                <span>버터커넥트</span>
+            </div>
+            <div class="searchBox">
+                <input type="text">
+                <button>검색</button>
+            </div>
+            <div class="logOut">
+                <a th:href="@{/}">로그아웃</a>
+            </div>
+        </div> <!-- headerMenu -->
+    </div> <!-- headerBackground -->
+</div> <!-- header -->
+</body>
+</html>
