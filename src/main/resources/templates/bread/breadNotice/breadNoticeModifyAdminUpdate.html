@@ -17,7 +17,7 @@
     <script th:src="@{/script/sideBar.js}"></script>
     <script th:src="@{/script/menuChoice.js}"></script>
 
-    <title>breadNoticeModifyAdmin</title>
+    <title>breadNoticeModifyAdminUpdate</title>
 </head>
 <body>
     <div class="mainContainer">
@@ -34,45 +34,32 @@
 
                     <br><br><br><br><br>
 
-                <form id="boardRegistForm" th:action="@{ /Notice/breadNoticeModifyAdmin }" method="post">
-                    <div class="manageButton">
-                        <div class="adminButton">
-                            <button type="submit">등록</button>
+                        <div class="manageButton">
+                            <div class="adminButton">
+                                <button>등록</button>
+                            </div>
                         </div>
-                    </div>
 
                     <br><br><br><br><br>
 
                     <div class="boardContainer">
                         <div class="boarderTitle">
                             <label for="title">제목</label>
-                            <input type="text" name="boardTitle">
-                            <span th:text="${ bread.userName }"></span>
-                            <input type="hidden" name="userName" th:value="${ bread.userName }"/>
-                            <span th:Text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"></span>
-
+                            <input type="text">
+                            <span>하경진</span>
+                            <span>2024-01-30</span>
                         </div>
                         <br><br>
-                            <hr>
+                        <hr>
                         <br><br><br>
                         <div class="board">
                             <label for="boardText">내용</label>
-                            <textarea name="boardContents" id="boardText" cols="30" rows="10"></textarea>
+                            <textarea name="boardText" id="boardText" cols="30" rows="10">
+
+                            </textarea>
                         </div>
                     
                     </div> <!-- boardContainer -->
-                </form>
-
-<!--                    <script>-->
-<!--                        window.onload = function() {-->
-<!--                            if(document.getElementById("writeBoard")) {-->
-<!--                                const $writeBoard = document.getElementById("writeBoard");-->
-<!--                                $writeBoard.onclick = function() {-->
-<!--                                    location.href = "/board/regist";-->
-<!--                                }-->
-<!--                            }-->
-<!--                        }-->
-<!--                    </script>-->
                     
                     <br><br><br>
 
@@ -81,7 +68,7 @@
                     <br><br><br>
 
                     <div class="saveButton">
-                        <button onclick="location.href='/Notice/breadNotice'">이전으로</button>
+                        <button onclick="location.href='/breadNotice'">이전으로</button>
                     </div>
     
                 </div> <!-- section01Container -->

@@ -10,13 +10,13 @@
         for (let i = 0; i < $spans.length; i++) {
 
             $spans[i].onmouseenter = function() {
-            this.parentNode.style.backgroundColor = "orangered";
+
             this.parentNode.style.cursor = "pointer";
         }
 
-            $spans[i].onmouseout = function() {
-            this.parentNode.style.backgroundColor = "black";
-        }
+        //     $spans[i].onmouseout = function() {
+        //     this.parentNode.style.backgroundColor = "black";
+        // }
 
             $spans[i].onclick = function() {
             const no = this.parentNode.children[0].value;

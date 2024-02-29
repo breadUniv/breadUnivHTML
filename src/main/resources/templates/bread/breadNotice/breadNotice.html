@@ -70,7 +70,7 @@ xmlns:th="http://www.thymeleaf.org">
 
                         <div class="manageButton">
                             <div class="adminButton">
-                                <button onclick="location.href='/breadNoticeModifyAdmin'">글작성</button>
+                                <button onclick="location.href='/Notice/breadNoticeModifyAdmin'">글작성</button>
                                 <button>삭제</button>
                             </div>
                         </div>
@@ -94,8 +94,8 @@ xmlns:th="http://www.thymeleaf.org">
                     <tr th:each="board, stut : ${ boardList }">
                         <div class="board">
                             <input type="hidden" th:value="${board.boardCode}"/>
-                            <span th:text="${stut.count}"></span>
-                            <span class="title" th:text="${board.boardTitle}"></span>
+                            <span id="output" th:text="${stut.count}"></span>
+                            <span class="title" th:text=" [ + ${ board.category.categoryName } + ]  + ' '+ ${ board.boardTitle } "></span>
                             <span th:text="${board.user.userName}"></span>
                             <span th:text="${board.boardViewCount}"></span>
                             <span th:text="${board.boardPostDate}"></span>
@@ -103,14 +103,18 @@ xmlns:th="http://www.thymeleaf.org">
                         <br><hr><br>
                     </tr>
 
+                    <script>
+                        var originalText = document.querySelector("[th\\:text]").innerText;
+                        var reversedText = originalText.split('').reverse().join('');
+                        document.getElementById("output").innerText = reversedText;
+                    </script>
+
                     <script th:inline="javascript">
                         /*<![CDATA[*/
                         document.addEventListener('DOMContentLoaded', function() {
                             const boardElements = document.querySelectorAll('.board');
                             boardElements.forEach(function(element) {
                                 element.addEventListener('click', function() {
-
-                                    alert("click!!!!!!")
 
                                     const boardCode = this.querySelector('span.board-code').innerText;
                                     const viewCountElement = this.querySelector('span.view-count');

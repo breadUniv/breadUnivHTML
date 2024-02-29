@@ -27,6 +27,7 @@
         <result property="boardDeleteStatus" column="board_deleteStatus"/>
         <association property="user" resultMap="userResultMap"/>
         <association property="category" resultMap="categoryResultMap"/>
+        <association property="file" resultMap="breadFileResultMap"/>
     </resultMap>
 
     <resultMap id="userResultMap" type="com.firebird.breaduniv.bread.breadMypage.model.dto.BreadUserDTO">
@@ -150,7 +151,7 @@
              , b.board_viewCount
              , b.board_postDate
              , c.category_name
-             , u.user_code
+             , u.user_name
           FROM
                 board b
           JOIN
@@ -162,6 +163,24 @@
                     AND b.board_code = #{ boardCode }
     </select>
 
+    <select id="selectUserInfo" resultMap="userResultMap">
+        SELECT
+                user_code,
+                department_code,
+                user_name,
+                user_pwd,
+                user_email,
+                user_createDate,
+                user_address,
+                user_detailedAddress,
+                user_phone,
+                user_permission
+        FROM
+                user
+        WHERE
+                user_code = #{userCode}
+    </select>
+
     <update id="incrementBoardCount">
         UPDATE
                 board
@@ -170,5 +189,21 @@
         WHERE
                 board_code = #{ boardCode }
     </update>
+
+    <insert id="insertBoard">
+        INSERT
+        INTO board (
+                        boardCategory_code,
+                        user_code,
+                        board_title,
+                        board_contents
+                    )
+        VALUES (
+                        13,
+                        4,
+                        #{ boardTitle },
+                        #{ boardContents }
+                    )
+    </insert>
 
 </mapper>

@@ -1,5 +1,6 @@
 package com.firebird.breaduniv.bread.breadNotice.model.dto;
 
+import com.firebird.breaduniv.bread.breadMypage.model.dto.BreadFileDTO;
 import com.firebird.breaduniv.bread.breadMypage.model.dto.BreadUserDTO;
 import lombok.*;
 
@@ -19,8 +20,9 @@ public class BreadNoticeDTO {
     private String boardPostDate;
     private int boardViewCount;
     private String boardDeleteStatus;
-    private String userName;
 
     private BreadUserDTO user;
     private BreadNoticeCategoryDTO category;
+
+    private List<BreadFileDTO> file;
 }

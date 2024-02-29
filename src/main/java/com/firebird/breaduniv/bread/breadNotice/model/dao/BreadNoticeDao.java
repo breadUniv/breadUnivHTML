@@ -1,5 +1,6 @@
 package com.firebird.breaduniv.bread.breadNotice.model.dao;
 
+import com.firebird.breaduniv.bread.breadMypage.model.dto.BreadUserDTO;
 import com.firebird.breaduniv.bread.breadNotice.model.dto.BreadNoticeDTO;
 import com.firebird.breaduniv.bread.common.paging.SelectCriteria;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,4 +19,7 @@ public interface BreadNoticeDao {
 
     List<BreadNoticeDTO> selectBoardList(SelectCriteria selectCriteria);
 
+    int insertBoard(BreadNoticeDTO noticeDTO);
+
+    BreadUserDTO selectUserInfo(int userCode);
 }
