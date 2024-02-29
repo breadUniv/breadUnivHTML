@@ -4,11 +4,13 @@ import com.firebird.breaduniv.bread.breadWish.model.dao.BreadWishMapper;
 import com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishBoardDTO;
 import com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishCommentsDTO;
 
+import com.firebird.breaduniv.bread.common.paging.SelectCriteria;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -45,7 +47,7 @@ public class BreadWishServiceImpl implements BreadWishService {
             // 조회수가 존재하면 breadWishMapper의 selectQNAView 메서드를 호출하여 해당 boardCode에 대한 게시글 정보를 가져와 QNAView에 할당합니다.
         }
 
-        log.info("[BoardServiceImpl] ===================== {}", QNAView);
+        log.info("[BreadWishServiceImpl] ===================== {}", QNAView);
 
         return QNAView;
     }
@@ -68,9 +70,56 @@ public class BreadWishServiceImpl implements BreadWishService {
         return breadWishMapper.searchBoardByTitle(searchValue);
     }
 
+    /**
+     * 해당 게시글 전체 갯수 조회용 메소드
+     * @param searchMap 검색용 객체
+     * @return
+     */
     @Override
-    public List<BreadWishBoardDTO> getAllBoardList() {
-        return breadWishMapper.getAllBoardList();
+    public int selectTotalCount(Map<String, String> searchMap) {
+
+        int result = breadWishMapper.selectTotalCount(searchMap);
+        log.info("[BoardWishServiceImpl]  selectTotalCount ===================== {}", result);
+        return result;
+
+//        return breadWishMapper.selectTotalCount(searchMap);
     }
+
+    /***
+     * 게시글 전체 필터 조회용 메소드
+     * @param selectCriteria
+     * @return
+     */
+    @Override
+    public List<BreadWishBoardDTO> selectBoardList(SelectCriteria selectCriteria) {
+
+        List<BreadWishBoardDTO> BreadWishBoardDTOList = breadWishMapper.selectBoardList(selectCriteria);
+        log.info("[BreadWishServiceImpl]  BreadWishBoardDTOList ===================== {}", BreadWishBoardDTOList);
+
+        return BreadWishBoardDTOList;
+    }
+
+    /***
+     * 게시글 상세 페이지 조회용 메소드
+     * @param boardCode 게시글 번호
+     * @return
+     */
+    @Override
+    @Transactional
+    public BreadWishBoardDTO selectBoardDetail(int boardCode) {
+        BreadWishBoardDTO breadWishBoardDTO = null;
+
+        int result = breadWishMapper.incrementBoardCount(boardCode);
+        System.out.println("result =======================> " + result);
+
+        if(result > 0) {
+            breadWishBoardDTO = breadWishMapper.selectBoardDetail(boardCode);
+        }
+
+        log.info("[BreadWishServiceImpl-----------]  selectBoardDetail ===================== {}", breadWishBoardDTO);
+
+        return breadWishBoardDTO;
+    }
+
 }
 

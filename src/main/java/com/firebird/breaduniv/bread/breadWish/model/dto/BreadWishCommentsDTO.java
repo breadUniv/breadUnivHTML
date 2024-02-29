@@ -16,4 +16,9 @@ public class BreadWishCommentsDTO {
     private String commentsContents;
     private String userName;
     private Date commentsDate;
+
+    // userName 속성을 반환하는 getter 메서드 추가
+    public String getUser() {
+        return userName;
+    }
 }

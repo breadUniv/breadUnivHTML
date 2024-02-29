@@ -4,7 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.firebird.breaduniv.bread.breadWish.model.dao.BreadWishMapper">
 
-    <resultMap id="QNABoardResultMap" type="com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishBoardDTO">
+    <resultMap id="BoardResultMap" type="com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishBoardDTO">
         <id property="boardCode" column="board_code"/>
         <result property="boardCategoryCode" column="boardCategory_code"/>
         <result property="userCode" column="user_code"/>
@@ -13,7 +13,6 @@
         <result property="boardContents" column="board_contents"/>
         <result property="boardViewCount" column="board_viewCount"/>
         <result property="boardDeleteStatus" column="board_deleteStatus"/>
-        <result property="userName" column="user_name"/>
         <result property="boardPostDate" column="board_PostDate"/>
         <collection property="comments" resultMap="CommentsResultMap"/>
     </resultMap>
@@ -24,10 +23,10 @@
         <result property="userCode" column="user_code"/>
         <result property="commentsContents" column="comments_contents"/>
         <result property="commentsDate" column="comments_date"/>
+<!--        <association property="user" resultMap="userResultMap"/>-->
     </resultMap>
 
     <resultMap id="SuggestionBoardResultMap" type="com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishBoardDTO">
-
         <id property="boardCode" column="board_code"/>
         <result property="boardCategoryCode" column="boardCategory_code"/>
         <result property="userCode" column="user_code"/>
@@ -52,12 +51,50 @@
         <result property="boardDeleteStatus" column="board_deleteStatus"/>
     </resultMap>
 
+<!--    <resultMap id="generalBoardResultMap" type="com.firebird.breaduniv.bread.breadNotice.model.dto.BreadNoticeDTO">-->
+<!--        <id property="boardCode" column="board_code"/>-->
+<!--        <result property="boardCategory" column="board_category"/>-->
+<!--        <result property="boardTitle" column="board_title"/>-->
+<!--        <result property="boardContents" column="board_contents"/>-->
+<!--        <result property="boardPostDate" column="board_postDate"/>-->
+<!--        <result property="boardViewCount" column="board_viewCount"/>-->
+<!--        <result property="boardDeleteStatus" column="board_deleteStatus"/>-->
+<!--        <association property="user" resultMap="userResultMap"/>-->
+<!--        <association property="category" resultMap="categoryResultMap"/>-->
+<!--    </resultMap>-->
+
+    <resultMap id="userResultMap" type="com.firebird.breaduniv.bread.breadMypage.model.dto.BreadUserDTO">
+        <id property="userCode" column="user_code"/>
+        <result property="departmentCode" column="department_code"/>
+        <result property="userName" column="user_name"/>
+        <result property="userPwd" column="user_pwd"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="userCreateDate" column="user_createDate"/>
+        <result property="userAddress" column="user_address"/>
+        <result property="userDetailedAddress" column="user_detailedAddress"/>
+        <result property="userPhone" column="user_phone"/>
+        <result property="userPermission" column="user_permission"/>
+        <result property="studentGrade" column="student_grade"/>
+        <result property="academicStatusCode" column="academicStatus_code"/>
+        <result property="studentAdmission" column="student_admission"/>
+        <result property="departmentName" column="department_name"/>
+        <result property="undergraduateName" column="undergraduate_name"/>
+    </resultMap>
+
+    <resultMap id="categoryResultMap" type="com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishCategoryDTO">
+        <id property="boardCategoryCode" column="boardCategory_code"/>
+        <result property="breadUpperCategoryCode" column="boardUpperCategory_code"/>
+        <result property="categoryName" column="category_name"/>
+    </resultMap>
+
+
+
 
     <!--
         resultType : 기본타입의 값을 리턴받을 경우에 사용 (int, string....)
         resultMap : 여러개의 타입의 묶음을 받을 때 (DTO)
     -->
-    <select id="selectQNABoard" resultMap="QNABoardResultMap">
+    <select id="selectQNABoard" resultMap="BoardResultMap">
         select
         b.board_code,
         b.boardCategory_code,
@@ -80,7 +117,7 @@
         b.board_code=#{boardCode}
     </select>
 
-    <select id="breadWishQNAPage" resultMap="QNABoardResultMap">
+    <select id="breadWishQNAPage" resultMap="BoardResultMap">
 <!--        select-->
 <!--        b.board_code,-->
 <!--        b.boardCategory_code,-->
@@ -161,7 +198,21 @@
         b.board_code=#{boardCode}
     </select>
 
+<!-- 댓글에 관련된 정보만을 조회 -->
+<!--    <select id="selectComments" resultMap="CommentsResultMap">-->
+<!--        select-->
+<!--        c.comments_code,-->
+<!--        c.board_code,-->
+<!--        c.user_code,-->
+<!--        c.comments_contents,-->
+<!--        c.comments_date,-->
+<!--        u.user_name as commenter_name-->
+<!--        from comments c-->
+<!--        left join user u on c.user_code = u.user_code-->
+<!--        where c.board_code=#{boardCode}-->
+<!--    </select>-->
 
+<!-- 게시물 작성자와 댓글 작성자의 이름을 모두 조회-->
     <select id="selectComments" resultMap="CommentsResultMap">
         select
         c.user_name, d.user_name
@@ -172,26 +223,104 @@
         where a.board_code=#{boardCode}
     </select>
 
-    <select id="getAllBoardList" resultType="com.firebird.breaduniv.bread.breadWish.model.dto.BreadWishBoardDTO">
-        select
-            b.board_code,
-            b.boardCategory_code,
-            b.user_code,
-            b.board_title,
-            b.board_contents,
-            DATE_FORMAT(b.board_postDate, '%Y-%m-%d') AS board_postDate,
-            b.board_viewCount,
-            b.board_deleteStatus,
-            u.user_code,
-            u.user_name,
-            c.boardCategory_code
-        from
-            board b
-        INNER JOIN
-            user u ON b.user_code = u.user_code
-        LEFT JOIN
-            board_category c ON b.boardCategory_code = c.boardCategory_code
+    <select id="selectBoardList" resultMap="BoardResultMap">
+        SELECT
+        A.board_code,
+        A.boardCategory_code,
+        A.user_code,
+        A.board_title,
+        A.board_contents,
+        E.category_name,
+        DATE_FORMAT(A.board_postDate, '%Y-%m-%d') AS board_postDate,
+        A.board_viewCount,
+        A.board_deleteStatus,
+        U.user_name
+        FROM (
+        SELECT
+
+        B.board_code,
+        B.boardCategory_code,
+        B.user_code,
+        B.board_title,
+        B.board_contents,
+        B.board_postDate,
+        B.board_viewCount,
+        B.board_deleteStatus
+        FROM board B
+        <if test="searchCondition == 'category'">
+            JOIN board_category C ON(B.boardCategory_code = C.boardCategory_code)
+        </if>
+        <if test="searchCondition == 'writer'">
+            JOIN user D ON(B.user_code = D.user_code)
+        </if>
+        <where>
+            <if test="searchCondition == 'category'">
+                C.category_name = #{ searchValue }
+            </if>
+            <if test="searchCondition == 'writer'">
+                D.user_name LIKE CONCAT('%', #{ searchValue }, '%')
+            </if>
+            <if test="searchCondition == 'title'">
+                B.board_title LIKE CONCAT('%', #{ searchValue }, '%')
+            </if>
+            <if test="searchCondition == 'content'">
+                B.board_contents LIKE CONCAT('%', #{ searchValue }, '%')
+            </if>
+
+        </where>
+        ) A
+        JOIN user U ON (A.user_code = U.user_code)
+        JOIN board_category E ON (A.boardCategory_code = E.boardCategory_code) AND E.boardCategory_code = 11
+        ORDER BY A.board_code DESC
+        LIMIT #{ startRow }, 10
     </select>
 
+    <select id="selectTotalCount" resultType="_int" parameterType="hashmap">
+        SELECT
+        COUNT(*)
+        FROM board b
+        <if test="searchCondition == 'category'">
+            JOIN board_category c ON(b.boardCategory_code = c.boardCategory_code)
+        </if>
+        <if test="searchCondition == 'writer'">
+            JOIN user u ON(b.user_code = u.user_code)
+        </if>
+        <where>
+            <if test="searchCondition == 'category'">
+                c.category_name = #{ searchValue }
+            </if>
+            <if test="searchCondition == 'writer'">
+                u.user_name LIKE CONCAT('%', #{ searchValue }, '%')
+            </if>
+            <if test="searchCondition == 'title'">
+                b.board_title LIKE CONCAT('%', #{ searchValue }, '%')
+            </if>
+            <if test="searchCondition == 'content'">
+                b.board_contents LIKE CONCAT('%', #{ searchValue }, '%')
+            </if>
+            AND b.board_deleteStatus = 'N'
+        </where>
+    </select>
+
+    <select id="selectBoardDetail" resultMap="BoardResultMap">
+        SELECT
+        b.board_code
+        , b.board_title
+        , b.board_contents
+        , b.user_code
+        , b.board_viewCount
+        , b.board_postDate
+        , c.category_name
+        , u.user_code
+        FROM
+        board b
+        JOIN
+        user u ON (u.user_code = b.user_code)
+        JOIN
+        board_category c ON (b.boardCategory_code = c.boardCategory_code)
+        WHERE
+        b.board_deleteStatus = 'N'
+        AND b.board_code = #{ boardCode }
+    </select>
 
 </mapper>

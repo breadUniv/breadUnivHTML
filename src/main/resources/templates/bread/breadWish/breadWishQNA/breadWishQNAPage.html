@@ -48,15 +48,16 @@
                     <div class="boardContainer">
                         <div class="boarderTitle">
                             <span>제목</span>
-                            <span class="title" th:text="${breadWishBoard.boardTitle}"></span>
-                            <span th:text="${breadWishBoard.boardPostDate}"></span>
+                            <span class="title" th:text="${board.boardTitle}"></span>
+                            <span th:text="${board.boardPostDate}"></span>
+                            <input type="hidden" th:text="${board.boardPostDate}">
                         </div>
                         <br><br>
                         <hr>
                         <br><br><br>
                         <div class="board">
                             <span>내용</span>
-                            <p id="boardContents" th:text="${breadWishBoard.boardContents}"></p>
+                            <p id="boardContents" th:text="${board.boardContents}"></p>
                         </div>
                         
                     </div> <!-- boardContainer -->
@@ -65,10 +66,8 @@
 
                     <hr>
 
-                    <br><br><br>
-
                     <div class="commentContainer01">
-                        <div class="comment01" th:each="comment : ${breadWishBoard.comments}">
+                        <div class="comment01" th:each="comment : ${board.comments}">
                             <div class="commentText01">
                                 <span>답변</span>
                                 <p th:text="${comment.commentsContents}">댓글 내용이 없습니다.</p>

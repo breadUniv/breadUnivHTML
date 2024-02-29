@@ -1,4 +1,4 @@
-package com.firebird.breaduniv.bread.breadNotice.model.dto;
+package com.firebird.breaduniv.bread.breadWish.model.dto;
 
 import lombok.*;
 
@@ -7,7 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class BreadNoticeCategoryDTO {
+public class BreadWishCategoryDTO {
 
     private int boardCategoryCode;
     private int boardUpperCategoryCode;

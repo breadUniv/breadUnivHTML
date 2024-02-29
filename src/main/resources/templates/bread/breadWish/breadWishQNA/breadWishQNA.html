@@ -25,6 +25,7 @@
     <article>
 
         <div th:replace="common/breadHeader.html"></div>
+<!--        <div th:replace="~{common/breadHeader.html}"></div>-->
 
         <div class="section01">
 
@@ -45,7 +46,7 @@
                 <br><br><br><br><br>
 
                 <div class="titleContainer">
-                    <form th:action="@{/breadWishQNA}" method="get">
+
                         <div class="titleBox">
                             <div class="searchContainer" >
                                 <label for="search">검색</label>
@@ -76,8 +77,9 @@
                             <div class="dropdownButton">
                                 <button type="submit">검색</button>
                             </div>
+
                         </div>
-                    </form>
+
 
                         <div class="manageButton">
                             <div class="adminButton">
@@ -103,44 +105,47 @@
 
                     <br><hr><br>
 
-                    <div class="board">
-                        <Span><li><input type="checkbox" class="boardCheckbox" style="width: 15px"></li></Span>
-                        <Span><li th:text="${stus.count}"></li></Span>
-                        <Span class="title">
-                            <li th:text="${breadWishBoard.boardTitle}"></li></Span>
-                        <Span><li th:text="${breadWishBoard.userName}"></li></Span>
-                        <Span><li>답변완료</li></Span>
-                        <Span><li th:text="${breadWishBoard.boardViewCount}"></li></Span>
-                        <Span><li th:text="${breadWishBoard.boardPostDate}"></li></Span>
-                    </div>
 
-                    <br><hr><br>
+                    <tr th:each="board, stut : ${boardList}">
+                        <div class="board">
+
+                            <Span><li><input type="checkbox" class="boardCheckbox" style="width: 15px"></li></Span>
+                            <Span><li th:text="${stut.count}"></li></Span>
+                            <Span class="title"><li th:text="${board.boardTitle}"></li></Span>
+                            <Span><li th:text="${board.userName}"></li></Span>
+                            <Span><li>답변완료</li></Span>
+                            <Span><li th:text="${board.boardViewCount}"></li></Span>
+                            <Span><li th:text="${board.boardPostDate}"></li></Span>
+
+                        </div>
+                        <br><hr><br>
+                    </tr>
 
 
                 </div> <!-- boardContainer -->
 
                 <br><br><br><br><br><br>
 
-                <div class="pagination">
+<!--                <div class="pagination">-->
 
-                    <!-- 맨 앞으로 이동 버튼 -->
-                    <button class="buttonArrow"
-                            th:onclick="'location.href=\'/breadWish/breadWishQNA/list?currentPage='+ @{${selectCriteria.startPage}} + '\''"
-                            th:disabled="${selectCriteria.pageNo == 1}"><<</button>&nbsp;
+<!--                    &lt;!&ndash; 맨 앞으로 이동 버튼 &ndash;&gt;-->
+<!--                    <button class="buttonArrow"-->
+<!--                            th:onclick="'location.href=\'/breadWish/breadWishQNA/list?currentPage='+ @{${selectCriteria.startPage}} + '\''"-->
+<!--                            th:disabled="${selectCriteria.pageNo == 1}"><<</button>&nbsp;-->
 
-                    <!-- 숫자 버튼 -->
-                    <th:block th:each="page : ${#numbers.sequence(selectCriteria.startPage, selectCriteria.endPage)}">
-                        <button class="buttonPage"
-                            th:text="${ page }"
-                            th:onclick="'location.href=\'/breadWish/breadWishQNA/list?currentPage='+ @{${page}} + '\''"
-                            th:disabled="${ selectCriteria.pageNo eq page }">>1&nbsp;</button>
-                    </th:block>
+<!--                    &lt;!&ndash; 숫자 버튼 &ndash;&gt;-->
+<!--                    <th:block th:each="page : ${#numbers.sequence(selectCriteria.startPage, selectCriteria.endPage)}">-->
+<!--                        <button class="buttonPage"-->
+<!--                            th:text="${ page }"-->
+<!--                            th:onclick="'location.href=\'/breadWish/breadWishQNA/list?currentPage='+ @{${page}} + '\''"-->
+<!--                            th:disabled="${ selectCriteria.pageNo eq page }">>1&nbsp;</button>-->
+<!--                    </th:block>-->
 
-                    <!-- 맨 끝으로 이동 버튼 -->
-                    <button class="buttonArrow"
-                            th:onclick="'location.href=\'/breadWish/breadWishQNA/list?currentPage='+ @{${selectCriteria.maxPage}} + '\''"
-                            th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage}">>></button>
-                </div>
+<!--                    &lt;!&ndash; 맨 끝으로 이동 버튼 &ndash;&gt;-->
+<!--                    <button class="buttonArrow"-->
+<!--                            th:onclick="'location.href=\'/breadWish/breadWishQNA/list?currentPage='+ @{${selectCriteria.maxPage}} + '\''"-->
+<!--                            th:disabled="${selectCriteria.pageNo == selectCriteria.maxPage}">>></button>-->
+<!--                </div>-->
 
             </div> <!-- section01Container -->
 
@@ -155,33 +160,80 @@
 
 <script th:inline="javascript">
     /*<![CDATA[*/
-    let message = '[[${message}]]';
+    document.addEventListener('DOMContentLoaded', function() {
+        const boardElements = document.querySelectorAll('.board');
+        boardElements.forEach(function(element) {
 
-    if (message != null && message !== 'null') {
-        alert(message);
-    }
+            //마우스 올렸을 때 이벤트 처리
+            element.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = "rgba(0, 0, 0, 0)";
+                this.style.cursor = "pointer";
+            });
 
-    // 게시글 리스트에서 해당 게시글에 마우스를 올릴 때의 스타일 처리
-    const $boards = document.querySelectorAll(".board");
-    $boards.forEach(function(board) {
-        board.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = "rgba(0, 0, 0, 0)";
-            this.style.cursor = "pointer";
-        });
+            // 마우스를 내렸을 때의 이벤트 처리
+            element.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = ""; // 원래의 색상으로 변경 (비움)
+                this.style.cursor = "auto"; // 기본 커서로 변경
+            });
 
-        board.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = ""; // 원래의 색상으로 변경 (비움)
-            this.style.cursor = "auto"; // 기본 커서로 변경
-        });
+            // 게시글을 클릭했을 때의 이벤트 처
+            element.addEventListener('click', function() {
 
-        // 게시글 클릭 시 동작
-        board.addEventListener('click', function() {
-            const postCode = this.querySelector('li:nth-child(2)').textContent;
-            location.href = "/bread/breadWish/breadWishQNA?boardCode=" + boardCode;
+                alert("상세 페이지 이동하자!!!!! ")
+
+                const boardCode = this.querySelector('span.board-code').innerText;
+                const viewCountElement = this.querySelector('span.view-count');
+                console.log("boardCode=============" + boardCode);
+                console.log("viewCountElement===========" + viewCountElement);
+
+                // AJAX 요청을 보냄
+                const xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // 요청이 성공하면 조회수를 1 증가시킴
+                        const newViewCount = parseInt(viewCountElement.innerText) + 1;
+                        viewCountElement.innerText = newViewCount;
+                    }
+                };
+                xhr.open('GET', '/incrementBoardCount?boardCode=' + boardCode, true);
+                xhr.send();
+            });
         });
     });
     /*]]>*/
 </script>
+
+
+
+<!--<script th:inline="javascript">-->
+<!--    /*<![CDATA[*/-->
+<!--    let message = '[[${message}]]';-->
+
+<!--    if (message != null && message !== 'null') {-->
+<!--        alert(message);-->
+<!--    }-->
+
+<!--    // 게시글 리스트에서 해당 게시글에 마우스를 올릴 때의 스타일 처리-->
+<!--    const $boards = document.querySelectorAll(".board");-->
+<!--    $boards.forEach(function(board) {-->
+<!--        board.addEventListener('mouseenter', function() {-->
+<!--            this.style.backgroundColor = "rgba(0, 0, 0, 0)";-->
+<!--            this.style.cursor = "pointer";-->
+<!--        });-->
+
+<!--        board.addEventListener('mouseleave', function() {-->
+<!--            this.style.backgroundColor = ""; // 원래의 색상으로 변경 (비움)-->
+<!--            this.style.cursor = "auto"; // 기본 커서로 변경-->
+<!--        });-->
+
+<!--        // 게시글 클릭 시 동작-->
+<!--        board.addEventListener('click', function() {-->
+<!--            const postCode = this.querySelector('li:nth-child(2)').textContent;-->
+<!--            location.href = "/bread/breadWish/breadWishQNA?boardCode=" + boardCode;-->
+<!--        });-->
+<!--    });-->
+<!--    /*]]>*/-->
+<!--</script>-->
 
 <div th:replace="common/breadFooter.html"></div>
 
