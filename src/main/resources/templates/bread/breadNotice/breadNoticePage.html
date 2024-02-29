@@ -39,9 +39,9 @@
                         <div class="boardContainer">
                             <div class="boarderTitle">
                                 <span>제목</span>
-                                <span class="title" th:text="${ breadNotice.boardTitle }"></span>
-                                <span>하경진</span>
-                                <span>2024-01-30</span>
+                                <span class="title" th:text=" [ + ${ breadNotice.category.categoryName } + ]  + ' '+ ${ breadNotice.boardTitle } "></span>
+                                <span th:text="${ breadNotice.user.userName }"></span>
+                                <span th:text="${ breadNotice.boardPostDate }"></span>
                             </div>
                             <br><br>
                             <hr>
@@ -51,11 +51,8 @@
                                     <span>내용</span>
                                 </div>
                                 <div class="boardText">
-                                    <img th:src="@{/images/login/학교메인배경.jpg}">
-                                    <p>
-                                        야무지게 쪼아먹을 학우분들<br>
-                                        꼭 구매하시길 바랍니다.
-                                    </p>
+<!--                                    <img th:src="${ breadNotice.file}">-->
+                                    <p th:text="${ breadNotice.boardContents }"></p>
                                 </div>
                             </div>
                             
@@ -70,7 +67,7 @@
                         <br><br><br>
     
                         <div class="saveButton">
-                            <button onclick="location.href='/breadNotice'">이전으로</button>
+                            <button onclick="location.href='/Notice/breadNotice'">이전으로</button>
                         </div>
         
                     </div> <!-- section01Container -->
