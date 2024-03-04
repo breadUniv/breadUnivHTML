@@ -74,7 +74,7 @@
                         <li><div th:text="${breadUser.undergraduateName}"></div></li>
                         <li><div th:text="${breadUser.departmentName}"></div></li>
                         <li>
-                            <div th:text="${breadUser.studentAdmission + '' + breadUser.departmentCode + '' + breadUser.studentCode}"></div>
+                            <div th:text="${breadUser.userNumCode}"></div>
                         </li>
                         <li><input type="text" name="userPwd" th:value="${breadUser.userPwd}"><input type="text" id="passwordCheck"></li>
                         <li><input type="text" name="userPhone" th:value="${breadUser.userPhone}"><button id="btnModify">수정</button></li>

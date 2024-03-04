@@ -13,6 +13,7 @@ import java.util.List;
 @ToString
 public class BreadUserDTO {
     private int userCode;
+    private String userNumCode;
     private String departmentCode;
     private String userName;
     private String userPwd;

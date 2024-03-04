@@ -18,19 +18,24 @@
                 <img th:src="@{/images/logo/005.png}" onclick="location.href='/login'" onmouserocer="changeCursor()" alt="University Logo"  width="300"> <!-- width="300"> -->
             </div>
 
-            <div id="loginForm">
-                <input type="text" placeholder="Enter your ID (학번)">
-                <input type="password" placeholder="Enter your Password">
-                <button id="loginButton">로그인(Login)</button><br><br>
-                <div id="forgotPassword" onclick="location.href='/find_password'">비밀번호 찾기</div><br>
-                <div id="newStudent" onclick="location.href='/enrollment'">브레드 학교 학생이신가요? 입학원서 접수</div>
+            <form action="login/login" method="post">
+                <div id="loginForm">
+                    <input type="text" placeholder="Enter your ID (학번)">
+                    <input type="password" placeholder="Enter your Password">
+                    <button id="loginButton" type="submit">로그인(Login)</button>
+                        <br><br>
+                    <div id="forgotPassword" onclick="location.href='/find_password'">비밀번호 찾기</div>
+                        <br>
+                    <div id="newStudent" onclick="location.href='/enrollment'">브레드 학교 학생이신가요? 입학원서 접수</div>
+
 
                 <br><br>
 
-                <div id="logoutInfo">이용 후 반드시 로그아웃 해주세요!
-                    <br>Please be sure to log out after use.</div>
-            </div>
-
+                    <div id="logoutInfo">이용 후 반드시 로그아웃 해주세요!
+                        <br>Please be sure to log out after use.
+                    </div>
+                </div>
+            </form>
         </div> <!-- login_page-->
 
     </div>  <!-- content -->

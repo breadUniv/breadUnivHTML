@@ -1,5 +1,5 @@
 server:
-  port: 1003
+  port: 8001
 
 spring:
   datasource:
@@ -24,8 +24,17 @@ spring:
     resources:
       static-locations: C:/thymeleaf-springboot/
 
-# MAC용 url
+## MAC용 url
+#img:
+#  macurl: /Users/theakim/Desktop/dev/04_Project/bread/breadImages/
+
+# 이미지 저장할 위치와 응답 시 이미지 주소 설정
 img:
+  # WebConfig에 세팅
+  add-resource-locations: file:////productimgs/
+  add-resource-handler: /productimgs/**
+  # ProductService에 세팅
+  image-dir: /Users/theakim/Desktop/dev/04_Project/bread/breadImages/
   macurl: /Users/theakim/Desktop/dev/04_Project/bread/breadImages/
 
 mybatis:
