@@ -6,6 +6,7 @@
 
     <resultMap id="breadMypageUserResultMap" type="com.firebird.breaduniv.bread.breadMypage.model.dto.BreadUserDTO">
         <id property="userCode" column="user_code"/>
+        <result property="userNumCode" column="user_numCode"/>
         <result property="departmentCode" column="department_code"/>
         <result property="userName" column="user_name"/>
         <result property="userPwd" column="user_pwd"/>
@@ -58,6 +59,7 @@
     <select id="selectBreadUserInfo" resultMap="breadMypageUserResultMap">
         SELECT
                 u.user_code,
+                u.user_numCode,
                 LPAD(u.department_code, '2', '0') AS department_code,
                 u.user_name,
                 u.user_pwd,
