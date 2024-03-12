@@ -72,7 +72,16 @@ xmlns:th="http://www.thymeleaf.org">
 
 <!--                        <p th:text="${breadUser.breadFile.profileUploadFileName}"></p>-->
                         <div class="inputList">
+
+                            <input
+                                    type="hidden"
+                                    id="memberId"
+                                    name="memberId"
+                                    th:value="${ #authentication.getPrincipal().BreadUser().userCode }"
+                            >
+
                             <li><div th:text="${breadUser.userName}"></div></li>
+                            <li><div th:text="${#authentication.getPrincipal().breadUser().userName}"></div></li>
                             <li><div th:text="${breadUser.undergraduateName}"></div></li>
                             <li><div th:text="${breadUser.departmentName}"></div></li>
                             <li>

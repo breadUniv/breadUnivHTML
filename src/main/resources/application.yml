@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 1003
 
 spring:
   datasource:
@@ -24,26 +24,26 @@ spring:
     resources:
       static-locations: C:/thymeleaf-springboot/
 
-## MAC용 url
-#img:
-#  macurl: /Users/theakim/Desktop/dev/04_Project/bread/breadImages/
-
-# 이미지 저장할 위치와 응답 시 이미지 주소 설정
+# MAC용 url
 img:
-  # WebConfig에 세팅
-  add-resource-locations: file:////productimgs/
-  add-resource-handler: /productimgs/**
-  # ProductService에 세팅
-  image-dir: /Users/theakim/Desktop/dev/04_Project/bread/breadImages/
   macurl: /Users/theakim/Desktop/dev/04_Project/bread/breadImages/
 
-mybatis:
-#  # mapper.xml location Setting
-  mapper-locations: mappers/**/*.xml
-#  # alias Setting
-#  type-aliases-package: com.fireBird.breadUniv
-  configuration:
-    map-underscore-to-camel-case: true
+# 이미지 저장할 위치와 응답 시 이미지 주소 설정
+#img:
+#  # WebConfig에 세팅
+#  add-resource-locations: file:////productimgs/
+#  add-resource-handler: /productimgs/**
+#  # ProductService에 세팅
+#  image-dir: /Users/theakim/Desktop/dev/04_Project/bread/breadImages/
+#  macurl: /Users/theakim/Desktop/dev/04_Project/bread/breadImages/
+#
+#mybatis:
+##  # mapper.xml location Setting
+#  mapper-locations: mappers/**/*.xml
+##  # alias Setting
+##  type-aliases-package: com.fireBird.breadUniv
+#  configuration:
+#    map-underscore-to-camel-case: true
 
 logging:
   level:
