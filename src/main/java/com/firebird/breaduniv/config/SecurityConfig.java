@@ -40,19 +40,21 @@ public class SecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http// 페이지 권한 설정
                 .authorizeHttpRequests(auth ->{
-                    auth.requestMatchers("/notice/*", "/board/*", "/thumbnail/**").hasAnyAuthority("ROLE_STUDENT", "ROLE_PROFESSOR", "ROLE_ADMIN");
-                    auth.requestMatchers("/notice/regist").hasAnyAuthority("ROLE_ADMIN");
-                    auth.requestMatchers("/*", "/member/*").permitAll();// 모든 리소스를 권한 없이 사용가능
+//                    auth.requestMatchers("/notice/*", "/board/*", "/thumbnail/**").hasAnyAuthority("ROLE_STUDENT", "ROLE_PROFESSOR", "ROLE_ADMIN");
+//                    auth.requestMatchers("/notice/regist").hasAnyAuthority("ROLE_ADMIN");
+                    auth.requestMatchers("/*", "/member/*", "Notice/*").permitAll();// 모든 리소스를 권한 없이 사용가능
                     auth.anyRequest().authenticated();
                 })
+
                 // 로그인 설정
                 .formLogin(login -> {
-                    login.loginPage("/login/login");   //커스텀 로그인 페이지 사용
+                    login.loginPage("/login");   //커스텀 로그인 페이지 사용
                     login.usernameParameter("memberId"); // 사용자 id 입력 필드 (input의 name과 일치)
                     login.passwordParameter("memberPwd"); // 사용자 pass 입력 필드 (input의 name과 일치)
                     login.defaultSuccessUrl("/");  //로그인 성공시 이동 페이지
                     login.failureHandler(authFailHandler); // auth
                 })
+
                 // 로그아웃 설정
                 .logout(logout ->{
                     logout.logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")); // 로그아웃 요청 url
