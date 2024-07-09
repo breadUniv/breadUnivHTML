@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 
     @RequestMapping("/enrollment")
+    // 여기에서
     public String enrollment() {
         return "/login/enrollment";
     }
